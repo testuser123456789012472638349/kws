@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/x-icon" href="/img/a.png">
+</head>
+<body>
+    <div><a href="/">Home</a></div>
+    <h2><marquee>The picture Element</marquee></h2>
+    <!-- 
+        max: 이하
+        min: 이상
+
+     -->
+    <picture>
+        <source media="(min-width: 650px)" srcset="https://www.w3schools.com/html/img_food.jpg">
+        <source media="(min-width: 465px)" srcset="https://www.w3schools.com/html/img_car.jpg">
+        <img src="https://www.w3schools.com/html/img_girl.jpg" style="width:auto;">
+    </picture>
+</body>
+</html>
