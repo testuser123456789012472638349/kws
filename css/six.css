@@ -1,0 +1,113 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    /* 넓이 계산을 쉽게함. */
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    /* background-color: aqua; */
+    width: 960px;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); /* 수직의 가운데 */
+}
+.row {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.col {
+    /* background-color: red; */
+    float: left;
+    /* width: calc(33.33333333333% - 10px); */
+    width:calc(940px /3);
+    margin-right: 10px;
+    height: 450px;
+    border: 1px solid;
+}
+.row:nth-child(1) .col:nth-child(1) {
+    background-image: url(//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_kp_2.png);
+}
+.row:nth-child(1) .col:nth-child(1):hover {
+    cursor: pointer;
+    background-image: url(//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_kp_1.png);
+}
+.row:nth-child(1) .col:nth-child(2) {
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_nm_2.png");
+}
+.row:nth-child(1) .col:nth-child(2):hover {
+    cursor: pointer;
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_nm_1.png");
+}
+.row:nth-child(1) .col:nth-child(3) {
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_dr_2.png");
+}
+.row:nth-child(1) .col:nth-child(3):hover {
+    cursor: pointer;
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_dr_1.png");
+}
+.row:nth-child(2) .col:nth-child(1) {
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_fs_2.jpg");
+}
+.row:nth-child(2) .col:nth-child(1):hover {
+    cursor: pointer;
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_fs_1.jpg");
+}
+.row:nth-child(2) .col:nth-child(2) {
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_re_2.jpg");
+}
+.row:nth-child(2) .col:nth-child(2):hover {
+    cursor: pointer;
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_re_1.jpg");
+}
+.row:nth-child(2) .col:nth-child(3) {
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_mj_2.jpg");
+}
+.row:nth-child(2) .col:nth-child(3):hover {
+    cursor: pointer;
+    background-image: url("//img.imbc.com/broad/radio/channelm/__icsFiles/afieldfile/2020/11/30/H_mj_1.jpg");
+}
+.col:last-child {
+    margin-right: 0;
+}
+.title {
+    color: white;
+    text-align: center;
+    padding-top: 51px;
+    /* text-decoration: underline; */
+}
+.line {
+    border-top: 1px solid white;
+    width: 105px;
+    /* position: relative;
+    left: 50%;
+    transform: translateX(-50%); */
+    margin: 0 auto; /* 수평의 가운데 */
+}
+.sub-title {
+    padding: 45px 24px;
+    font-size: 12px;
+    color: white;
+}
+.info {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 12px;
+    width: 178px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.info > p:first-child{
+    margin-bottom: 5px;
+}
