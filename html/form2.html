@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #userJoin {
+            width: 760px;
+            margin: 0 auto;
+        }
+        table {
+            border-collapse: collapse;
+            border: 2px solid #ddd !important;
+            width: 100%;
+            /* margin: 0 auto; */
+        }
+        table, th, td {
+            border: 1px solid #eee;
+        }
+        th {
+            background-color: #cccbcb;
+        }
+        td {
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            line-height: 25px;
+        }
+        td > input[type=text] {
+            width: 150px;
+            margin-right: 5px;
+            height: 21px;
+        }
+        td > input[type=text] + input[type=button], .btnArea > input {
+            padding: 2px 5px 4px;
+        }
+        #userAdress1 {
+            width: 350px;
+            height: 27px;
+        }
+        .btnArea {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="userJoin">
+        <form>
+            <table>
+                <tr>
+                    <th><label for="userId">아이디</label></th>
+                    <td>
+                        <input type="text" 
+                            id="userId" 
+                            maxlength="8" 
+                            minlength="3" 
+                            placeholder="아이디를 입력하세요."
+                            autofocus
+                            autocomplete="off"
+                            required>
+                        <input type="button" value="중복확인">
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="userName">이름</label></th>
+                    <td>
+                        <input type="text" 
+                            id="userName" 
+                            maxlength="5" 
+                            minlength="2" 
+                            placeholder="이름을 입력하세요."
+                            autocomplete="off"
+                            required>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="userMinBun">주민번호</label></th>
+                    <td><input type="text" 
+                            id="userMinBun" 
+                            maxlength="14" 
+                            minlength="14" 
+                            placeholder="주민번호를 입력하세요."
+                            autocomplete="off"
+                            pattern="[0-9]{6}-[0-9]{7}"
+                            required
+                    > 예) 000000-0000000</td>
+                </tr>
+                <tr>
+                    <th><label for="userEmailaddress">이메일</label></th>
+                    <td>
+                        <input type="text" 
+                            id="userEmailaddress"
+                            placeholder="메일주소를 입력하세요"
+                            autocomplete="off"
+                            required>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="homephone">집전화</label></th>
+                    <td>
+                    <select size="1">
+                        <option value="0">010</option>
+                        <option value="1">070</option>
+                    </select>-
+                    <input style="width: 40px;" type="tel" id="homephone" name="middle number" placeholder="0000">
+                    -
+                    <input style="width: 40px;" type="tel" name="last number" placeholder="0000">
+                </td> 
+                </tr>
+                <tr>
+                    <th><label for="myphone">휴대전화</label></th>
+                    <td>
+                        <select size="1">
+                            <option value="0">010</option>
+                            <option value="1">011</option>
+                            <option value="2">019</option>
+                        </select>-
+                        <input style="width: 40px;" type="tel" id="myphone" name="middle" placeholder="0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="4" minlength="3">
+                        -
+                        <input style="width: 40px;" type="tel" name="last" placeholder="0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="4" minlength="3">
+                    </td>
+                <tr>
+                <tr>
+                    <th><label for="userZipCode">주소검색</label></th>
+                    <td>
+                        <input type="text" 
+                            id="userZipCode" 
+                            maxlength="3" 
+                            minlength="4"
+                            autocomplete="on"
+                            required>
+                        <input type="button" value="검색하기"> (주소입력....)
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="userAdress1">주소</label></th>
+                    <td>
+                        <select id="userAdress1">
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="userAdress2">상세주소</label></th>
+                    <td><input id ="userAdress2" autocomplete="on" required size="70px;"></td>
+                </tr>
+                <tr>
+                    <th>학력</th>
+                    <td>
+                        <select size="1">
+                            <option value="0">중졸</option>
+                            <option value="1">고졸</option>
+                            <option value="2">대졸</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>홍보매체</th>
+                    <td>
+                        <select size="1">
+                            <option value="0">어떻게 알게 되었나요?</option>
+                            <option value="1">전단지</option>
+                            <option value="2">지인소개</option>
+                            <option value="3">인터넷검색</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="agreedMail">메일수신</label></th>
+                    <td>
+                        <input type="checkbox" id="agreedMail"> 네. KH정보교육원에서 제공하는 정보메일 수신에 동의합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <th>교육장소</th>
+                    <td>
+                        <select size="1">
+                            <option value="0">선택하세요</option>
+                            <option value="1">학교</option>
+                            <option value="2">학원</option>
+                            <option value="3">자택</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input>확인<input></td>
+                </tr>
+            </table>
+            <div class="btnArea">
+                <input type="submit" value="회원가입">
+                <input type="reset" value="가입안함">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

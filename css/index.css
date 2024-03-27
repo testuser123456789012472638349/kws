@@ -3,11 +3,11 @@ body {
 }
 
 a {
-    transition: 0.7s;/*변경되는 속도를 지정*/
+    transition: 0.7s; /*변경되는 속도를 지정*/
 }
 
 a:link { /* 방문 전 */
-    color: blue;
+    color: brown;
     text-decoration: none;
 }
 
@@ -23,4 +23,10 @@ a:active { /* 누른 상태 */
 a:hover { /* 마우스 포인터를 위에 올린 상태 */
     font-size: 20px;
     text-decoration:underline;
+}
+section {
+    overflow: hidden;
+}
+article {
+    float: left;
 }

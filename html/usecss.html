@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 내부 스타일 방식 : style 태그를 사용하여 css 정의-->
+    <style>
+        div {
+            color: yellow;
+        }
+        #myDiv {
+            background-color: blueviolet;
+            height: 400px;
+        }
+
+        a{
+            transition: 12s;
+        }
+
+        a:link { /* 방문 전 */
+            color : brown;
+            text-decoration: none;
+        }
+        a:visited { /* 방문 후 */
+            color: red;
+            text-decoration:underline;
+        }
+        a:active { /* 누른 상태 */
+            font-weight: bold;
+        }
+        a:hover { /* 마우스 포인터를 위에 올린 상태 */
+            font-size: 100px; 
+            text-decoration:underline;
+        }
+
+        button {
+            width: 60px;
+            height: 25px;
+            background-color: red;
+            transition: 0.9s;
+        }
+        button:hover {
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+        }
+        button:active {
+            background-color: brown;
+        }
+    </style>
+    <!-- 외부 스타일 시트 방식 -->
+    <link rel="stylesheet" href="/css/index.css">
+    <script>
+        function goNaver(){
+            document.location = "http://www.naver.com";
+        }
+    </script>
+
+</head>
+<body>
+    <div><a href="../" title="메인 페이지로...">Home</a></div>
+    <div><a href="../" title="메인 페이지로..." target="_blank">새 창 Home</a></div>
+    <h1>CSS 사용 방법</h1>
+    <ol>
+            <li>인라인(Inline) 방식</li>
+            <li>내부(internal) 방식</li>
+            <li>외부(External) 방식</li>
+    </ol>
+    <hr>
+    <div style="width: 100px; height: 100px; border: 1px solid red">인라인 방식: 태그마다 스타일을 지정</div>
+    <div id="myDiv">내부 방식: 해당 페이지 마다 스타일 지정</div>
+    <div id="outDiv">외부 방식: css파일을 작성 후 해당 페이지에 링크</div>
+    <a href="mailto:test@test.com">Send email</a>
+    <a href="tel:010-5555-5555">Call email</a>
+    <button style="cursor: pointer;" onclick="goNaver();">네이버</button>
+    <a href="newpage.html">newPage</a>
+</body>
+</html>
