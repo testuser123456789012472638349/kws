@@ -1,33 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/initialize-css@1.4.0/dist/initialize.min.css">
+  <style>
+    /* html, body {
+      /* height: 100%;
+      min-height: 100vh;
+    } */
+    #wrap {
+      position: relative;
+      min-height: 100vh;
+      /* 
+        vh, vw - viewport의 크기를 %로 표시
+      */
+      width: 100%;
+      max-width: 960px;
+      min-width: 700px;
+      margin: 0 auto;
+    }
+    #wrap > div {}
+    #wrap > div:first-child {
+      height: 100px;
+      background-color: darkgray;
+      color: white;
+      font-size: 32px;
+      padding-left: 20px;
+      padding-top: 10px;
+    }
+    
+    #wrap > div:nth-child(2) {
+      /* overflow: hidden; */
+    }
+
+    #wrap > div:nth-child(2)::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    #wrap > div:nth-child(2) > div {
+      float: left;
+    }
+    #wrap > div:nth-child(2) > div:first-child {
+      width: 20%;
+    }
+    #wrap > div:nth-child(2) > div:first-child > ul {
+      list-style: none;
+      margin: 0;
+      padding: 16px 15px;
+    }
+    #wrap > div:nth-child(2) > div:first-child > ul > li {
+      height: 30px;
+      background-color: aquamarine;
+      margin-bottom: 20px;
+      /* text-align: center; */
+      padding-left: 25px;
+      line-height: 30px;
+    }
+
+    #wrap > div:nth-child(2) > div:last-child {
+      width: 80%;
+      padding: 0 20px;
+    }
+    #wrap > div:nth-child(2) > div:last-child > h3 {
+      margin: 16px 0 25px;
+      font-size: 25px;
+    }
+    #wrap > div:nth-child(2) > div:last-child > div {
+      margin-bottom: 20px;
+    }
+    #wrap > div:nth-child(2) > div:last-child > div:first-child {}
+    #wrap > div:nth-child(2) > div:last-child > div:last-child {}
+
+    #wrap > div:last-child {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background-color: darkgray;
+      color: white;
+      font-size: 22px;
+      padding-left: 20px;
+      padding-top: 10px;
+    }
+
+  </style>
 </head>
 <body>
-    <h2>Demo JavaScript in Head</h2>
-    <p id="demo">A Paragraph.</p>
-    <p> This is Video</p>
-    <video>
-        <source src="/media/flame.mp4" type="video/mp4">
-    </video>
-    <br>
-    <video width="300" height="200" controls autoplay muted>
-        <source src="/media/flame.mp4" type="video/mp4">
-    </video>
-    <a href="/">홈</a>
-    <br>
-    <audio controls>
-        <source src="/media/igo.mp3" type="audio/mp3">
-    </audio>
-    <br>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"></iframe>
-    <iframe width="500" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1"></iframe>
-
-    <object width="100%" height="500px" data="first.html"></object>
-    <object data="/img/a.png"></object>
+  <div id="wrap">
+    <div>Header Text</div>
+    <div>
+      <div>
+        <ul>
+          <li>The Flight</li>
+          <li>The City</li>
+          <li>The Island</li>
+          <li>The Food</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The City</h3>
+        <div>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</div>
+        <div>You will learn more about web layout and responsive web pages in a later chapter.</div>
+      </div>
+    </div>
+    <div>Footer Text</div>
+  </div>
 </body>
 </html>

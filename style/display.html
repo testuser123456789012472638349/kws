@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        label[for=showOrNot] {
+            display: block;
+            background-color: aquamarine;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #showOrNot {
+            display: none;
+        }
+        #showOrNot + div {
+            background-color: red;
+            /* display: none; */
+            opacity: 0;
+            visibility: hidden;
+            transition: 1s;
+        }
+        #showOrNot:checked + div {
+            /* display: block; */
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 
+            CSS는 상위에서 하위를 선택하며 역으로는 선택 불가
+        */
+        #try {
+            overflow: hidden;
+        }
+        #try > input[type=checkbox] {
+            /* display: none; */
+        }
+        #try > div {
+            float: left;
+            width: 150px;
+            height: 250px;
+            background-color: red;
+            margin-right: 10px;
+            position: relative;
+        }
+        #try > div > label {
+            padding: 15px;
+            text-align: center;
+            background-color: aqua;
+            line-height: 51px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            cursor: pointer;
+        }
+        #remove:checked + div {
+            display: none !important;
+        }
+        #hidden:checked + div {
+            visibility: hidden !important;
+        }
+        #resetAll:checked ~ div:nth-of-type(1) {
+            display: block;   
+        }
+        #resetAll:checked ~ div:nth-of-type(2) {
+            visibility: visible; 
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap" lang="ko">
+        <a href="/" title="메인 페이지로...">Home</a>
+        <label for="showOrNot">Click to show panel</label>
+        <input type="checkbox" id="showOrNot">
+        <div>
+            <p>This panel contains a &lt;div&gt; element, which is hidden by default (display: none;).</p>
+            <p>It is styled with CSS, and we use JavaScript to show it (change it to (display: block;).</p>            
+        </div>
+        <div>test</div>
+        <hr>
+        <div id="try">
+            <input type="checkbox" id="resetAll">
+            <input type="checkbox" id="remove">
+            <div>
+                <label for="remove">Remove</label>
+            </div>
+            <input type="checkbox" id="hidden">
+            <div>
+                <label for="hidden">Hidden</label>
+            </div>
+            <div>
+                <label for="resetAll">Reset All</label>
+            </div>
+        </div>
+    </div>
+    <script>
+        let label = document.querySelector("label[for=resetAll]");
+        label.onclick = function(e) {
+            remove.checked = false;
+            hidden.checked = false;
+        };
+    </script>
+</body>
+</html>

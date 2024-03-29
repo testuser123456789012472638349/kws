@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap {
+            height: 10000px;
+        }
+        div:not(#wrap, .parent) {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(91, 248, 117);
+            border: 1px solid;
+        }
+        .static {
+            position: static;
+            background-color: red !important;
+            top: 100px;
+            left: 100px;
+            transform: translateX(100px);
+        }
+        .relative {
+            position: relative;
+            background-color: green !important;
+            top: 100px;
+            left: 100px;
+        }
+        .fixed {
+            position: fixed;
+            background-color: blueviolet !important;
+            bottom: 0;
+            right: 0;
+        }
+        .parent {
+            height: 500px;
+            border: 2px solid green;
+            position: relative; /*absolute의 부모 지정*/
+        }
+        .absolute {
+            position: absolute;
+            background-color: cadetblue !important;
+            top: 100px;
+            left: 100px;
+        }
+        .sticky {
+            position: sticky;
+            background-color: chartreuse !important;
+            top: 0;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap" lang="ko">
+        <a href="/" title="메인 페이지로...">Home</a>
+        <!-- 
+            (transform으로는 이동 가능)
+            position: static - 자리를 차지하며 위치 이동이 안됨.
+            position: relative - 자리를 차지하지만 위치가 이동됨.
+            position: fixed - 윈도우에 고정됨(자리를 차지하지 않음)
+            position: absolute - 부모기준에 위치 이동(자리 차지하지 않음, 넓이, 높이가 사라짐)
+            position: sticky - 반드시 top값을 지정해 줌(스크롤이 자신에게 올때까지는 static처럼 작동하고 스크롤이 오면 fixed처럼 작동)
+         -->
+        <div class="static">static</div>
+        <div>nomal</div>
+        <div class="relative">relative</div>
+        <div>nomal</div>
+        <div class="fixed">fixed</div>
+        <div>nomal</div>
+        <div class="parent">
+            <div class="absolute">absolute</div>
+            <div>nomal</div>
+        </div>
+        <div class="sticky">sticky</div>
+        <div>nomal</div>
+    </div>
+</body>
+</html>
