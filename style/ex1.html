@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .clearflx::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .container {
+      width: 960px;
+      margin: 0 auto;
+    }
+
+    /* menu */
+    #menu {
+      background-color: black;
+      top: 0;
+      position: sticky;
+      
+      /* 수정 */
+      z-index: 9999;
+    }
+    #menu > ul {
+      list-style: none;
+      /* background-color: black; */
+      /* overflow: hidden; */
+      float: left;
+    }
+    #menu > ul > li {
+      float: left;
+      text-transform: uppercase;
+      padding: 15px 25px;
+      color: white;
+    }
+
+    #menu > ul > li:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+    }
+
+    #menu > div {
+      float: right;
+      color: white;
+      padding: 15px 5px;
+    }
+
+    /*-------------------------------------------------- slider */
+
+    #slider {
+      /* height: 27%;
+      background-color: red; */
+      position: relative;
+
+      /* 수정 */
+      height: 50vw;
+      min-width: 960px;
+      /* background-color: red; */
+      background-image: url(https://www.w3schools.com/w3images/la.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation-name: changeBackground;
+      animation-duration: 40s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: backwards; 
+    }
+    #slider > img {
+      width: 100%;
+    }
+    #slider > div {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    #slider > div > h2::after {
+      content: "Chicago";
+      color: white;
+      animation-name: changeH2After;
+      animation-duration: 40s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: backwards;
+    }
+    #slider > div > p::after {
+      content: "Thank you, Chicago - A night we won't forget.";
+      color: white;
+      animation-name: changePAfter, changeColor;
+      animation-duration: 40s, 10s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes changeBackground {
+      0% {
+        background-image: url(https://www.w3schools.com/w3images/ny.jpg);
+      }
+      25% {
+        background-image: url(https://www.w3schools.com/w3images/la.jpg);
+      }
+      50% {
+        background-image: url(https://www.w3schools.com/w3images/ny.jpg);
+      }
+      75% {
+        background-image: url(https://www.w3schools.com/w3images/la.jpg);
+      }
+      100% {
+        background-image: url(https://www.w3schools.com/w3images/ny.jpg);
+      }
+    }
+
+    @keyframes changeH2After {
+      0% {
+        color: white;
+        content: "Chicago";
+      }
+      12.5% {
+        color: black;
+      }
+      25% {
+        color: white;
+        content: "Los Angeles";
+      }
+      37.5% {
+        color: black;
+      }
+      50% {
+        color: white;
+        content: "Chicago";
+      }
+      62.5% {
+        color: black;
+      }
+      75% {
+        color: white;
+        content: "Los Angeles";
+      }
+      87.5% {
+        color: black;
+      }
+      100% {
+        color: white;
+        content: "Chicago";
+      }
+    }
+
+    @keyframes changePAfter {
+      0% {
+        content: "Thank you, Chicago - A night we won't forget.";
+      }
+      25% {
+        content: "We had the best time playing at Venice Beach!";
+      }
+      50% {
+        content: "Thank you, Chicago - A night we won't forget.";
+      }
+      75% {
+        content: "We had the best time playing at Venice Beach!";
+      }
+      100% {
+        content: "Thank you, Chicago - A night we won't forget.";
+      }
+    }
+
+    @keyframes changeColor {
+      0% {
+        color: white;
+      }
+      50% {
+        color: black;
+      }
+    }
+    
+
+    /* band */
+    #band {
+      text-align: center;
+    }
+    #band > .container > h2 {
+      padding-top: 52px;
+      padding-bottom: 39px;
+      letter-spacing: 15px;
+    }
+
+    #band > .container > div {}
+    #band > .container > p {
+      text-align: justify;
+    }
+    #band > .container > h2  + div{
+      margin-bottom: 15px;
+    }
+    #band > .container > div:nth-of-type(2) {
+      
+    }
+    #band > .container > div:nth-of-type(2) > div {
+      float: left;
+      margin-right: 50px;
+    }
+    #band > .container > div:nth-of-type(2) > div:last-child {
+      margin-right: 0;
+    }
+    #band > .container > div:nth-of-type(2) > div > div {
+      
+    }
+    #band > .container > div:nth-of-type(2) > div > div:first-child {
+
+    }
+    #band > .container > div:nth-of-type(2) > div > div:last-child {
+
+    }
+    #tour {
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+
+    #date > .container > div:nth-of-type(3) {
+      margin: 0 auto;
+    }
+    #date > .container > div:nth-of-type(3) > div {
+        float: left;
+        text-align: center;
+        list-style-type: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="menu" class="clearflx">
+      <ul class="clearflx">
+        <li><a href="/">HOME</a></li>
+        <li>BAND</li>
+        <li>Tour</li>
+        <li>Contact</li>
+        <li>More <span><i class="fa-solid fa-caret-down"></i></span></li>
+      </ul>
+      <div><i class="fa-solid fa-magnifying-glass"></i></div>
+    </div>
+    <div id="slider">
+      <!-- <img src="https://www.w3schools.com/w3images/la.jpg"> -->
+      <div>
+        <h2></h2>
+        <p></p>
+      </div>
+    </div>
+    <div id="band">
+      <div class="container">
+        <h2>THE BAND</h2>
+        <div>We love music</div>
+        <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="clearflx">
+          <div>
+            <div>Name</div>
+            <div><img src="https://www.w3schools.com/w3images/bandmember.jpg"></div>
+          </div>
+          <div>
+            <div>Name</div>
+            <div><img src="https://www.w3schools.com/w3images/bandmember.jpg"></div>
+          </div>
+          <div>
+            <div>Name</div>
+            <div><img src="https://www.w3schools.com/w3images/bandmember.jpg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="tour">
+        <div class="container">
+            <h2>TOUR DATES</h2>
+            <div>Remember to book your tickets!</div>
+            <div>
+                <div>September Sold out</div>
+                <div>October Sold out</div>
+                <div>November</div>
+            </div>
+            <div id="date">
+                <div class="container">
+                    <img src="https://www.w3schools.com/w3images/newyork.jpg">
+                    <p>New York</p>
+                    <p>Fri 27 Nov 2016</p>
+                    <p>Praesent tincidunt sed tellus ut</p>
+                    <p>rutrum sed vitae justo.</p>
+                    <li><a href="#buyticket" class="active4">Buy Tickets</a></li>
+                </div>
+                <div>
+                    <img src="https://www.w3schools.com/w3images/paris.jpg">
+                    <p>Paris</p>
+                    <p>Sat 28 Nov 2016</p>
+                    <p>Praesent tincidunt sed tellus ut</p>
+                    <p>rutrum sed vitae justo.</p>
+                    <li><a href="#buyticket" class="active4">Buy Tickets</a></li>
+                </div>
+                <div>
+                    <img src="https://www.w3schools.com/w3images/sanfran.jpg">
+                    <p>San Francisco</p>
+                    <p>Sun 29 Nov 2016</p>
+                    <p>Praesent tincidunt sed tellus ut</p>
+                    <p>rutrum sed vitae justo.</p>
+                    <li><a href="#buyticket" class="active4">Buy Tickets</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact"></div>
+    <div id="map"></div>
+    <div id="footer"></div>
+  </div>
+</body>
+</html>
