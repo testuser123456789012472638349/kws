@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bird {
+            width: 67px;
+            height: 67px;
+            background-image: url(/img/naver.png);
+            /* overflow: hidden; */
+            background-size: 425px
+        }
+        .toon {
+            width: 64px;
+            height: 64px;
+            /* border: 1px solid red; */
+            background-image: url(/img/naver.png);
+            background-position: -461px -433px;
+            background-repeat: no-repeat;
+        }
+        .walking {
+            width: 183px;
+            height: 325px;
+            /* border: 1px solid red; */
+            background-image: url(/img/walk.png);
+            animation-name: walk;
+            animation-duration: .7s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(8);
+        }
+        @keyframes walk {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1472px 0;
+            }           
+        }
+        .shooting {
+            padding: 6px;
+            width: 63px;
+            height: 128px;
+            /* border: 1px solid red; */
+            background-image: url(/img/SpriteEntity.png);
+            animation-name: shooting;
+            animation-duration: .5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(9);
+        }
+        @keyframes shooting {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1024px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bird"></div>
+    <div class="toon"></div>
+    <div class="walking"></div>
+    <div class="shooting"></div>
+</body>
+</html>
