@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div[id] {
+            padding: 50px;
+        }
+        /* body > div:first-child {
+            overflow: hidden;
+        } */
+        body > div:nth-child(2)::after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+        #box1 {
+            background-color: #ffd800;
+            float: left;
+            width: calc(33.33% - 100px);
+        }
+        #box2 {
+            background-color: #0094ff;
+            float: left;
+            width: calc(33.33% - 100px);
+        }
+        #box3 {
+            background-color: #00ff21;
+        }
+        #box4 {
+            background-color: #a874ff;
+        }
+        #box5 {
+            background-color: #ff7474;
+            float: left;
+            width: calc(33.33% - 100px);
+        }
+    </style>
+</head>
+<body>
+    <div id="box3">박스3</div>
+    <div>
+        <div id="box1">박스1</div>
+        <div id="box2">박스2</div>
+        <div id="box5">박스5</div>
+    </div>
+    <div id="box4">박스4</div>
+</body>
+</html>
