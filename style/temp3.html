@@ -5,47 +5,394 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div[id] {
-            padding: 50px;
+        div[class] {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            display: inline-block;
         }
-        /* body > div:first-child {
+        div[class] > div {
+            background-color: orange;
+            width: 100%;
+            height: 100%;
+            transition: 1s;
+        }
+        div.movx:hover > div{
+            transform: translateX(50px);
+        }
+        div.movy:hover > div{
+            transform: translateY(50px);
+        }
+        div.movxy:hover > div{
+            transform: translate(50px, 50px);
+        }
+        div.movz {
+            perspective: 10px;
+        }
+        div.movz:hover > div{
+            transform: translate3d(1px, 1px, -10px);
+        }
+
+        div.scalex:hover > div {
+            transform: scaleX(2);
+        }
+        div.scaley:hover > div {
+            transform: scaleY(1.5);
+        }
+        div.scalexy:hover > div {
+            transform: scale(0.7, 0.7);
+        }
+        div.scalez {
+            transform-style: preserve-3d;
+            perspective: 10px;
+        }
+        div.scalez:hover > div {
+            transform: scalez(12);
+        }
+
+        div.rotatex:hover > div {
+            transform: rotate(360deg);
+        }
+        div.rotatey:hover > div {
+            transform: rotate(-40deg);
+        }
+        div.rotatez {
+            perspective: 100px;
+        }
+        div.rotatez:hover > div{
+            /* transform: rotateX(360deg); */
+            transform: rotate3d(1, 1, -1, 360deg);
+        }
+        div.skewx:hover > div{
+            transform: skewX(50deg);
+        }
+        div.skewy:hover > div{
+            transform: skewY(50deg);
+        }
+
+        @keyframes moveBox {
+            0% {
+                top: 0;
+                left: calc(50% - 50px);
+            }
+            25% {
+                top: calc(50% - 50px);
+                left: calc(100% - 120px);
+            }
+            50% {
+                top: calc(100% - 120px);
+                left: calc(50% - 50px);
+            }
+            75% {
+                top: calc(50% - 50px);
+                left: 0;
+            }
+            100% {
+                top: 0;
+                left: calc(50% - 50px);
+            }
+        }
+
+        @keyframes rotateBox {
+            0% {
+                transform: rotate3d(1, 1, 1, 0deg);
+            }
+            100% {
+                transform: rotate3d(-1, 0, 1, 360deg);
+            }
+        }
+
+        #box {
+            animation-name: moveBox, rotateBox;
+            animation-duration: 5s, 4s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            perspective: 550px;
+            transform-style: preserve-3d;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(.17,.67,1,-0.08);
+            transition-duration: 1000ms;
+        }
+        #box:hover {
+            transform: rotate3d(1, 1, 1, 360deg);
+        }
+        #box > div {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            font-size: 35px;
+        }
+        #box > div:first-child {
+            transform: translateZ(50px);
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        #box > div:nth-child(2) {
+            transform: rotateY(180deg) translateZ(50px);
+            background-color: rgba(0, 255, 0, 0.3);
+        }
+        #box > div:nth-child(3) {
+            transform: rotateY(90deg) translateZ(50px);
+            background-color: rgba(0, 0, 255, 0.3);
+        }
+        #box > div:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(50px);
+            background-color: rgba(100, 100, 0, 0.3);
+        }
+        #box > div:nth-child(5) {
+            transform: rotateX(90deg) translateZ(50px);
+            background-color: rgba(100, 0, 100, 0.3);
+
+        }
+        #box > div:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(50px);
+            background-color: rgba(0, 100, 100, 0.3);
+
+        }
+        #timing {
+            margin-top: 25px;
+            overflow: hidden; 
+            border: 1px solid;
+            height: 750px;          
+        }
+        #timing > div {
+            float: left;
+            margin-left: 25px;
+            width: 100px;
+            height: 50px;
+            background-color:blue;
+            color: white;
+            border-radius: 5px;
+            transition-duration: 1s;
+        }
+        #timing:hover > div {
+            height: 100%;
+        }
+        #timing > div:nth-child(1) {
+            transition-timing-function: ease;
+            transition-delay: 0;
+        }
+        #timing > div:nth-child(2) {
+            transition-timing-function: linear;
+            transition-delay: 0.2s;
+        }
+        #timing > div:nth-child(3) {
+            transition-timing-function: ease-in;
+            transition-delay: 0.4s;
+        }
+        #timing > div:nth-child(4) {
+            transition-timing-function: ease-out;
+            transition-delay: 0.6s;
+        }
+        #timing > div:nth-child(5) {
+            transition-timing-function: ease-in-out;
+            transition-delay: 0.8s;
+        }
+        #timing > div:nth-child(6) {
+            transition-timing-function: cubic-bezier(.47,1.64,.41,.8);
+            transition-delay: 1s;
+        }
+        #timing > div:nth-child(7) {
+            transition: height 2s ease-in 1.2s, background-color 1s ease 2s;
+            
+        }
+        #timing:hover > div:nth-child(7) {
+            background-color: red;
+        }
+        #list {
             overflow: hidden;
-        } */
-        body > div:nth-child(2)::after {
-            clear: both;
+        }
+        #list > div {
+            position: relative;
+            width: calc((100% - 50px) / 3);
+            float: left;
+            height: 410.45px;
+            margin-right: 25px;
+        }
+        #list > div:last-child {
+            margin-right: 0;
+        }
+        #list > div > img {
+            width: 100%;
+        }
+        #list > div > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            opacity: 0;
+            cursor: pointer;
+            transition-property: opacity;
+            transition-duration: .4s;
+            transition-timing-function: linear;
+        }
+        #list > div:hover > div {
+            opacity: 1;
+        }
+        #list > div > div > h3 {
+            opacity: 0;
+            transition-duration: .4s;
+            transition-delay: 0s;
+        }
+        #list > div:hover > div > h3 {
+            opacity: 1;
+        }
+        #list > div > div > p:nth-child(2) {
+            opacity: 0;
+            transition-duration: .4s;
+            transition-delay: 0.2s;
+        }
+        #list > div > div > p:last-child {
+            opacity: 0;
+            transition-duration: .4s;
+            transition-delay: 0.4s;
+        }
+        #list > div:hover > div > p {
+            opacity: 1;
+        }
+        #list > div > div > p:nth-child(2) {}
+        #list > div > div > p:last-child {}
+        ul {
+            list-style: none;
+        }
+        ul::after {
             content: "";
             display: table;
+            clear: both;
         }
-        #box1 {
-            background-color: #ffd800;
+        ul > li {
             float: left;
-            width: calc(33.33% - 100px);
+            
         }
-        #box2 {
-            background-color: #0094ff;
-            float: left;
-            width: calc(33.33% - 100px);
+        ul > li > a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: lightgrey;
+            border: 1px solid black;
+            box-shadow: 1px 2px 3px black;
+            color: black;
+            transition: 0.5s;
+            transition-timing-function: ease-in;
         }
-        #box3 {
-            background-color: #00ff21;
+        ul > li > a:hover {
+            background-color: grey;
+            color: white;
         }
-        #box4 {
-            background-color: #a874ff;
-        }
-        #box5 {
-            background-color: #ff7474;
-            float: left;
-            width: calc(33.33% - 100px);
-        }
+
     </style>
 </head>
 <body>
-    <div id="box3">박스3</div>
-    <div>
-        <div id="box1">박스1</div>
-        <div id="box2">박스2</div>
-        <div id="box5">박스5</div>
+    <div class="movx">
+        <div></div>
     </div>
-    <div id="box4">박스4</div>
+    <div class="movy">
+        <div></div>
+    </div>
+    <div class="movxy">
+        <div></div>
+    </div>
+    <div class="movz">
+        <div></div>
+    </div>
+    <hr>
+    <div class="scalex">
+        <div></div>
+    </div>
+    <div class="scaley">
+        <div></div>
+    </div>
+    <div class="scalexy">
+        <div></div>
+    </div>
+    <div class="scalez">
+        <div></div>
+    </div>
+    <hr>
+    <div class="rotatex">
+        <div></div>
+    </div>
+    <div class="rotatey">
+        <div></div>
+    </div>
+    <div class="rotatez">
+        <div></div>
+    </div>
+    <hr>
+    <div class="skewx">
+        <div></div>
+    </div>
+    <div class="skewy">
+        <div></div>
+    </div>
+    <hr>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <div id="timing">
+       <div>ease</div> 
+       <div>linear</div> 
+       <div>ease-in</div> 
+       <div>ease-out</div> 
+       <div>ease-in-out</div>
+       <div>cubic</div> 
+       <div>all</div> 
+    </div>
+    <h2>신상품 목록</h2>
+    <div id="list">
+        <div>
+            <img src="/img/a.png" alt="cat">
+            <div>
+                <h3>상품 2</h3>
+                <p>상품 2 설명 텍스트</p>
+                <p>가격: 12345원</p>
+            </div>
+        </div>
+        <div>
+            <img src="/img/naver.png" alt="cat">
+            <div>
+                <h3>상품 2</h3>
+                <p>상품 2 설명 텍스트</p>
+                <p>가격: 12345원</p>
+            </div>
+        </div>
+        <div>
+            <img src="/img/walk.png" alt="cat">
+            <div>
+                <h3>상품 2</h3>
+                <p>상품 2 설명 텍스트</p>
+                <p>가격: 12345원</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#" target="_blank">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li><a href="#">메뉴4</a></li>
+            <li><a href="#">메뉴5</a></li>
+            <li><a href="#">메뉴6</a></li>
+        </ul>
+    </div>
+    <div>
+        <img src="/img/b.png" alt="cat">
+    </div>
 </body>
 </html>
