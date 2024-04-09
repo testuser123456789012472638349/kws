@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #pc {
+            display: block;
+            height: 75px;
+            border-bottom: 1px solid;
+            overflow: hidden;
+        }
+        #pc > div {
+            float: left;
+            height: 100%;
+            line-height: 75px;
+            margin-left: 15px;
+        }
+        #pc > nav {
+            float: right;
+            height: 100%;
+            margin-right: 15px;
+        }
+        #pc > nav > ul {
+            overflow: hidden;
+            height: 100%;
+            list-style: none;
+        }
+        #pc  > nav > ul > li {
+            float: left;
+            height: 100%;
+            line-height: 75px;
+            margin-right: 20px;
+        }
+        #pc  > nav > ul > li:last-child {
+            margin-right: 0;
+        }
+
+        #mobile {
+            display: none;
+        }
+
+        @media screen and (max-width: 360px) {
+            #pc {
+                display: none;
+            }
+            #mobile {
+                display: block;
+                height: 55px;
+                border-bottom: 1px solid;
+                position: relative;
+            }
+            #mobile > div {
+                height: 100%;
+                line-height: 55px;
+            }
+            #mobile > div:first-child {
+                float: left;
+                margin-left: 15px;
+            }
+            #mobile > div:last-child {
+                /* float: right; */
+                margin-right: 15px;
+                width: 45px;
+                height: 45px;
+                /* background-color: red; */
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+            }
+            #mobile > div:last-child > div::before {
+                position: absolute;
+                content: "";
+                height: 5px;
+                background-color: black;
+                width: 100%;
+                top: -10px;
+            }
+            #mobile > div:last-child > div {
+                height: 5px;
+                width: 100%;
+                background-color: black;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            #mobile > div:last-child > div:after {
+                position: absolute;
+                content: "";
+                height: 5px;
+                background-color: black;
+                width: 100%;
+                top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="pc">
+            <div>로고</div>
+            <nav>
+                <ul>
+                    <li>메뉴1</li>
+                    <li>메뉴2</li>
+                    <li>메뉴3</li>
+                    <li>메뉴4</li>
+                </ul>
+            </nav>
+        </header>
+        <header id="mobile">
+            <div>로고</div>
+            <div>
+                <div></div>
+            </div>
+        </header>
+    </div>
+</body>
+</html>
