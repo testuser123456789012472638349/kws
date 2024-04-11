@@ -5,146 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * {
-            box-sizing: border-box;
+        .box-container {
+            border: 1px solid blue;
+            padding: 10px;
         }
-        body {
-            background-color: gray;
-        }
-        #header, #footer {
-            width: 100%;
-            height: 20%;
-            font-size: 52px;
+        .box {
+            /* width: 100px; */
+            height: 100px;
+            background-color: red;
+            color: yellow;
+            font-size: 50px;
             text-align: center;
-        }
-        #main::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-        #le, #content {
-            float: left;
-        }
-        #as {
-            float: right;
-            width: 30%;
-            height: 500px;
-            background-color: blue;
-        }
-        #le {
-            width: 30%;
-            height: 500px;
-            background-color: blueviolet;
-            margin-right: 20px;
-        }
-        #content {
-            width: 30%;
-            height: 200px;
-            background-color: green;
-        }
-        #content::after {
-            clear: both;
-            content:"";
-            display: table;
-        }
-        #co-to {
-            float: left;
-            width:auto;
-            height: 300px;
-            background-color: yellow;
-        }
-        #co-bo {
-            clear: both;
-            width:auto;
-            height: 300px;
-            background-color: aqua;
-        }
-        #footer {
-            margin-top: 150px;
-            width: 100%;
-            height: 150px;
-            background-color: yellow;
-            clear: both;
+            border: 1px solid black;
         }
 
-        #box1, #box2 {
+        .box-container {
+            display: flex;
+            /* flex-direction: row;
+            flex-wrap: wrap-reverse; */
+            flex-flow: row wrap-reverse;
+            justify-content: center;
+            height: 500px;
+
+            /* align-content: center; /*우선 - 2둘 이상일 경우, align-self - 취소시킴*/
+            align-items: center; /*2번째 - 한 줄일 경우 */
+
+            gap: 15px;
+        }
+        .box {
+            width: 500px;
+        }        
+        .box:first-child {
+            order: 1;
+            align-self: flex-end;
+            flex-grow: 50;
+        }
+        .box:nth-child(2) {
+            order: 1;
+            align-self: flex-start;
+            flex-grow: 0;
+        }
+        .box:last-child {
+            order: 0;
+            flex-grow: 0;
         }
     </style>
 </head>
 <body>
-    <div id="header">
-        <h1>header</h1>
+    <div class="box-container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
     </div>
-    <div id="main">main
-        <div id="le">asd</div>
-        <div id="content">asd
-            <div id="co-to"></div>
-            <div id="co-bo"></div>
-        </div>
-        <div id="as">asd</div>
-    </div>
-    <div id="footer">footer</div>
-    <form>
-        <fieldset>
-            <legend>배송정보</legend>
-            <ul>
-                <li>
-                    <lable for="name">이름
-                        <input type="text" id="name">
-                    </lable>
-                </li>
-                <li>
-                    <label for="add">배송주소
-                        <input type="text" id="add">
-                    </label>
-                </li>
-                <li>
-                    <label for="mail">이메일
-                        <input type="email" id="mail">
-                    </label>
-                </li>
-                <li>
-                    <label for="num">연락처
-                        <input type="tel" id="num">
-                    </label>
-                </li>
-            </ul>
-        </fieldset>
-    </form>
-    <form>
-        <legend>상품 선택</legend>
-        <p><b>주문할 상품을 선택해 주세요.</b></p>
-        <label for="s3">
-            <input type="checkbox" id="s3">선물 3kg
-        </label>
-        <label for="s5">
-            <input type="checkbox" id="s5">선물 5kg
-        </label>
-        <label for="g3">
-            <input type="checkbox" id="g3">가정용 3kg
-        </label>
-        <label for="g5">
-            <input type="checkbox" id="g5">가정용 5kg
-        </label>
-        <p><b>포장 선택</b></p>
-        <label for="ra">
-            <input type="radio" id="ra" name="gift" value="yes">선물 포장
-        </label>
-        <label for="re">
-            <input type="radio" id="re" name="gift" value="no">선물 포장 안함
-        </label>
-    </form>
-    <div id="co">
-        <h1>아아아아</h1>
-        <form>
-            <fieldset>
-                <legend>정보</legend>
-            </fieldset>
-            <fieldset>
-                <legend>소식</legend>
-            </fieldset>
-        </form>
-
+    <div class="box-container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
     </div>
 </body>
 </html>

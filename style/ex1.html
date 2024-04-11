@@ -199,7 +199,8 @@
       margin-bottom: 15px;
     }
     #band > .container > div:nth-of-type(2) {
-      
+      width: 865px;
+      margin: 0 auto;
     }
     #band > .container > div:nth-of-type(2) > div {
       float: left;
@@ -218,18 +219,45 @@
 
     }
     #tour {
-        background-color: black;
-        color: white;
-        text-align: center;
+      width: 100%;
+      background-color: black;
     }
-
-    #date > .container > div:nth-of-type(3) {
-      margin: 0 auto;
+    header {
+      text-align: center;
+      margin-top: 60px;
     }
-    #date > .container > div:nth-of-type(3) > div {
-        float: left;
-        text-align: center;
-        list-style-type: none;
+    header h1 {
+      color:white;
+    }
+    header p {
+      color:gray;
+      margin-top: 30px;
+    }
+    #date {
+      background-color: white;
+      color: gray;
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    #date > div {
+      border-bottom: 1px solid lightgrey;
+      height: 40px;
+      padding: 10px 15px;
+    }
+    #date > div > span {
+      background-color: tomato;
+      color:white;
+      padding: 2px;
+      font-size: 15px;
+      margin-left: 10px;
+    }
+    .city {
+      float: left;
+      width: 33.33333%;
+    }
+    .city > img {
+      width: 100%;
     }
   </style>
 </head>
@@ -274,41 +302,44 @@
       </div>
     </div>
     <div id="tour">
-        <div class="container">
-            <h2>TOUR DATES</h2>
-            <div>Remember to book your tickets!</div>
-            <div>
-                <div>September Sold out</div>
-                <div>October Sold out</div>
-                <div>November</div>
-            </div>
-            <div id="date">
-                <div class="container">
-                    <img src="https://www.w3schools.com/w3images/newyork.jpg">
-                    <p>New York</p>
-                    <p>Fri 27 Nov 2016</p>
-                    <p>Praesent tincidunt sed tellus ut</p>
-                    <p>rutrum sed vitae justo.</p>
-                    <li><a href="#buyticket" class="active4">Buy Tickets</a></li>
-                </div>
-                <div>
-                    <img src="https://www.w3schools.com/w3images/paris.jpg">
-                    <p>Paris</p>
-                    <p>Sat 28 Nov 2016</p>
-                    <p>Praesent tincidunt sed tellus ut</p>
-                    <p>rutrum sed vitae justo.</p>
-                    <li><a href="#buyticket" class="active4">Buy Tickets</a></li>
-                </div>
-                <div>
-                    <img src="https://www.w3schools.com/w3images/sanfran.jpg">
-                    <p>San Francisco</p>
-                    <p>Sun 29 Nov 2016</p>
-                    <p>Praesent tincidunt sed tellus ut</p>
-                    <p>rutrum sed vitae justo.</p>
-                    <li><a href="#buyticket" class="active4">Buy Tickets</a></li>
-                </div>
-            </div>
+      <header>
+        <h1>TOUR DATES</h1>
+        <p><i>Remember to book your tickets!</i></p>
+      </header>
+      <div id="date">
+        <div>September <span>Sold out</span></div>
+        <div>October <span>Sold out</span></div>
+        <div>November</div>
+        <div class="clearflx">
+          <div class="city">
+            <img src="https://www.w3schools.com/w3images/newyork.jpg">
+            <h4>New York</h4>
+            <h5>Fri 27 Nov 2016</h5>
+            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+              <div id="bu">
+                <h5>Buy Tickets</h5>
+              </div>
+          </div>
+          <div class="city">
+            <img src="https://www.w3schools.com/w3images/paris.jpg">
+            <h4>Paris</h4>
+            <h5>Sat 28 Nov 2016</h5>
+            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+              <div id="bu">
+                <h5>Buy Tickets</h5>
+              </div>
+          </div>
+          <div class="city">
+            <img src="https://www.w3schools.com/w3images/sanfran.jpg">
+            <h4>San Francisco</h4>
+            <h5>Sun 29 Nov 2016</h5>
+            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+              <div id="bu">
+                <h5>Buy Tickets</h5>
+              </div>
+          </div>
         </div>
+      </div>
     </div>
     <div id="contact"></div>
     <div id="map"></div>

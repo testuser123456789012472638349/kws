@@ -4,194 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 템플릿 - 부트스트랩, W3템플릿 ... -->
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        #wrap {
-            width: 100%;
+        .container-960 {
+            width: 960px;
+        }
+        [class^=container] {
             margin: 0 auto;
         }
-        #manu::after {
-            content:"";
+        .row {}
+        .row::after {
+            content: "";
+            clear: both;
             display: table;
-            clear: both;            
         }
-        #manu {
-            width: 100%;
-            height: 10%;
-            padding-bottom: 20px;
-            box-shadow: 1px 1px 1px gray;
-            position: sticky;
-            top:0;
-            background-color: white;
-            z-index: 1;
+        .col-1 {
+            width: 69px;
         }
-        #manu > ul {
-            list-style: none;
+        .col-2 {
+            width: 150px;
         }
-        #manu > ul > li {
-            padding: 10px 20px;
+        .col-3 {
+            width: 231px;
         }
-        #manu > ul > li:hover {
-            background-color: gray;
+        .col-4 {
+            width: 312px;
         }
-        #manu > ul > li:nth-child(1) {
+        .col-5 {
+            width: 393px;
+        }
+        .col-6 {
+            width: 474px;
+        }
+        .col-7 {
+            width: 555px;
+        }
+        .col-8 {
+            width: 636px;
+        }
+        .col-9 {
+            width: 717px;
+        }
+        .col-10 {
+            width: 798px;
+        }
+        .col-11 {
+            width: 879px;
+        }
+        .col-12 {
+            width: 960px;
+        }
+        [class*=col-] {
             float: left;
+            margin-right: 12px;
         }
-        #manu > ul > li:nth-child(2) {
-            float: right;
+        .row > [class*=col-]:last-child {
+            margin-right: 0;
         }
-        #manu > ul > li:nth-child(3) {
-            float: right;
+
+        /* 형식 */
+        div[class=row] {
+            margin-bottom: 12px;
         }
-        #manu > ul > li:nth-child(4) {
-            float: right;
+
+        div[class*=col] {
+            /* height: 100px; */
+            background-color: red;
+            /* line-height: 0; */
         }
-        #manu > ul > li > a {
-            text-decoration: none;
-        }
-        #headimage  {
+
+        img {
             width: 100%;
-            position: relative;
+            /* display: block; */
+            vertical-align: top;
         }
-        #headimage > div {
-            width: 85%;
-            margin: 0 auto;
+
+        #temp div {
+            /* height: auto; */
         }
-        #headimage > div > img {
-            width: 100%;
-        }
-        #headimage > div:last-child {
-            position: absolute;
-            bottom: 3%;
-            margin-left: 9%;
-            font-size: 15px;
-        }
-        #wrap2 {
-            width: 70%;
-            margin: auto;
-        }
-        #wrap2 > #content {
-            margin-top: 100px;
-            width: 100%;
-            overflow: hidden;
-        }
-        #wrap2 > #content > #pi2 {
-            width: 40%;
-        }
-        #wrap2 > #content > #pi2 > img {
-            width: 100%;
-            margin: auto;
-        }
-        #pi2 {
-            float: left;
-        }
-        #co1 {
-            text-align: center;
-            float: left;
-            width: 60%;
-        }
-        #wrap4 {
-            width: 70%;
-            margin: auto;
-        }
-        #wrap4 > #content {
-            margin-top: 100px;
-            width: 100%;
-            overflow: hidden;
-        }
-        #wrap4 > #content > #pi3 {
-            width: 40%;
-        }
-        #wrap4 > #content > #pi3 > img {
-            width: 100%;
-            margin: auto;
-        }
-        #pi3 {
-            float: right;
-        }
-        #co1 {
-            text-align: center;
-            float: left;
-            width: 60%;
-        }
-        h1, h3, p {
-            font-family: Arial, Helvetica, sans-serif;
-            margin-bottom: 20px;
-        }
-        footer {
-            width: 100%;
-            height: 150px;
-            text-align: center;
-            background-color: lightgray;
-        }
-        footer > P {
-            transform: translateY(300%);
+
+        @media screen and (max-width: 960px) {
+            .container-960 {
+                width: 85%;
+            }
+            .col-un-1 {
+                width: 69px;
+                width: 7.1875%;
+            }
+            .col-un-2 {
+                width: 150px;
+                width: 15.625%;
+            }
+            .col-un-3 {
+                width: 231px;
+                width: 24.0625%;
+            }
+            .col-un-4 {
+                width: 312px;
+                width: 32.5%;
+
+            }
+            .col-un-5 {
+                width: 393px;
+                width: 40.9375%;
+            }
+            .col-un-6 {
+                width: 474px;
+                width: 49.375%;
+            }
+            .col-un-7 {
+                width: 555px;
+                width: 57.8125%;
+            }
+            .col-un-8 {
+                width: 636px;
+                width: 66.25%;
+            }
+            .col-un-9 {
+                width: 717px;
+                width: 74.6875%;
+            }
+            .col-un-10 {
+                width: 798px;
+                width: 83.125%;
+            }
+            .col-un-11 {
+                width: 879px;
+                width: 91.5625%;
+            }
+            .col-un-12 {
+                width: 960px;
+                width: 100%;
+            }
+
+            [class*=col-] {
+                margin-right: 1.25%;
+                margin-bottom: 1.25%;
+            }
+
+            .row > [class*=col-un-6]:nth-child(2n) {
+                margin-right: 0;
+            }
         }
     </style>
 </head>
 <body>
     <div id="wrap">
-        <div id="manu">
-            <ul>
-                <li><a href="#">Gourmet au Catering</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-        <div id="headimage">
-            <div><img src="https://www.w3schools.com/w3images/hamburger.jpg" alt="pic"></div>
-            <div><h1>Le Catering</h1></div>
-        </div>
-        <div id="wrap2">
-            <div id="content">
-                <div id="pi2">
-                    <img src="https://www.w3schools.com/w3images/tablesetting2.jpg">
-                </div>
-                <div id="co1">
-                    <h1>About Catering</h1>
-                    <h3>Tradition since 1889</h3>
-                    <p>The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use seasonal ingredients.</p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
+        <div class="container-960">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-9"></div>
             </div>
         </div>
-        <div id="wrap4">
-            <div id="content">
-                <div id="co1">
-                    <h1>Our Menu</h1>
-                    <h3>Bread Basket</h3>
-                    <p>Assortment of fresh baked fruit breads and muffins 5.50</p>
-                    <h3>Honey Almond Granola with Fruits</h3>
-                    <p>Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p>
-                    <h3>Belgian Waffle</h3>
-                    <p>Vanilla flavored batter with malted flour 7.50</p>
-                    <h3>Scrambled eggs</h3>
-                    <p>Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p>
-                    <h3>Blueberry Pancakes</h3>
-                    <p>With syrup, butter and lots of berries 8.50</p>
+        <hr>
+        <div class="container-960" id="temp">
+            <div class="row">
+                <div class="col-12 col-un-12"><img src="https://www.w3schools.com/w3images/architect.jpg" alt="city"></div>
+            </div>
+            <div class="row">
+                <div class="col-3 col-un-6">
+                    <img src="https://www.w3schools.com/w3images/house5.jpg" alt="house">
                 </div>
-                <div id="pi3">
-                    <img src="https://www.w3schools.com/w3images/tablesetting.jpg">
+                <div class="col-3 col-un-6">
+                    <img src="https://www.w3schools.com/w3images/house5.jpg" alt="house">
+                </div>
+                <div class="col-3 col-un-6">
+                    <img src="https://www.w3schools.com/w3images/house5.jpg" alt="house">
+                </div>
+                <div class="col-3 col-un-6">
+                    <img src="https://www.w3schools.com/w3images/house5.jpg" alt="house">
                 </div>
             </div>
-        </div>
-        <div id="wrap5">
-            <h1>Contact</h1>
-            <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
-            <h3>Catering Service, 42nd Living St, 43043 New York, NY</h3>
-            <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p>
-            <div><input type="text">Name</div>
-            <div><input type="text">Name</div>
-            <div><input type="text">Name</div>
-            <div><input type="text">Name</div>
-            <button type="submit">SEND MESSAGE</button>
         </div>
     </div>
-    <footer><p>powered by w3.css</p></footer>
 </body>
 </html>

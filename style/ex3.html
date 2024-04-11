@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #wrap {
+            width: 100%;
+            margin: 0 auto;
+        }
+        #manu::after {
+            content:"";
+            display: table;
+            clear: both;            
+        }
+        #manu {
+            width: 100%;
+            height: 10%;
+            padding-bottom: 20px;
+            box-shadow: 1px 1px 1px gray;
+            position: sticky;
+            top:0;
+            background-color: white;
+            z-index: 1;
+        }
+        #manu > ul {
+            list-style: none;
+        }
+        #manu > ul > li {
+            padding: 10px 20px;
+        }
+        #manu > ul > li:hover {
+            background-color: gray;
+        }
+        #manu > ul > li:nth-child(1) {
+            float: left;
+        }
+        #manu > ul > li:nth-child(2) {
+            float: right;
+        }
+        #manu > ul > li:nth-child(3) {
+            float: right;
+        }
+        #manu > ul > li:nth-child(4) {
+            float: right;
+        }
+        #manu > ul > li > a {
+            text-decoration: none;
+        }
+        #headimage  {
+            width: 100%;
+            position: relative;
+        }
+        #headimage > div {
+            width: 85%;
+            margin: 0 auto;
+        }
+        #headimage > div > img {
+            width: 100%;
+        }
+        #headimage > div:last-child {
+            position: absolute;
+            bottom: 3%;
+            margin-left: 9%;
+            font-size: 15px;
+        }
+        #wrap2 {
+            width: 70%;
+            margin: auto;
+        }
+        #wrap2 > #content {
+            margin-top: 100px;
+            width: 100%;
+            overflow: hidden;
+        }
+        #wrap2 > #content > #pi2 {
+            width: 40%;
+        }
+        #wrap2 > #content > #pi2 > img {
+            width: 100%;
+            margin: auto;
+        }
+        #pi2 {
+            float: left;
+        }
+        #co1 {
+            text-align: center;
+            float: left;
+            width: 60%;
+        }
+        #wrap4 {
+            width: 70%;
+            margin: auto;
+        }
+        #wrap4 > #content {
+            margin-top: 100px;
+            width: 100%;
+            overflow: hidden;
+        }
+        #wrap4 > #content > #pi3 {
+            width: 40%;
+        }
+        #wrap4 > #content > #pi3 > img {
+            width: 100%;
+            margin: auto;
+        }
+        #pi3 {
+            float: right;
+        }
+        #co1 {
+            text-align: center;
+            float: left;
+            width: 60%;
+        }
+        h1, h3, p {
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 20px;
+            font-family: "Times New Roman", Georgia, Serif;
+        }
+        #ba {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        #ba > input {
+            height: 50px;
+            width: 100%;
+            padding: 10px;
+            
+        }
+        #bu {
+            background-color: lightgray;
+            width: 140px;
+            text-align: center;
+            padding: 5px 10px;
+            margin-top: 15px;
+            margin-bottom: 40px;
+        }
+        #bu:hover {
+            background-color: gray;
+            cursor: pointer;
+        }
+        footer {
+            width: 100%;
+            height: 150px;
+            text-align: center;
+            background-color: lightgray;
+        }
+        footer > P {
+            transform: translateY(300%);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="manu">
+            <ul>
+                <li><a href="#">Gourmet au Catering</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div id="headimage">
+            <div><img src="https://www.w3schools.com/w3images/hamburger.jpg" alt="pic"></div>
+            <div><h1>Le Catering</h1></div>
+        </div>
+        <div id="wrap2">
+            <div id="content">
+                <div id="pi2">
+                    <img src="https://www.w3schools.com/w3images/tablesetting2.jpg">
+                </div>
+                <div id="co1">
+                    <h1>About Catering</h1>
+                    <h3>Tradition since 1889</h3>
+                    <p>The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use seasonal ingredients.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </div>
+        <div id="wrap4">
+            <div id="content">
+                <div id="co1">
+                    <h1>Our Menu</h1>
+                    <h3>Bread Basket</h3>
+                    <p>Assortment of fresh baked fruit breads and muffins 5.50</p>
+                    <h3>Honey Almond Granola with Fruits</h3>
+                    <p>Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p>
+                    <h3>Belgian Waffle</h3>
+                    <p>Vanilla flavored batter with malted flour 7.50</p>
+                    <h3>Scrambled eggs</h3>
+                    <p>Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p>
+                    <h3>Blueberry Pancakes</h3>
+                    <p>With syrup, butter and lots of berries 8.50</p>
+                </div>
+                <div id="pi3">
+                    <img src="https://www.w3schools.com/w3images/tablesetting.jpg">
+                </div>
+            </div>
+        </div>
+        <div id="wrap2">
+            <h1>Contact</h1>
+            <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
+            <h3 style="color: #607d8b;">Catering Service, 42nd Living St, 43043 New York, NY</h3>
+            <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p>
+            <div id="ba"><input type="text" placeholder="Name"></div>
+            <div id="ba"><input type="text" placeholder="How many people"></div>
+            <div id="ba"><input type="text" placeholder="How many people"></div>
+            <div id="ba"><input type="text" placeholder="Message \ Special requirements"></div>
+            <div id="bu">SEND MESSAGE</div>
+        </div>
+    </div>
+    <footer><p>powered by w3.css</p></footer>
+</body>
+</html>
