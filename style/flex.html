@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #wrap {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .container > div {
+            flex: 25%;
+            border: 1px solid;
+            /* height: 100px; */
+            padding: 15px;
+            /* background-color: red; */
+        }
+        .container > div > img {
+            width: 100%;
+        }
+        @media screen and (max-width: 960px) {
+            .container > div {
+                flex: 50%;
+            }
+        }
+        @media screen and (max-width: 320px) {
+            .container > div {
+                flex: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <div>
+                <img src="https://www.w3schools.com/w3images/wedding.jpg">
+                <img src="https://www.w3schools.com/w3images/rocks.jpg">
+                <img src="https://www.w3schools.com/w3images/falls2.jpg">
+                <img src="https://www.w3schools.com/w3images/paris.jpg">
+                <img src="https://www.w3schools.com/w3images/nature.jpg">
+                <img src="https://www.w3schools.com/w3images/mist.jpg">
+                <img src="https://www.w3schools.com/w3images/paris.jpg">
+            </div>
+            <div>
+                <img src="https://www.w3schools.com/w3images/underwater.jpg">
+                <img src="https://www.w3schools.com/w3images/ocean.jpg">
+                <img src="https://www.w3schools.com/w3images/wedding.jpg">
+                <img src="https://www.w3schools.com/w3images/mountainskies.jpg">
+                <img src="https://www.w3schools.com/w3images/rocks.jpg">
+                <img src="https://www.w3schools.com/w3images/underwater.jpg">
+            </div>
+            <div>
+                <img src="https://www.w3schools.com/w3images/wedding.jpg">
+                <img src="https://www.w3schools.com/w3images/rocks.jpg">
+                <img src="https://www.w3schools.com/w3images/falls2.jpg">
+                <img src="https://www.w3schools.com/w3images/paris.jpg">
+                <img src="https://www.w3schools.com/w3images/nature.jpg">
+                <img src="https://www.w3schools.com/w3images/mist.jpg">
+                <img src="https://www.w3schools.com/w3images/paris.jpg">
+            </div>
+            <div>
+                <img src="https://www.w3schools.com/w3images/underwater.jpg">
+                <img src="https://www.w3schools.com/w3images/ocean.jpg">
+                <img src="https://www.w3schools.com/w3images/wedding.jpg">
+                <img src="https://www.w3schools.com/w3images/mountainskies.jpg">
+                <img src="https://www.w3schools.com/w3images/rocks.jpg">
+                <img src="https://www.w3schools.com/w3images/underwater.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

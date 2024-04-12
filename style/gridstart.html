@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            border: 1px solid black;
+            /* grid-gap: 30px 10px; */
+        }
+        #wrapper > [class*=box] {
+            border: 1px solid black;
+            height: 100px;
+        }
+        .box1 {
+            background-color: aquamarine;
+            grid-column: 1/4;
+        }
+        .box8 {
+            width: 650px;
+            height: auto;
+            grid-column : 6;
+        }
+        .box8 > img {   
+            width: 20%;
+        }
+        .box2 {
+            background-color: blue;
+            grid-row: 2 / 4;
+        }
+        .box3 {
+            background-color: tomato;
+            grid-column: 2 / 4;
+        }
+        .box4 {
+            background-color: orange;
+            grid-column-start: 3;
+        }
+        .box5 {
+            background-color: gray;
+            grid-column: 4 / 5;
+        }
+        .box6 {
+            background-color: rgb(78, 70, 56);
+            grid-row: 4 / 6;
+        }
+        .box7 {
+            background-color: rgb(0, 255, 98);
+            /* grid-column-start: 4; */
+            grid-row: 4/ 6;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div>
+        <div class="box7"></div>
+        <div class="box8"></div>
+    </div>
+</body>
+</html>

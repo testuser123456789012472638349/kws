@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: o;
+            padding: 0;
+        }
+        #wrap {
+            width: 100%;
+            margin: 0;
+        }
+        header, footer {
+            background-color: aqua;
+            text-align: center;
+            padding: 40px;
+        }
+        header > h1, h3 {
+            color: #fff;
+        }
+        footer {
+            padding: 50px;
+            font-size: 24px;
+        }
+        #manu {
+            display: flex;
+            width: 100%;
+            background-color: black;
+        }
+        #manu > div {
+            color: white;
+            padding: 10px 30px;
+            font-size: 18px;
+        }
+        #manu > div:hover {
+            background-color: lightgray;
+            color: white;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            width: 100%;
+        }
+        main > div:first-child {
+            flex: 35%;
+            background-color: lightgray;
+        }
+        main > div:last-child {
+            flex: 65%;
+        }
+        main > div > div {
+            width: 90%;
+            margin: 0 auto;
+        }
+        main > div > div > #i1 {
+            background-color: gray;
+            width: 100%;
+            margin: 0 auto;
+            height: 20vh;
+        }
+        main > div > div > div > p {
+            text-align: left;
+            padding: 10px;
+            font-family: Arial;
+        }
+        main > div > div > div {
+            background-color: gray;
+            width: 100%;
+            margin: 0 auto;
+            height: 10vh;
+        }
+        @media screen and (max-width:700px) {
+            #manu {
+                flex-direction: column;
+            }
+            main {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>My Website</h1>
+            <h3>With a flexible layout.</h3>
+        </header>
+        <div id="manu">
+            <div><p>Link</p></div>
+            <div><p>Link</p></div>
+            <div><p>Link</p></div>
+            <div><p>Link</p></div>
+        </div>
+        <main>
+            <div>
+                <div>
+                    <h1>About Me</h1>
+                    <p>Photo of me:</p>
+                    <div id="i1">
+                        <p>image</p>
+                    </div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                    <h1>More Text</h1>
+                    <p>Lorem ipsum dolor sit ame</p>
+                    <div>
+                        <p>image</p>
+                    </div>
+                    <div>
+                        <p>image</p>
+                    </div>
+                    <div>
+                        <p>image</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h1>TITLE HEADING</h1>
+                    <p>Title description, Dec 7, 2017</p>
+                    <div id="i1">
+                        <p>image</p>
+                    </div>
+                    <p>Some text..</p>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    <h1>TITLE HEADING</h1>
+                    <p>Title description, Dec 7, 2017</p>
+                    <div id="i1">
+                        <p>image</p>
+                    </div>
+                    <p>Some text..</p>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                </div>    
+            </div>
+        </main>
+        <footer>Footer</footer>
+    </div>
+</body>
+</html>
