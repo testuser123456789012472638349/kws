@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        css - 내부, 외부, 인라인
+        js - 내부, 외부, 인라인
+    / -->
+    <style>
+        body {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="display"></div>
+    <div onclick="window.print()">인쇄</div>
+    <div id="demo1"></div>
+    <h1 id="heading">자바스크립트</h1>
+    <!-- 인라인 -->
+    <p id="text" onclick="this.style.color='#75ff25'" style="font-weight: 800;">위 텍스트를 클랙해 보세요.</p>
+    <div>되돌리기</div>
+    <script>
+        // 내부
+        // var heading = document.querySelector('#heading');
+        // heading.onclick = function() {
+        //     heading.style.color = 'red';
+        // };
+
+
+        // window.alert('안녕하세요.'); //경고창
+        
+        // var agree = window.confirm('동의하십니까?'); //확인 / 취소 선택창
+        // window.alert(agree);
+
+        // var age = window.prompt("나이를 입력하세요."); //값입력받는 창
+        // window.alert(age);
+
+        //  //사용안함.
+        // document.write("<h1>당신의 나이는 " + age + "살이군요.</h1>"); //문서에 출력
+
+        // var img = prompt("want.jpg, want2.jpg 중 하나의 이미지를 선택하세요.")
+        // document.write('<img src="/img/' + img + '" alt="워너비">')
+
+        // console.log(img);
+        // console.dir(console);
+
+        // var display = document.querySelector('#display');
+        // console.dir(display);
+        // display.innerHTML = "<h1>Hello!</h1>"
+
+    //     window.setInterval(() => {
+    //     var now = new Date();
+    //     var date = now.toLocaleDateString();
+    //     var time = now.toLocaleTimeString();
+    //     document.body.innerHTML = "";
+    //     document.write("<h1>현재 시각은" + date + " - " + time + "</h1>");
+        
+    //     console.clear();
+    //     console.log(time);
+
+    // }, 1000);
+    /*
+            문자(_, $)로 시작 숫자를 포함
+            대소문자 구분
+            리터럴(Literals) = 값(순수한 값)을 표현하는 방법 - 숫자형, 문자형
+            변수(Variables) = 값(리터럴)을 저장하는 공간(var, let, const - 변수 선언 키워드)
+    */
+
+    // var date; //변수 선언(문)
+    // let a, b, c;
+    // a = 5; //할당(대입) - 변수에 값을 저장
+    // b = 6;
+    // c = a + b;
+    // document.getElementById("demo1").innerHTML = c;
+
+    // a = 10.50;
+    // a = 0x1524;
+    // a = {};
+    // alert(b);
+
+        // alert("I'm JavaScript!");
+
+        // a = 10.50;
+        // a = 0x1524;
+        // a = {};
+
+        var a, b, c;
+        a = "10";
+        b = 7;
+        c = a + b;
+        alert(c);
+
+        var test = 77; //초기화(선언과 동시에 할당)
+
+        var yourName; //함수단위 생명주기
+        yourName="홍길동";
+        console.log(yourName);
+
+        yourName = "고길동";
+
+        var yourName = "최길동";
+        console.log(yourName);
+
+        //let 중복 선언 불가능
+
+        let myName; //블록단위 생명 주기
+        myName = "조길동";
+        console.log(myName);
+
+        // let myName;
+        // myName = "윤길동";
+        // console.log(myName);
+
+        const no = "11"; //상수 - (재할당이 불가능)
+        // no = "33"; //에러
+        console.log(no);
+
+        let pen;
+        console.log(pen);
+        pen = "내 볼펜";
+        console.log(pen);
+
+        let x = "5" + 2 + 3; //523
+        let y = 2 + 3 + "5"; //55
+        console.log(x);
+        console.log(y);
+
+
+        let $ = "Hello World";
+        let $$$ = 2;
+        let $myMoney = 5;
+
+        console.log($);
+        console.log($$$);
+        console.log($myMoney + $$$ + $); // 7Hello World
+
+        let _lastName = "Johnson";
+        let _x = 2;
+        let _100 = 5;
+        //숫자로 시작할 수 없다.
+        let 한글;
+        한글 = "ㄱㄴㄷ";
+        console.log(한글);
+    </script>
+    <!-- 외부 -->
+    <script src="/js/first.js"></script>
+</body>
+</html>

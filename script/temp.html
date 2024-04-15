@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">차이름</div>
+    <script>
+        // let globalLet = 7;
+        // let carName = document.getElementById("demo");
+        // carName = document.querySelector("#demo");
+        // carName = "Volvo";
+        // document.getElementById("demo").innerHTML = carName;
+        // console.log(oldVar); //undefined
+
+        // function test() {
+        //     var funVar = "in func";
+        //     console.log(funVar);
+        // }
+
+        // test();
+        
+        // {
+        //     console.log(globalLet);
+        //     let carName = "싼타페";
+        //     console.log(carName);
+        //     {
+        //         let localLet = 8;
+        //         console.log(globalLet);
+
+        //         var oldVar = "old";
+        //     }
+        //     // console.log(localLet);
+
+        //     console.log(oldVar);
+        // }
+
+        // console.log(globalLet);
+
+        // console.log(carName);
+
+        var x = 3;
+        // let x = 4; //에러
+
+        {
+            let x = 7;
+            // let x = 8; 에러
+            console.log(x);
+        }
+
+        {
+            let x = 5;
+        }
+
+        console.log(x);
+
+        let hTest;
+        console.log(hTest);
+        hTest = "hoisting";
+        console.log(hTest);
+        
+        console.log(hTest);
+
+    </script>
+    <p>내용</p>
+    <p>내용</p>
+    <p>내용</p>
+    <p>내용</p>
+    <p>내용</p>
+    <p>내용</p>
+    <p>내용</p>
+    <div id="still"></div>
+    <!-- <script>
+        document.getElementById("still").innerHTML = globalLet;
+        console.log(oldVar);
+    </script> -->
+</body>
+</html>

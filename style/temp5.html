@@ -11,7 +11,8 @@
             margin: 0;
         }
         body {
-            background-color: lightslategray;
+            background-color: rgb(226, 231, 235);
+            font-family: "Raleway", sans-serif;
         }
         header {
             padding: 50px;
@@ -19,18 +20,21 @@
         }
         main {
             display: flex;
-            width: 70%;
+            width: 80%;
             margin: 0 auto;
         }
+        main > div h1, h2, h3, p {
+            padding: 10px 20px;
+        }
         main > #le {
-            margin-right: 10px;
+            margin-right: 25px;
             width: 100%;
         }
-        main > #le > img {
+        main > #le > div > img {
             width: 100%;
         }
         main > #le > div:first-child {
-            margin-bottom: 10px;
+            margin-bottom: 50px;
             background-color: white;
             width: 100%;
         }
@@ -39,13 +43,14 @@
             width: 100%;
         }
         main > #ri {
-            width: 100%;
+            width: 50%;
         }
         /* main > div:last-child > > div:first-child > img {
             width: 100%;
         } */
         main > #ri > div {
             width: 100%;
+            margin-bottom: 50px;
         }
         main > #ri > div:first-child {
             background-color: white;
@@ -54,6 +59,29 @@
         main > #ri > div:first-child > img {
             width: 100%;
         }
+        main > #ri > div:nth-child(2) {
+            width: 100%;
+            background-color: white;
+        }
+        #po > #aa {
+            display: flex;
+            padding: 10px 10px;
+        }
+        #po > div:first-child {
+            background-color: lightgrey;
+        }
+        #po > div {
+            border: 1px solid lightgrey;
+        }
+        #aa > img {
+            width: 50px;
+            height: 50px;
+        }
+        h2 {
+            font-size: 15px;
+        }
+        
+       
     </style>
 </head>
 <body>
@@ -90,30 +118,36 @@
                 <h1>My Name</h1>
                 <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
             </div>
-            <div>
+            <div id="po">
                 <div>
                     <h1>Popular Posts</h1>
                 </div>
-                <div>
+                <div id="aa">
                     <img src="https://www.w3schools.com/w3images/workshop.jpg" width="50px">
                     <h2>Lorem</h2>
                     <h2>Sed mattis nunc</h2>
                 </div>
-                <div>
+                <div id="aa">
                     <img src="https://www.w3schools.com/w3images/gondol.jpg" width="50px">
                     <h2>Ipsum</h2>
                     <h2>Praes tinci sed</h2>
                 </div>
-                <div>
+                <div id="aa">
                     <img src="https://www.w3schools.com/w3images/skies.jpg" width="50px">
                     <h2>Dorum</h2>
                     <h2>Ultricies congue</h2>
                 </div>
-                <div>
+                <div id="aa">
                     <img src="https://www.w3schools.com/w3images/rock.jpg" width="50px">
                     <h2>Mingsum</h2>
                     <h2>Lorem ipsum dipsum</h2>
                 </div>
+            </div>
+            <div id="po">
+                <div>
+                    <h1>Tags</h1>
+                </div>
+                <span>tavel</span><span>New York</span><span>London</span>
             </div>
         </div>
     </main>
