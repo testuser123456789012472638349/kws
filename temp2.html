@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>구구단</h1>
+    <script>
+        for (i = 1; i <= 9; i++) {
+            document.write("<h3>" + i + "단</h3>");
+            for ( b = 1; b <= 9; b++) {
+                document.write(i + "X" + b + "=" + i*b);
+            }
+        }
+
+        console.dir(Number);
+        console.dir(BigInt);
+        console.dir(console);
+
+        console.log(typeof 1);
+        console.log(typeof 1n);
+        sonsole.log(typeof BigInt(1));
+        console.log(Number.isInteger(7));
+    </script>
+</body>
+</html>

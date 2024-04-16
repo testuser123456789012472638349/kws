@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="strCode"></div> -->
+    <!-- <div id="se"></div> -->
+    <script>        
+        var season = ["봄", "여름", "가을", "겨울"];
+        console.log(season);
+        console.log(season[0]);
+        console.log(season[2]);
+        console.log(season[0 + 1]);
+        console.log(season.length);
+
+        let num = 7;
+        let str = "test";
+        console.log(typeof num); //number
+        console.log(typeof str); //string
+        console.log(typeof (num + str)); //string - "78"
+
+        console.log(num - num);
+        console.log(str - str); //NaN (Not a Number)
+        console.log(str * str); //NaN (Not a Number)
+
+        console.log(15 / 2);
+        console.log(15 % 2);
+
+        let a = 7;
+        console.log("++a : " + ++a); //1증가 8
+        console.log("++a : " + ++a); //9
+        console.log("++a : " + ++a); //10
+        console.log("a++ : " + a++); //10
+        console.log("a : " + a); //11
+
+        a = 10;
+        let b = a++ + 5;
+        console.log(b); //15
+
+        a = 10;
+        b = ++a + 5;
+        console.log(b); //16
+
+        c = 10;
+        let d = c-- + 5;
+        console.log(d); //15
+        console.log(c); //9
+
+        c = 10;
+        d = --c + 5;
+        console.log(d); //14
+
+        c +=10; // c = c + 10; -누적
+        console.log(c);
+
+        e = 3;
+        f = "3";
+        console.log("e == f : " + (e == f));
+        console.log("e === f :" + (e === f));
+
+        console.log("e != f : " + (e == f));
+        console.log("e !== f :" + (e === f));
+
+        console.log("Aasdasda < Bqweqweqwe : " + ("Aasdasda" < "Bqweqweqwe"));
+        console.log("Aqwrqfqfqf" > "Bqefgrgf");
+
+        console.log("true || true : " + (true || true));
+        console.log(true || false);
+        console.log(false || true);
+        console.log(false || false);
+
+        console.log(true && true);
+        console.log(true && false);
+        console.log(false && true);
+        console.log(false && false);
+
+        console.log(!true);
+        console.log(!false);
+
+        // 조건 ? 참 : 거짓
+        false ? console.log("참") : console.log("거짓");
+        
+        // str = "";
+
+        // for(let len = 0; len < Math.pow(2, 16); len++) {
+        //     str += len + " : " + String.fromCharCode(len) + "<br>";
+        // }
+
+        // strCode.innerHTML = str;
+
+        // var user = prompt("숫자를 입력!!!");
+        //  if (user == 7) {
+        //     alert("행운의 숫자군요!!");
+        //  }
+        //  else {
+        //     alert("입력을 완료하였어요!!");
+        //  }
+
+        //  var se = prompt("관심 부분을 입력해주세요. 1-의, 2-식, 3-주 예 1");
+
+        //  switch(se) {
+        //     case "1" : document.write("<h1>입는 것은 <b>영원</b>할까요?</h1>")
+        //     break;
+        //     case "2" : document.write("<h1>최소한 생명 유지 가능하다면 당신의 선택이 옳은 선택일까요?</h1>")
+        //     break;
+        //     case "3" : document.write("<h1>안정된 주거 추구가 인생의 전부일까요?</h1>")
+        //     break;
+        //     default: alert("그렇군요!!! 당신의 의견을 존중합니다 가치관의 우선순위는 개인마다 중요도가 다르니까요!!!!");
+        //  }
+
+    //     let timer = null, len = 0, bg = "#fff";
+
+    //     timer = setInterval(() => {
+    //         if(len % 2) bg = "#ddd"; //1 true, 0 false
+    //         else bg = "#fff";
+    //         strCode.innerHTML += ("<p style='padding: 5px 15px; margin: 0; background-color: " + bg + "'>" + len + " : " + String.fromCharCode(len) + "</p>");
+    //         len++;
+    //         scrollTo({
+    //             left: 0, 
+    //             top: document.body.scrollHeight,
+    //             behavior: "smooth"}); 
+
+
+    //         if(len > Math.pow(2, 16)) clearInterval(timer);
+    //     }, 100);
+
+    //     function timeStop() {
+    //         clearInterval(timer);
+    //     }
+
+    //     var i;
+    //     var sum = 0;
+
+    //     for(i = 1; i < 6; i++) {
+    //         sum += i;
+    //     }
+    //     document.write("1부터 5까지 더하면" + sum);
+    
+    
+    </script>
+    <!-- // <div style="position: fixed; right: 0; top: 0"><button onclick="timeStop()">중지</button></div> -->
+</body>
+</html>
