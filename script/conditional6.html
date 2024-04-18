@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result {
+            text-align: center;
+            font-size: 500px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <select id="week" onchange="showResult()">
+        <option value="8">요일 선택</option>
+        <option value="0">일요일</option>
+        <option value="1">월요일</option>
+        <option value="2">화요일</option>
+        <option value="3">수요일</option>
+        <option value="4">목요일</option>
+        <option value="5">금요일</option>
+        <option value="6">토요일</option>
+    </select>
+    <div id="result"></div>
+    <script>
+        function showResult() {
+            switch(week.value) {
+                case "0":
+                    result.innerText = '일요일'; 
+                    break;
+                case "1":
+                    result.innerText = '월요일';
+                    break;
+                case "2":
+                    result.innerText = '화요일';
+                    break;
+                case "3":
+                    result.innerText = '수요일';
+                    break;
+                case "4":
+                    result.innerText = '목요일';
+                    break;
+                case "5":
+                    result.innerText = '금요일';
+                    break;
+                case "6":
+                    result.innerText = '토요일';
+                    break;
+                default:
+                    result.innerText = '요일을 정확하게 선택하세요.'; 
+            }
+        }
+    </script>
+</body>
+</html>

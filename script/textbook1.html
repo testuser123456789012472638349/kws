@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            background-color: lightgreen;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>4의 배수일가 아닐까</h1></header>
+    <p id="demo"></p>
+    <script>
+        let mutiple = 0;
+
+        mutiple = Number(prompt("숫자를 입력하시오."));
+        if(isNaN(mutiple)) {
+            alert("숫자만 입력해주세요.");
+            location.reload();
+        } else {
+            if(mutiple % 4 == 0) {
+                demo.innerHTML = mutiple + "는 4의 배수입니다.";
+            } else {
+                demo.innerHTML = mutiple + "는 4의 배수가 아닙니다.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        const words = ["chair", "refrigerator", "desk", "washer"];
+        const answers = ["의자", "냉장고", "책상", "세탁기"];
+        let str ="";
+
+        for(let i = 0; i < words.length; i++) {
+            let answer = prompt(words[i]);
+            let boldstr = "";
+            if(answer == answers[i]) {
+                alert("정답");
+                boldstr = `<b style='color:green'정답</b>`;
+            } else {
+                alert("오답 - " + answers[i]);
+                boldstr = `<b style='color: red'>오답(${answer})</b>`;
+            }
+
+            str += `${i + 1}. ${boldstr} ${words[i]} - ${answers[i]}<br>`;
+        }
+
+        demo.innerHTML = str;
+    </script>
+</body>
+</html>
