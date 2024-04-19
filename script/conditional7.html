@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+        /* body {
             height: 100vh;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: lightpink;
+        } */
+
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .correct {
+            color: green;
+        }
+        .wrong {
+            color: red;
         }
     </style>
 </head>
 <body>
     <p id="demo"></p>
-    <script>
+    <!-- <script>
         const words = ["chair", "refrigerator", "desk", "washer"];
         const answers = ["의자", "냉장고", "책상", "세탁기"];
         let str ="";
@@ -37,6 +51,70 @@
         }
 
         demo.innerHTML = str;
+    </script> -->
+
+        <!-- // const words = ["chair", "refrigerator", "desk", "washer"];
+        // const answers = ["의자", "냉장고", "책상", "세탁기"];
+        // let str = "";
+        // let display = "";
+        // let count = 0;
+
+        // for(let i = 0; i < words.length; i++) {
+        //     const answer = prompt(`${words[i]}의 뜻은?`);
+        //     if(answer === null || answer === "") {
+        //         display += `오답(null) : ${words[i]} - ${answers[i]}<br>`;
+        //     } else {
+        //         if(answer === answers[i]) {
+        //             display += `정답 : ${words[i]} - ${answers[i]}<br>`;
+        //             count++;
+        //         } else {
+        //             display += `오답(${answer}) : ${words[i]} - ${answers[i]}<br>`;
+        //         }
+        //     }
+        // }
+
+        // display += `총점: ${count}점`;
+
+        // demo.innerHTML = display; -->
+        <script>
+
+        const words = ["chair", "refrigerator", "desk", "washer", "watch"];
+        const answers = ["의자", "냉장고", "책상", "세탁기", "시계"];
+        let str = "";
+        let display = "";
+        let count = 0;
+        let tf = "";
+
+        for(let i = 0; i < words.length; i++) {
+            const answer = prompt(`${words[i]}의 뜻은?`);
+            // if(answer === null || answer === "") {
+            //     tf = "<span class='wrong'>오답(" + answer + ")</span>";
+            // } else {
+            //     if(answer === answers[i]) {
+            //         tf = "<span class='correct'>정답</span>";
+            //         count++;
+            //     } else {
+            //         tf = `<span class='wrong'>오답(${answer})</span>`;
+            //     }
+            // }
+
+            if(answer === answers[i]) {
+                tf = "<span class='correct'>정답</span>";
+                count++;
+            } else {
+                if(answer === null) break;
+                else {
+                    tf = `<span class='wrong'>오답(${answer})</span>`;
+                }
+            }
+
+            display += `${tf} : ${words[i]} - ${answers[i]}<br>`;
+        }
+
+        display += `총점: ${count / words.length * 100}점<br>`;
+        display += `전체 문제 ${words.length} 중 정답 ${count}, 오답 ${words.length - count}`;
+
+        demo.innerHTML = display;
     </script>
 </body>
 </html>

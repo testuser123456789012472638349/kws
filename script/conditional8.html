@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        // let stars = "";
+
+        // stars += "<table>";
+
+        // for(let i = 0, startPoint = 3, endPoint = 0; i < 4; i++, startPoint--, endPoint += 2) {
+        //     stars += `<tr>`
+        //     for(let j = 0; j < 7; j++) {
+        //         if(j >= startPoint && j <= startPoint + endPoint) {
+        //             stars += `<td>*</td>`;
+        //         } else {
+        //             stars += `<td></td>`;
+        //         }
+        //     }
+        //     stars += `</tr>`;
+        // }
+
+        // stars += "</table>";
+
+        // demo.innerHTML = stars;
+
+
+        let stars = "";
+        let rows = Number(prompt("100이하의 행의 수 입력"));
+
+        if(isNaN(rows) || rows === null || rows == 0 || rows > 100) { 
+           alert('100이하와 0 이외의 숫자만...');
+           location.reload(); 
+        }
+
+        let startPoint = rows - 1; 
+        let endPoint = 0;
+        let cols = rows  + (rows - 1);
+
+        stars += "<table>";
+
+        for(let i = 0; i < rows; i++, startPoint--, endPoint += 2) {
+            stars += `<tr>`
+            for(let j = 0; j < cols; j++) {
+                if(j >= startPoint && j <= startPoint + endPoint) {
+                    stars += `<td>*</td>`;
+                } else {
+                    stars += `<td></td>`;
+                }
+            }
+            stars += `</tr>`;
+        }
+
+        stars += "</table>";
+
+        demo.innerHTML = stars;
+
+    </script>
+</body>
+</html>
