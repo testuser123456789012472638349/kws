@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator {
+        margin: auto;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        }
+
+        .display {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: 20px;
+        text-align: right;
+        }
+
+        .buttons button {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input class="display" type="text" readonly>
+        <div class="buttons">
+          <button onclick="input('7')">7</button>
+          <button onclick="input('8')">8</button>
+          <button onclick="input('9')">9</button>
+          <button onclick="input('/')">÷</button>
+          <button onclick="input('4')">4</button>
+          <button onclick="input('5')">5</button>
+          <button onclick="input('6')">6</button>
+          <button onclick="input('*')">x</button>
+          <button onclick="input('1')">1</button>
+          <button onclick="input('2')">2</button>
+          <button onclick="input('3')">3</button>
+          <button onclick="input('-')">-</button>
+          <button onclick="input('0')">0</button>
+          <button onclick="input('.')">.</button>
+          <button onclick="calculate()">=</button>
+          <button onclick="input('+')">+</button>
+        </div>
+      </div>
+    </body>
+  </html>
+    <script>
+       
+        let inputString = '';
+        let displayValue = '';
+        let resultValue = '';
+        let operator = '';
+
+        function input(value) {
+        inputString += value;
+        displayValue += value;
+        document.querySelector('.display').value = displayValue
+        }
+
+        function calculate() {
+        let calculation = inputString.split(operator);
+        let operand1 = parseFloat(calculation[0]);
+        let operand2 = parseFloat(calculation[1]);
+        switch(operator) {
+            case '+':
+            resultValue = operand1 + operand2;
+            break;
+            case '-':
+            resultValue = operand1 - operand2;
+            break;
+            case '*':
+            resultValue = operand1 * operand2;
+            break;
+            case '/':
+            resultValue = operand1 / operand2;
+            break;
+            default:
+            resultValue = '';
+        }
+        document.querySelector('.display').value = resultValue;
+        inputString = resultValue.toString();
+        displayValue = '';
+        }
+
+        function clearDisplay() {
+        inputString = '';
+        displayValue = '';
+        resultValue = '';
+        operator = '';
+        document.querySelector('.display').value = '';
+        }
+
+        function backspace() {
+        inputString = inputString.slice(0, -1);
+        displayValue = displayValue.slice(0, -1);
+        document.querySelector('.display').value = displayValue;
+        }
+
+    </script>
+</body>
+</html>

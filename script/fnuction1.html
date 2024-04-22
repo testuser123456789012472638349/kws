@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="src" placeholder="유튜부주소입력" size="100">
+    <button onclick="addYoutube('display');">추가</button>
+    <div id="display"></div>
+    <div id="target2"></div>
+    <script>
+        //무명, 익명 함수
+        // let tester = function(str) {
+        //     alert(str);
+        // };
+
+        // tester('안녕');
+
+        //즉시 실행 함수
+        // (function(say) {
+        //     alert('즉시');
+        // })('say');
+        
+        // 화살표함수
+        // const hi = (param, val) => val + param;
+        // console.log(hi('효성직업전문학교', 1999));
+
+        // function testFun(fun) { //콜백함수
+        //     alert(fun('효성', 1999));
+        // }
+        // testFun((text, num) => {
+        //     if(num >= 1999) return text;
+        //     else return 'nothing';
+        // });
+
+        // hi = function(user, age) {
+        //     return '나이: ' + age + ', ' + user +" 안녕하세요1.";
+        // }
+        // document.body.innerHTML = hi('홍길동', 25);
+
+        // hi = (user, age) => '나이: ' + age + ', ' + user + " 안녕하세요2.";
+        // document.body.innerHTML += '<br>' + hi('고길동', 55);
+
+        //일반함수
+        //function 함수명(매개변수, 매개변수, ...) {
+            //구문
+        //}
+        //함수명(인수, 인수, 인수, ...)
+        /*
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lMC3UZelQVU?si=3PkLnC_Q8cgRbYXU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        */
+
+        function addYoutube(target, width, height) {
+            // alert(src.value);
+            let movie = `<iframe width="${width}" height="${height}" src="${src.value}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            document.getElementById(target).insertAdjacentHTML("afterbegin", movie);  // <div>test</div>
+        }
+    </script>
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/lMC3UZelQVU?si=3PkLnC_Q8cgRbYXU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gxNmKgIHTx4?si=R-1GQZJaqC9yfErH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+</body>
+</html>

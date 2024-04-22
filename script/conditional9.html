@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calcSum(n) {
+            let sum = 0;
+
+            for(let i = 1; i <= n; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+
+        function isRightNum() {
+            let userNumber = prompt('얼마까지 더할까요?');
+            let sum = parseInt(userNumber);
+
+            return sum;
+        }
+
+        function useCalcSum() {
+            let sum;
+
+            while(true) {
+                sum = isRightNum();
+                if(!(isNaN(sum) || sum == 0)) {
+                    break;
+                } else {
+                    alert('숫자만 입력해주세요...');
+                }
+            }
+
+            document.body.innerHTML = calcSum(sum);
+        }
+        
+        useCalcSum();
+    </script>
+</body>
+</html>
