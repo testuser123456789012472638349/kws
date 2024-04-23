@@ -1,0 +1,122 @@
+<body>
+    <div id="t1"></div>
+    <div id="t2"></div>
+    <div id="t3"></div>
+
+    <div id="d"></div>
+    <script>
+        //함수도 일급객체
+        //재사용성
+        function myFunction(target) {
+            
+            if(target) //target - 0, null, undefined, "", false
+                target.innerHTML = 'null';
+
+            if(!target)
+                return null; //값을 반환하는 기능, 함수를 종료하는 기능
+
+            console.log(target);
+        }
+
+        // console.dir(myFunction);
+        // console.log(typeof myFunction);
+
+        console.log(myFunction());
+        //alert(myFunction());
+
+        myFunction(t1);
+        myFunction(t3);
+
+        function toCelsius(fahrenheit, i, j) {
+            console.log(i + j);
+            return (5/9) * (fahrenheit-32);
+        }
+
+        let value = toCelsius(77, 23, "tesg");
+        console.log(value);
+
+        /*
+            함수
+            
+            익명함수
+            즉시실행함수
+            화살표함수
+
+            재귀함수
+            콜백함수
+        */
+
+        // console.dir(window);
+
+        // function ask(question, yes, no) {
+        //     if(confirm(question)) yes();
+        //     else no();
+        // }
+
+        // var test = function() {}; //호이스팅 가능
+        // let test = function() {}; //호이스팅 불가능
+
+        // ask("동의하십니까?", showOk, showCancel);
+
+        // function showOk() {
+        //     alert("동의");
+        // }
+
+        // function showCancel() {
+        //     alert("취소");
+        // }
+
+
+        // 일반함수 선언문
+        // function ask(question, yes, no) {
+        //     if(confirm(question)) yes();
+        //     else no();
+        // }
+        
+        // 무명함수 표현식
+        // let ask = function(question, yes, no) {
+        //     if(confirm(question)) yes();
+        //     else no();
+        // };
+        
+        // 화살표함수 표현식
+        // 매개변수가 없을 경우와 여러 개일 경우 ()만든다.
+        // 매개변수가 하나만 있을 경우 () 생략가능
+        //실행문이 하나만 있을 경우 {} 생략가능
+        // let ask = (question, yes, no) => {
+        //     if(confirm(question)) yes();
+        //     else no();
+        // };
+            
+
+        // ask("동의하십니까?", 
+        //     () => alert("동의"), 
+        //     () => alert("취소"));
+
+        // let sum = (a, b) => a + b; 
+
+        // alert( sum(1, 2) ); // 3
+
+        const abc = {
+            // fir: prompt("성"),
+            // last: prompt("이름"),
+            full: function() {
+                return this.fir + " " + this.last;
+            }
+        }
+
+        const per1 = {
+            fir:"추",
+            last:"성훈"
+        }
+        const per2 = {
+            fir:"추",
+            last:"사랑"
+        }
+        document.getElementById("d").innerHTML = abc.full.call(per2);
+
+
+        let acd = (a, b) => a + b;
+        alert(acd(1, 3));
+    </script>
+</body>

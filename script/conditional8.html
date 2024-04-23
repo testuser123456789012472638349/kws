@@ -32,7 +32,7 @@
         let stars = "";
         let rows = Number(prompt("100이하의 행의 수 입력"));
 
-        if(isNaN(rows) || rows === null || rows == 0 || rows > 100) { 
+        if(isNaN(rows) || rows === null || rows == 0 || rows > 100 || rows < 0) { 
            alert('100이하와 0 이외의 숫자만...');
            location.reload(); 
         }

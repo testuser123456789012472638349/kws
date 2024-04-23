@@ -12,11 +12,11 @@
         var userNumber = prompt("숫자를 입력하세요.");
         console.log(userNumber === "");
 
-        if(userNumber !== "") {
+        if(userNumber !== null) {
             if(userNumber % 3 === 0) {
                 alert("3의 배수");
             } else {
-                alert("아님");
+                alert("3의 배수 아님");
             }
         } else {
             alert("입력을 취소합니다.");

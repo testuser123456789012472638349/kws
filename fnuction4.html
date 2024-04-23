@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function greet() {
+           console.log("안녕 내 이름은 제시카야"); 
+        } // 1.
+        greet();
+
+        function greet1(userName) {
+            console.log(`안녕 내 이름은, ${userName}야`);
+            return userName;
+        }
+        const name = greet1("에밀리"); // 2.
+
+        function getNameGreet(userName) {
+            console.log(`안녕 내 이름은 ${userName}야`);
+        }
+
+        getNameGreet("에밀리");
+        getNameGreet("할리"); //2
+    
+        function daco(year, month, day) {
+            var year;
+            var month;
+            var day;
+
+            if(day) {
+                return `${year}년 ${month}월 ${day}일`;
+            }
+            if(month) {
+                return `${year}년 ${month}월`;
+            }
+            if(year) {
+                return `${year}년`;
+            }
+        }
+        console.log(daco(2022, 12))  //3.
+
+        function daco2(year, month, day) {
+        let strDate;
+
+            switch(arguments.length) {
+                case 1:
+                    strDate = `${year}년`;
+                    break;
+                case 2:
+                    strDate = `${year}년 ${month}월`;
+                    break;
+                case 3:
+                    strDate = `${year}년 ${month}월 ${day}일`;
+                    break;
+            }
+
+            return strDate;
+        }
+        console.log(daco(2024, 6, 7))
+
+
+        function findSmallestElement(ar) {
+            let num = ar[0];
+
+            if(ar.length == 0) {
+                return 0;
+            }
+
+            for(let i = 0; i < ar.length; i++) {
+                if(num > ar[i]) {
+                    num = ar[i];
+                }
+            }
+            return num;
+        }
+
+        let smallest = findSmallestElement([12, 3, 59, 20, 21, 39]);
+        console.log(smallest); // 4.
+
+        function findSmallestElement1(arr) {
+            // console.log(arr);
+            let min = arr[0];
+
+            for(let i = 1; i < arr.length; i++) {
+                if(min > arr[i]) min = arr[i];
+            }
+
+            return min;
+        }
+
+        console.log(findSmallestElement1([100, -57, 58, 3, 75])); // 4.
+
+
+        // let a = [50000, 10000, 5000, 1000, 500, 100, 10];
+        // function clacmoney(mo) {
+        //     for(let i = 0; i < a.length; i++) {
+        //         let b = Math.floor(mo/a[i]);
+
+        //         console.log(a[i]+"X"+b);
+        //         mo = mo - (a[i]*b);
+        //     }
+        // }
+        // clacmoney(56750);
+
+        function countMoney(money) {
+            let num = parseInt(money / 50000);
+            console.log(`50000 X ${num}`);
+            if(num > 0) {
+                money = money - (50000 * num);
+            }
+
+            num = parseInt(money / 10000);
+            console.log(`10000 X ${num}`);
+            if(num > 0) {
+                money = money - (10000 * num);
+            }
+
+            num = parseInt(money / 5000);
+            console.log(`5000 X ${num}`);
+            if(num > 0) {
+                money = money - (5000 * num);
+            }
+
+            num = parseInt(money / 1000);
+            console.log(`1000 X ${num}`);
+            if(num > 0) {
+                money = money - (1000 * num);
+            }
+
+            num = parseInt(money / 500);
+            console.log(`500 X ${num}`);
+            if(num > 0) {
+                money = money - (500 * num);
+            }
+
+            num = parseInt(money / 100);
+            console.log(`100 X ${num}`);
+            if(num > 0) {
+                money = money - (100 * num);
+            }
+
+            num = parseInt(money / 10);
+            console.log(`10 X ${num}`);
+            if(num > 0) {
+                money = money - (10 * num);
+            }
+
+            num = parseInt(money / 1);
+            console.log(`1 X ${num}`);
+            if(num > 0) {
+                money = money - (1 * num);
+            }
+        }
+
+        countMoney(123418);
+        /*
+            1. "안녕 내 이름은 제시카야"라는 문장을 프린트하는 함수 'greet’를 만드시오.
+            
+            2. 이름을 매개변수로 전달받아 다양한 이름을 프린트 할 수 있게 함수를 수정하고 매개변수로 전달받은 이름을 반환하게 함수를 수정하시오 예) “안녕 내 이름은 에밀리야”, “안녕 내 이름은 할리야”
+
+            3. 3개의 인자를 받고 첫번째 인자는 년도에 해당하는 숫자, 두번째 인자는 월에 해당하는 숫자, 세번째 인자는 일에 해당하는 숫자이다.
+            예시) 
+                년도인자만 받을 경우 -> "1234년"과 같은 문자열을 리턴
+                년도, 월 인자를 받을 경우 -> "1234년 5월" 과 같은 문자열 리턴
+                년도, 월, 일 인자를 전부 받을 경우 ->"1234년 5월 6일"과 같은 형식의 문자열을 리턴해주세요
+
+            4. findSmallestElement 함수를 구현하고 findSmallestElement 의 arr인자는 숫자 값으로만 이루어진 배열을 만들어 arr 의 값들 중 가장 작은 값을 리턴 해주세요.[100, 57, 58, 3, 75]
+
+            5. 돈을 매개변수로 받으면 몇개의 지폐와 동전이 필요한지 최소 개수를 계산해주는 함수를 만드시오.
+            예시)
+                값이 12310인 경우
+
+                50000 X 0
+                10000 X 1
+                5000 X 0
+                1000 X 2
+                500 X 0
+                100 X 3
+                10 X 1
+        */
+    </script>
+</body>
+</html>
