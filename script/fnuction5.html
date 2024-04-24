@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            let changeBg = function(color) {
+            const result = document.querySelector("#result");
+            result.style.height = '100px';
+            result.style.width = '100px';
+            result.style.borderRadius = '50%';
+            result.style.backgroundColor = color;
+        };
+
+    //     <script>
+    //     //window가 로딩 후 작동
+    //         window.onload = function() {
+    //         let ul = document.querySelector('ul');
+    //         let lis = document.querySelectorAll('ul > li');
+    //         let imgs = document.querySelectorAll('img[alt^=c]');
+            
+    //         ul.style.listStyle = 'none';
+    //         ul.style.overflow = 'hidden';
+
+    //         for(let i = 0; i < lis.length; i++) {
+    //             lis[i].style.float = 'left';
+    //             lis[i].style.marginRight = '5px';
+    //         }
+            
+    //         for(let i = 0; i < imgs.length; i++) {
+    //             imgs[i].style.width = '100px';
+    //             imgs[i].style.height = '100px';
+    //         }
+    //     };
+
+    //     let changeBg = function(color) {
+    //         const result = document.querySelector("#result");
+    //         result.style.height = '100px';
+    //         result.style.width = '100px';
+    //         result.style.borderRadius = '50%';
+    //         result.style.backgroundColor = color;
+    //     };
+
+    //     let changeImg = (kind) => {
+    //         switch(kind) {
+    //             case 'red':
+    //                 showImg('https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F06e6f32f-7a72-4a9d-ad3d-65bf2931be24.jpg?crop=2799%2C1575%2C280%2C770&resize=1200');
+    //                 break;
+    //             case 'green':
+    //                 showImg('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVK7yiVNI4i_OXTseCsPZKUomg5zze7TpE9JfPbyaY1w&s');
+    //                 break;
+    //             case 'blue':
+    //                 showImg('https://i.etsystatic.com/21654192/r/il/c79e38/4317910053/il_570xN.4317910053_g7r7.jpg');
+    //                 break;
+    //         }
+    //     };
+
+    //     function showImg(src) {
+    //         document.querySelector('#result > img').src = src;
+    //     }
+    // </script>
+
+
+
+    </script>
+</head>
+<body>
+    <ul>
+        <li><a href="#" onclick="changeBg('red')">Red</a></li>
+        <li><a href="#" onclick="changeBg('green')">Green</a></li>
+        <li><a href="#" onclick="changeBg('blue')">Blue</a></li>
+    </ul>
+    <div id="result"></div>
+
+
+    <!-- <ul>
+        <li><a href="#" onclick="changeBg('red');changeImg('red');"><img src='https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F06e6f32f-7a72-4a9d-ad3d-65bf2931be24.jpg?crop=2799%2C1575%2C280%2C770&resize=1200' alt="c1"></a></li>
+        <li><a href="#" onclick="changeBg('green');changeImg('green');"><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVK7yiVNI4i_OXTseCsPZKUomg5zze7TpE9JfPbyaY1w&s' alt="c2"></a></li>
+        <li><a href="#" onclick="changeBg('blue');" onmouseenter="changeImg('blue');"><img src='https://i.etsystatic.com/21654192/r/il/c79e38/4317910053/il_570xN.4317910053_g7r7.jpg' alt="c3"></a></li>
+    </ul>
+    <div id="result">
+        <img src="" alt="result">
+    </div> -->
+    <script>
+        // let changeBg = function chageBg(color) {
+        //     alert('test');
+        // };
+        /*
+            이벤트(event): 일어난 사건
+            이벤트 처리기(이벤트 핸들러, event handler): 일어난 사건의 처리하는 함수
+            이벤트 핸들링(event handing): 일어난 사건을 처리
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            window.onload = function() {
+            let ul = document.querySelector('ul');
+            let lis = document.querySelectorAll('ul > li');
+            let imgs = document.querySelectorAll('img[alt^=c]');
+
+            ul.style.listStyle = 'none';
+            ul.style.overflow = 'hidden';
+
+            for(let i = 0; i < lis.length; i++) {
+                lis[i].style.float = 'left';
+                lis[i].style.marginRight = '5px';
+            }
+
+            for(let i = 0; i < imgs.length; i++) {
+                imgs[i].style.width = '100px';
+                imgs[i].style.height = '100px';
+            }
+        };
+        
+        let changeImg = (result) => { 
+            const resu = document.querySelector("#re");  
+            switch(result) {                
+                case 'r':
+                    showImg('/img/a.png');
+                    break;
+                case 'g':
+                    showImg('/img/b.png');
+                    break;
+                case 'b':
+                    showImg('/img/want.jpg');    
+                    break;
+            }
+        };
+
+        function showImg(src) {
+            document.querySelector('#re > img').src = src;
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li><a href="#" onclick="changeImg('r');"><img src="/img/a.png" alt="casdasd"></a></li>
+        <li><a href="#" onclick="changeImg('g');"><img src="/img/b.png" alt="casdasd"></a></li>
+        <li><a href="#" onclick="changeImg('b');"><img src="/img/want.jpg" alt="csjdfhjs"></a></li>
+    </ul>
+    <div id="re">
+        <img src="" alt="result">
+    </div>
+</body>
+</html>

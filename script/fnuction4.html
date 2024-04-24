@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="t2"></div>
+    <div id="t3"></div>
     <script>
 
         function greet() {
@@ -107,57 +108,76 @@
         // }
         // clacmoney(56750);
 
-        function countMoney(money) {
-            let num = parseInt(money / 50000);
-            console.log(`50000 X ${num}`);
-            if(num > 0) {
-                money = money - (50000 * num);
+        // function countMoney(money) {
+        //     let num = parseInt(money / 50000);
+        //     console.log(`50000 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (50000 * num);
+        //     }
+
+        //     num = parseInt(money / 10000);
+        //     console.log(`10000 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (10000 * num);
+        //     }
+
+        //     num = parseInt(money / 5000);
+        //     console.log(`5000 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (5000 * num);
+        //     }
+
+        //     num = parseInt(money / 1000);
+        //     console.log(`1000 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (1000 * num);
+        //     }
+
+        //     num = parseInt(money / 500);
+        //     console.log(`500 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (500 * num);
+        //     }
+
+        //     num = parseInt(money / 100);
+        //     console.log(`100 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (100 * num);
+        //     }
+
+        //     num = parseInt(money / 10);
+        //     console.log(`10 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (10 * num);
+        //     }
+
+        //     num = parseInt(money / 1);
+        //     console.log(`1 X ${num}`);
+        //     if(num > 0) {
+        //         money = money - (1 * num);
+        //     }
+        // }
+
+        // countMoney(123418);  5.
+
+        function countMoney(money, target) {
+            const coin = [50000, 10000, 5000, 1000, 500, 100, 10, 1];
+            let str = "";
+
+            for(let i = 0; i < coin.length; i++) {
+                let num = parseInt(money / coin[i]); 
+                // str += `${coin[i]}원 X ${num}개.<br>`; // num(지폐갯수 0개 표시)
+                if(num > 0) {
+                    money = money - (coin[i] * num);
+                    str += `${coin[i]}원 X ${num}개.<br>`; //num(지폐갯수 0개 미표시)
+                }
             }
 
-            num = parseInt(money / 10000);
-            console.log(`10000 X ${num}`);
-            if(num > 0) {
-                money = money - (10000 * num);
-            }
-
-            num = parseInt(money / 5000);
-            console.log(`5000 X ${num}`);
-            if(num > 0) {
-                money = money - (5000 * num);
-            }
-
-            num = parseInt(money / 1000);
-            console.log(`1000 X ${num}`);
-            if(num > 0) {
-                money = money - (1000 * num);
-            }
-
-            num = parseInt(money / 500);
-            console.log(`500 X ${num}`);
-            if(num > 0) {
-                money = money - (500 * num);
-            }
-
-            num = parseInt(money / 100);
-            console.log(`100 X ${num}`);
-            if(num > 0) {
-                money = money - (100 * num);
-            }
-
-            num = parseInt(money / 10);
-            console.log(`10 X ${num}`);
-            if(num > 0) {
-                money = money - (10 * num);
-            }
-
-            num = parseInt(money / 1);
-            console.log(`1 X ${num}`);
-            if(num > 0) {
-                money = money - (1 * num);
-            }
+            document.getElementById(target).innerHTML = str;
         }
+        
+        countMoney(65931236, "t3");
 
-        countMoney(123418);
         /*
             1. "안녕 내 이름은 제시카야"라는 문장을 프린트하는 함수 'greet’를 만드시오.
             
