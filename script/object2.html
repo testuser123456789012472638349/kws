@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.dir(Array);
+        console.log(Array.name);
+        var numbers = new Array();
+        console.log(numbers.length);
+        numbers[0] = 1;
+        console.log(numbers.length);
+
+        var numbers = new Array(4);
+        console.log(numbers.length);
+
+        var numbers = new Array(4, 2);
+        console.log(numbers.length);
+
+        var numbers = ["one", "two"];
+        numbers.name = "나의 배열";
+        console.log(numbers.name);
+
+        var numbers = Array("one", "two");
+        console.log(numbers.name);
+
+        var arr1 = [1, 2, 3];
+        var arr2 = [4, 5, 6];
+
+        var arr3 = numbers
+                    .concat(arr1)
+                    .concat(arr2);
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr3);
+
+        const elements = ['Fire', 'Air', 'Water'];
+
+        console.log(elements.join());
+        // Expected output: "Fire,Air,Water"
+
+        console.log(elements.join(''));
+        // Expected output: "FireAirWater"
+
+        console.log(elements.join('-'));
+        // Expected output: "Fire-Air-Water"
+    </script>
+</body>
+</html>
