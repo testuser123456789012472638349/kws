@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            함수의 사용 목적: 재사용성, 가독성, 유지보수
+        */
+       var test = "test"; //전역변수, 글로벌변수
+
+        function addNumber() {
+            //선언문
+            //제어문
+            //반환문
+           window.alert('test'); 
+           console.log(test);
+        }
+
+        function forZeroToTen(start = 0, max = 10) {
+            let sum = 0; //지역변수, 로컬변수
+
+            for(let s = start; s <= max; s++){
+                sum += s;
+            }
+            return sum; // 값을 제공, 함수를 멈춤
+
+            console.log(sum); //도달하지 않음
+        }
+
+        function showSum() {
+            let value = forZeroToTen(0, 100);
+            document.body.innerHTML += "<hr>" + value;
+        }
+
+        /*
+            함수 선언에서 사용된 값은 매개변수(parameter)
+            함수 사용에서 사용된 값은 인수(argument)
+        */
+
+        function unKonwParameter() {
+            console.log(arguments);
+            let sum = 0;
+            for(let i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            console.log(sum);
+        }
+        unKonwParameter(7, 5, 6);
+        unKonwParameter(52, 8);
+        unKonwParameter(65, 85, 75, 51, 85);
+
+        function unKonwParameter2(num, ...arg) {
+            // console.log(num);
+            // console.log(arg);
+
+            let sum = 0;
+            for(let i = 0; i < arg.length; i++) {
+                sum += arg[i];
+            }
+
+            console.log(sum);
+        }
+
+        unKonwParameter(7, 5, 6);
+        unKonwParameter(52, 8);
+        unKonwParameter(65, 85, 75, 51, 85);
+
+        let add = function(a, b) {
+            return a + b;
+        };
+
+        function funadd(a, b) {
+            return a + b;
+        }
+
+        console.log(add());
+        console.log(funadd());
+
+        (function(a, b) {
+            console.log('즉시 실행 함수');
+            console.log(a + b);
+        })(1, 2);
+
+        //화살표 함수
+        console.log((() => "안녕하세요")());
+
+        console.log((() => {
+            if(false) return "참";
+            else return "거짓";
+        })());
+
+        //매개변수가 하나일 경우: 매개변수 => { return 함수 내용 }
+        //매개변수가 없을 경우: () => { return 함수 내용 }
+        //매개변수가 여러개일 경우: (매개변수1, 매개변수2, ...) => { return 함수 내용 }
+        //함수내용이 한 줄일 경우(중괄호 생략, return 생략): () => 함수 내용
+        //함수내용이 여러 줄일 경우: () => {
+        //함수 내용들
+        //return 문
+        //}
+
+        //재귀함수: 자신이 자신을 부르는 함수
+        function total(value) {
+            if(value <= 0) return 0;
+
+            return value + total(value - 1);
+        }
+
+        console.log(total(100));
+        
+        //콜백함수: 함수의 인자로 사용되어 처리되는 함수
+        function useCallback(func) {
+            //설정된 시간 후에 한 번 실행
+            //setTimeout = 설정된 시간 후에 콜백함수를 한 번 실행
+            setTimeout(() => {
+                alert(func(100));
+            }, 3000);
+        }
+
+        // useCallback(function() {alert('test')});
+        useCallback(total);
+
+        let some = () => {
+            console.log('some');
+        };
+
+
+         //일반 함수, 함수 표현식, 무명(익명)함수, 즉시 실행함수, 화살표함수, 재귀함수, 콜백함수
+    </script>
+</head>
+<body>
+    <button onclick="showSum();">click</button>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('/img/a.png');
+            background-repeat: no-repeat;
+            background-size: 50%;
+        }
+        /* #back {
+            background-color: red;
+            margin-left: 100px;
+        } */
+    </style>
+</head>
+<body>
+    <script>
+        window.addEventListener('load', () => {
+            let a = document.querySelector('#aa');
+            let b = document.querySelector('#ab');
+            let c = document.querySelector('p');
+            let d = document.querySelector('#back');
+
+            b.style.display = "none";
+            c.style.display = "none";
+        });
+
+        function showopen() {
+            let a = document.querySelector('#aa');
+            let b = document.querySelector('#ab');
+            let c = document.querySelector('p');
+
+            a.style.display = "none";
+            b.style.display = "block";
+            c.style.display = "block";
+        }
+
+        function showclose() {
+            let a = document.querySelector('#aa');
+            let b = document.querySelector('#ab');
+            let c = document.querySelector('p');
+
+            a.style.display = "block";
+            b.style.display = "none";
+            c.style.display = "none";
+        }
+
+    </script>
+    <div id="back">
+        <button id="aa" onclick="showopen()">살세 설명 보기</button>
+        <button id="ab" onclick="showclose()">살세 설명 닫기</button>
+        <P>상세 설명 상세 설명 상세 설명 상세 설명 상세 설명상세 설명 설명상세 설명 설명상세 설명 설명상세 설명 설명상세</P>
+    </div>
+</body>
+</html>

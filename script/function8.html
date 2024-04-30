@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showSum();">click</button>
+    <script>
+        console.dir(window);
+        console.dir(document.querySelector("button"));
+        // 기존 내용 삭제
+        //1. 객체.on이벤트명 = 익명함수, 화살표함수, 함수명 중 하나
+        window.onresize = twoFunc;
+        window.onload = twoFunc;
+        // window.onload = () => {
+        //     console.log('새로운 함수');
+        // };
+
+        function twoFunc() {
+            chBgColor();
+            otherFunc();
+        }
+
+        function chBgColor() {
+            let winWidth = window.innerWidth;
+            if(winWidth > 1900) {
+                document.body.style.background = "red";
+            } else if(winWidth > 960) {
+                document.body.style.background = "green";
+            } else {
+                document.body.style.background = "blue";
+            }
+        }
+
+        function otherFunc() {
+            console.log('otherFunc');
+        }
+
+        //2. 객체.addEventListener('이벤트명', 함수(이벤트 핸들러))
+        // 새로운 이벤트를 추가
+        function addLoader() {
+            alert('add');
+        }
+
+        window.addEventListener('load', addLoader);
+        window.removeEventListener('load', addLoader);
+
+        //3. 객체에 인라인으로 추가
+        
+
+        window.addEventListener('load', () => {
+            let form = document.querySelector("form");
+            // console.log(document.querySelector("#userId"));
+            // console.log(form[0]);
+
+            form.onsubmit = () => {
+                if(form[0].value === "") {
+                    alert('값을 입력');
+                    form[0].focus();
+                    return false;
+                }
+
+                return true;
+            };
+
+            form.addEventListener('submit', () => {
+
+            });
+        });
+    </script>
+    <div onclick="this.style.background='yellow'">div 객체</div>
+    <form>
+        <input type="text" name="userId" id="userId">
+        <input type="submit" value="전송"/>
+    </form>
+</body>
+</html>
