@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><label for="username">이름</label></td>
+            <td><input type="text" id="username"></td>
+        </tr>
+        <tr>
+            <td><label for="userage">나이</label></td>
+            <td><input type="number" id="userage" onkeyup="chkEnter(event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="수정" id="change" onclick=""></td>
+            <td><input type="button" value="등록" onclick="addArray();"></td>
+            <td><input type="button" value="삭제" onclick="removeArray();"></td>
+        </tr>
+    </table>
+    <div id="display"></div>
+    <script>
+        let arrMembers = [
+            {name: "홍길동", age: 25},
+            {name: "마길동", age: 2},
+            {name: "조길동", age: 8},
+            {name: "최길동", age: 31},
+            {name: "김길동", age: 10},
+            {name: "박길동", age: 48},
+            {name: "이길동", age: 75},
+        ];
+
+        dispalyArray();
+
+        function addArray() {
+            let userName = document.querySelector("#username");
+            let userAge = document.querySelector("#userage");
+            // console.log(arrMembers.length);
+            // console.log(userName);
+            // console.log(userAge);
+            if(userName.value === '') {
+                alert('이름을 입력해 주세요.');
+                userName.focus();
+                return;
+            } else if(userAge.value === 0 || userAge.value === '') {
+                alert('나이를 입력해 주세요.');
+                userAge.focus();
+                return;
+            }
+
+            let member = {
+                name: userName.value,
+                age: userAge.value
+            };
+
+            arrMembers.push(member);
+
+            dispalyArray();
+            clearInput();
+        }
+
+        function dispalyArray() {
+            let display = document.querySelector("#display");
+            display.innerHTML = "";
+
+            let str = `<table border='1'>
+                            <tr>
+                                <th onclick="sortMembers('name');">이름</th>
+                                <th onclick="sortMembers('age');">나이</th>
+                                <th></th>
+                            </tr>`;
+            for(let i = 0; i < arrMembers.length; i++) {
+                str += `<tr>
+                            <td>${arrMembers[i].name}</td>
+                            <td>${arrMembers[i].age}</td> 
+                            <td><button onclick="oneRemoveArray(${i});">삭제</button></td>
+                        <tr>`;
+            }
+            str += "</table>";
+
+            display.innerHTML = str;
+        }
+
+        function clearInput() {
+            let userName = document.querySelector("#username");
+            let userAge = document.querySelector("#userage");
+
+            userName.value = '';
+            userAge.value = '';
+            userName.focus();
+        }
+
+        function chkEnter(event) {
+            // console.dir(event);
+            if(event.keyCode === 13) {
+                // console.log('enter');
+                addArray();
+            }
+        }
+
+        function removeArray() {
+            arrMembers = [];
+            dispalyArray();
+        }
+
+        function oneRemoveArray(index) {
+            arrMembers.splice(index, 1);
+            dispalyArray();
+        }
+
+        // let nameFlag = 0;
+        // let ageFlag = 0;
+        let flag = {
+            name: 0,
+            age: 0
+        };
+
+        function sortMembers(key) {
+            if(!flag[key]) {
+                arrMembers.sort((a, b) => {
+                    if(a[key] < b[key]) return -1;
+                    else return 0;
+                });
+                flag[key] = 1;
+            } else {
+                arrMembers.sort((a, b) => {
+                    if(a[key] > b[key]) return -1;
+                    else return 0;
+                });
+                flag[key] = 0;
+            }
+            
+            dispalyArray();
+        }
+
+        // function sortAge() {
+        //     if(!ageFlag) {
+        //         arrMembers.sort((a, b) => {
+        //             if(a.age < b.age) return -1;
+        //             else return 0;
+        //         });
+        //         ageFlag = 1;
+        //     } else {
+        //         arrMembers.sort((a, b) => {
+        //             if(a.age > b.age) return -1;
+        //             else return 0;
+        //         });
+        //         ageFlag = 0;
+        //     }
+            
+        //     dispalyArray();
+        // }
+
+        let change1 = document.querySelector("#change");
+        change1.style.display="none";
+
+        function change(name, age) {
+            name1 = document.querySelector("name");
+            age1 = document.querySelector("age");
+
+            if(name1 === name) {
+                
+            }
+        }
+    </script>
+</body>
+</html>
