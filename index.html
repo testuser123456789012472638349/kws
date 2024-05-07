@@ -14,6 +14,7 @@
         <header>
             <div id="timer"></div>
             <h1 style="color:lightseagreen" title="tooltip">AWS 풀스택</h1>
+            <div id="gd"></div>
         </header>
         <section>
             <article>
@@ -74,6 +75,9 @@
                     <li><a href="script/calc.html">계산기</a></li>
                     <li><a href="script/cgc.html">객체사용 배경변경</a></li>
                     <li><a href="script/swiper.html">swiper 사용하기</a></li>
+                    <li><a href="script/date.html">Date 객체 사용하기</a></li>
+                    <li><a href="script/math.html">Math 객체 사용하기</a></li>
+                    <li><a href="script/browser.html">브라우저 내장 객체 사용하기</a></li>
                 </ol>
             </article>
         </section>
@@ -81,6 +85,8 @@
     <script>
         let timer = ocument.getElementById("timer");
         timer.innerText = new Date();
+
+        new GapDate('#gd').init();
     </script>
 
 </body>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btnArea">
+        <button>위</button>
+        <button>오른쪽</button>
+        <button>아래</button>
+        <button>왼쪽</button>
+    </div>
+    <script>
+        console.dir(Window);
+        console.dir(window);
+        console.dir(this);
+
+        let childWin = window.open(`about:blank`, "tester", "left=0,top=0,width=100,height=100");
+
+        btnArea.onclick = function(e) {
+            switch(e.target.innerText) {
+                case "위":
+                    up(childWin);
+                    break;
+                case "오른쪽":
+                    right(childWin);
+                    break;
+                case "아래":
+                    down(childWin);
+                    break;
+                case "왼쪽":
+                    left(childWin);
+                    break;
+            }
+        };
+
+        function up(win) {
+            childWin.moveTo(childWin.screenX, childWin.screenY - 10);
+        }
+
+        function right(win) {
+            childWin.moveTo(childWin.screenX + 10, childWin.screenY);
+        }
+
+        function down(win) {
+            childWin.moveTo(childWin.screenX, childWin.screenY + 10);
+        }
+
+        function left(win) {
+            childWin.moveTo(childWin.screenX - 10, childWin.screenY);
+        }
+
+        document.body.onkeydown = function(e) {
+            // console.log(e);
+            if(childWin) {
+                switch(e.key) {
+                    case 'ArrowUp':
+                        up(childWin);
+                        break;
+                    case 'ArrowRight':
+                        right(childWin);
+                        break;
+                    case 'ArrowDown':
+                        down(childWin);
+                        break;
+                    case 'ArrowLeft':
+                        left(childWin);
+                        break;
+                }
+            }
+        };
+
+        btnArea.addEventListener ('keydown', function(e) {
+            if(childWin) {
+                if(e.key === 'ArrowUp') up(childWin);
+                if(e.key === 'ArrowRight') right(childWin);
+                if(e.key === 'ArrowDown') down(childWin);
+                if(e.key === 'ArrowLeft') left(childWin);
+            }
+        });
+    </script>
+</body>
+</html>
