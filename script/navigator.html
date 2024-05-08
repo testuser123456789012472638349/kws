@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #aa {
+            border: 1px solid black;
+            text-align: center;
+            color: blue;
+            width: 200px;
+            padding: 14px 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #aa:hover {
+            cursor: pointer;
+            transition: .3s;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <button id="hisBack">이전</button>
+    <button id="hisForward">다음</button>
+    <button id="goHyosung">효성</button>
+    <script>
+            //console.dir(navigator);
+
+			var user = window.navigator.userAgent.toLowerCase();
+            // console.log(user);
+			var browser = user.indexOf("edge") > -1 ? "edge" //MS 엣지
+						  : user.indexOf("edg/") > -1 ? "edge(chromium based)" //크롬기반 엣지
+						  : user.indexOf("opr") > -1 ? "opera" //오페라
+						  : user.indexOf("chrome") > -1 ? "chrome"	//크롬
+						  : user.indexOf("trident") > -1 ? "ie"	//익스플로러
+						  : user.indexOf("firefox") > -1 ? "firefox"	//파이어폭스
+						  : user.indexOf("safari") > -1 ? "safari"	//사파리
+						  : user.indexOf("whale") > -1 ? "whale"	//네이버웨일
+						  : "other browser"; // 기타
+			// console.log(browser);
+            // console.log(navigator.languages);
+
+            // console.dir(history);
+        
+            document.getElementById("hisBack").onclick = function(e) {
+                history.back();
+            };
+
+            document.getElementById("hisForward").onclick = function(e) {
+                history.forward();
+            };
+            
+           //  console.dir(location);
+
+            document.getElementById("goHyosung").onclick = function(e) {
+                // location.href = "http://hscampus.com"; //href 속성
+                location.replace("http://hscampus.com"); //replace 메서드
+            };
+
+            // console.dir(screen);
+
+            // console.dir(window);
+
+            let oldX = window.screenX;
+            let oldY = window.screenY;
+
+            // console.log(oldX + " : " + oldY);
+
+            let str = winArea = winPos = "";
+            str += `스크린 높이: ${screen.availHeight}px<br>
+                    스크린 너비: ${screen.availWidth}px<br><hr>`;
+            winArea += `윈도우의 너비: ${window.outerWidth}px<br>
+                        윈도우의 높이: ${window.outerHeight}px<br><hr>`;
+            winPos += `윈도우의 수평 위치: ${window.screenX}px<br>
+                        윈도우의 수직 위치: ${window.screenY}px<br>`;
+            // display.innerHTML = str + winArea + winPos;
+            
+            setInterval(function() {
+                if(oldX != window.screenX || oldY != window.screenY) {
+                    winPos = `윈도우의 수평 위치: ${window.screenX}px<br>
+                        윈도우의 수직 위치: ${window.screenY}px<br>`;
+
+                    display.innerHTML = str + winArea + winPos;
+                }
+            }, 1000);
+
+            window.onresize = function() {
+                winArea = `윈도우의 너비: ${window.outerWidth}px<br>
+                        윈도우의 높이: ${window.outerHeight}px<br><hr>`;
+                display.innerHTML = str + winArea + winPos;
+                oldX = window.screenX;
+                oldY = window.screenY;
+            }
+    </script>
+    <div id="display">
+        <script>
+            // let popWin =window.open("http://127.0.0.1:5500/script/function9.html", "pop", "width=400 height=600");
+            // popWin.opener.self;
+
+            document.write("<p><b>location.href : </b>" + location.href + "</p>");
+            document.write("<p><b>location.host : </b>" + location.href + "</p>");
+            document.write("<p><b>location.protocol : </b>" + location.href + "</p>");
+            document.write("<p><b>location.hostname : </b>" + location.href + "</p>");
+
+            function loadURL1(url) {
+                window.opener.location = url;
+                window.close();
+            }
+            document.write("<hr>");
+            document.write("<p><b>screen.availHeight : </b>" + screen.availHeight + "</p>");
+            document.write("<p><b>screen.availWidth : </b>" + screen.availWidth + "</p>");
+            document.write("<p><b>screen.colorDepth : </b>" + screen.colorDepth + "</p>");
+            document.write("<p><b>screen.width : </b>" + screen.width + "</p>");
+            document.write("<p><b>screen.height : </b>" + screen.height + "</p>");
+            document.write("<p><b>screen.orientation : </b>" + screen.orientation + "</p>");
+            document.write("<hr>");
+            
+            
+            function openCenter(doc, win, w, h) {
+                let left = (screen.availWidth - w) / 2;
+                let top = (screen.availHeight - h) / 2;
+                let  opt = "left= " + left + ", top= " + top + ", width= " + w + " , height= " + h;
+                window.open(doc, win, opt);
+            }
+            // openCenter("http://127.0.0.1:5500/script/function9.html", "pop", 500, 400);
+        </script>
+    </div>
+    <button onclick="location.assign('http://www.daum.net')">asdad</button>
+    <p><a href="http://127.0.0.1:5500/script/function9.html" onclick="loadURL(this.href);return false">자세히보기</a></p>
+    <p><a href="http://127.0.0.1:5500/script/function9.html" onclick="loadURL1();return false">자세히보기</a></p>
+
+    <p>현재 시각 <span id="current" class="displaya"></span></p>
+    <div id="aa" onclick="openNow()">현재 시각 보기</div>
+    <script>
+        setInterval(displayNow, 3000);
+
+        function displayNow() {
+            let a = new Date();
+            let currentTime = a.toLocaleString(); 
+            document.querySelector("#current").innerHTML = currentTime;
+        }
+
+        function openNow(docu, Nowm, wi, he) {
+            let le = (screen.availHeight - he) / 2;
+            let to = (screen.availWidth - wi) / 2;
+            let o1 = "left= " + le + ", top= " + to + ", width= " + wi + " , height= " + he;
+            window.open(docu, Nowm, o1);
+        }
+        // openNow("http://127.0.0.1:5500/script/object1.html", "pop", 500, 400);
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #adder {
+            display: flex;
+        }
+        #adder > div {
+            background-color: black;
+            color: white;
+            padding: 0 30px;
+            margin-left: 5px;
+        }
+        #adder > div:hover {
+            background-color: aqua;
+            color: red;
+            transition: 1s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Programing</h1>
+    <p>공부할 주제를 기록해 보세요</p>
+    <div id="adder">
+        <input type="text"><div>추가</div>
+    </div>
+    <ul></ul>
+
+    <!-- <div id="rect" style="width: 50px;">
+        <img src="/img/want.jpg" alt="액박" style="width: 10px; height: 10px;">
+    </div> -->
+
+    <!-- <div class="row">
+        <ul>
+            <li>
+                <img src="/img/want.jpg" data="/img/want.jpg" class="pic">
+            </li>
+            <li>
+                <img src="/img/want2.jpg" data="/img/want2.jpg" class="pic">
+            </li>
+            <li>
+                <img src="/img/want3.jfif" data="/img/want3.jfif" class="pic">
+            </li>
+            <li>
+                <img src="/img/want4.jfif" data="/img/want4.jfif" class="pic">
+            </li>
+            <div id="lightbox">
+                <img src="/img/a.png" id="lightboxImage">
+            </div>
+        </ul>
+    </div> -->
+
+    <script>
+        let add = adder.querySelector("div");
+        let input = adder.querySelector("input");
+        let target = document.querySelector("ul");
+        add.onclick = function() {
+            // console.log(input.value);
+            let li = document.createElement("li");
+            let text = document.createTextNode(input.value);
+            let img = document.createElement("img");
+            img.setAttribute("src", "/img/want.jpg");
+            img.setAttribute("alt", "star");
+            img.style.width = '20px';
+            li.appendChild(img);
+            li.appendChild(text);
+            target.appendChild(li);
+
+            // target.insertAdjacentElement('');
+            newRegister(); // 제거
+        }
+
+        
+        function newRegister() {
+            var items = document.querySelectorAll("li");
+            for(let i = 0; i < items.length; i++) {
+                items[i].addEventListener("click", function() {
+                    if(this.parentNode)
+                        this.parentNode.removeChild(this);
+                });
+            }
+        }
+        
+
+        //요소 삭제
+        //부모요소.innerHTML = "";
+        //부모요소.remove(); 
+        //부모요소.removeChild(요소)
+
+        // let crect = document.querySelector("#rect");
+        // crect.addEventListener("mouseover", function() {
+        //     crect.style.backgroundColor = "green";
+        //     crect.style.borderRadius = "50%";
+        // });
+
+        // crect.addEventListener("mouseout", function() {
+        //     crect.style.backgroundColor = "";
+        //     crect.style.borderRadius = "";
+        // });
+
+
+        // var pics = document.getElementsByClassName("pic");
+        // var lightbox = document.getElementById("lightbox");
+        // var lightboxImage = document.getElementById("lightboxImage");
+
+        // for(let i = 0; i < pics.length; i++) {
+        //     pics[i].addEventListener("click", showLight());
+        // }
+
+        // function showLight() {
+        //     var biglocation = this.getAttribute("data");
+        //     lightboxImage.setAttribute("src", biglocation);
+        //     lightbox.style.display = "block";
+        // }
+
+        // lightbox.onclick = function() {
+        //     lightbox.style.display = "none";
+        // }
+    </script>
+
+    <div id="con">
+        <h1> Web Programming</h1>
+        <a href="#" onclick="addP(); this.onclick='';">더 보기</a>
+        <div id="info"></div>
+    </div>
+    <script>
+        function addP() {
+            var newP = document.createElement("p");
+            var txtNode = document.createTextNode("Dom은 ㅋㅋㅋㅋㅋㅋ");
+            newP.appendChild(txtNode);
+            // document.getElementById("info").appendChild(newP);
+        
+
+            var newImg = document.createElement("img");
+            var srcNode = document.createAttribute("src");
+            var altNode = document.createAttribute("alt");
+
+            srcNode.value = "/img/want.jpg";
+            altNode.value = "star";
+            newImg.setAttributeNode(srcNode);
+            newImg.setAttributeNode(altNode);
+
+            document.getElementById("info").appendChild(newP);
+            document.getElementById("info").appendChild(newImg);
+        }
+    </script>
+</body>
+</html>

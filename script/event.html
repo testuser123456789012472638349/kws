@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#outDiv {
+            padding: 50px;
+            background-color: blue;
+            color: white;
+        }
+        div#inDiv {
+            padding: 50px;
+            background-color: yellow;
+            color: red;
+        }
+        p {
+            height: 50px;
+            background-color: green;
+            transition: 1s;
+        }
+
+        body.pink {
+            background-color: pink;
+        }
+        body.pink p {
+            width: 100%;
+            background-attachment: green;
+        }
+
+        body.green {
+            background-color: green;
+        }
+        body.green p {
+            background-color: red;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outDiv" >
+        body에 pink클래스 추가
+        <div id="inDiv">
+            body에 green클래스 추가
+            <p></p>
+        </div>
+    </div>
+    <a href="http://hscampus.com" target="_blank">효성</a>
+    <script>
+        //부모의 이벤트를 가져가는 것: 캡처링
+        //자식의 이벤트를 가져가는 것: 버블링
+        //target 이벤트가 일어난 요소
+
+        outDiv.onclick = function(e) {
+            //alert(e.target.tagName + " : " + this.id);
+            if(document.body.classList.contains('green')) 
+                document.body.classList.remove('green');
+
+            document.body.classList.add('pink');
+        };
+        inDiv.onclick = function(e) {
+            // console.log('green');
+            e.stopPropagation();
+            //alert(e.target.tagName + " : " + this.id);
+            if(document.body.classList.contains('pink')) 
+                document.body.classList.remove('pink');
+            document.body.classList.add('green');
+        };
+        document.querySelector("p").onclick = function(e) {
+            e.stopPropagation(); //버블링 차단
+            alert(e.target.tagName + " : " + this.tagName);
+        };
+
+        // outDiv.addEventListener('click', function (e) {
+        //     alert(e.target.tagName + " : " + this.id);
+        // }, true);
+
+        // inDiv.addEventListener('click', function (e) {
+        //     alert(e.target.tagName + " : " + this.id);
+        // }, true);
+
+        // outDiv.querySelector("p").addEventListener('click', function (e) {
+        //     alert(e.target.tagName + " : " + this.tagName);
+        // }, true);
+
+        // document.querySelector("a").onclick = function(e) {
+        //     alert('test');
+        //     e.preventDefault(); //태그의 기본 작동을 막음
+        //     console.log(e.defaultPrevented); //default prevent값 체크 속성
+        // };
+
+        // console.dir(document.body.classList);
+    </script>
+
+    <!-- <div>
+        <img src="/img/want3.jfif" id="aa">
+        <img src="/img/want4.jfif" id="bb">
+        <img src="/img/want.jpg" id="cc">
+    </div>
+    <script>
+        var pic = document.querySelector("#aa");
+        pic.onclick = function() {
+            alert('이미지 클릭 했음');
+        }
+
+        var pic1 = document.getElementById("bb");
+        pic1.onclick = changPic();
+
+        function changPic() {
+            pic1.src = "/img/want2.jpg";
+            // alert('이미지 클릭 했음');
+        }
+
+        pic1.onclick = function() {
+            pic1.src = "/img/c.png";
+            console.log("클릭한 이미지 파일" + this.src);
+        }
+
+        var cover = document.getElementById("cc");
+        cover.addEventListener("mouseover", changPic1);
+        cover.addEventListener("mouseout", originPic1);
+
+        function changPic1() {
+            cover.src = "/img/want2.jpg";
+        }
+
+        function originPic1() {
+            cover.src = "/img/want.jpg";
+        }
+    </script> -->
+</body>
+</html>
