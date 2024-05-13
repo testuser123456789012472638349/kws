@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        width: 100%;
+        /*linear-gradient : 그라데이션주기*/
+        background: linear-gradient(to bottom, #E6E6FA 0%, #FFF0F5);
+        
+    }
+    .wrapper{
+        margin: 120px auto;
+        max-width: 700px;
+        width: 100%;
+        background: wheat;
+        padding: 25px;
+        border-radius: 6px;
+    }
+    .wrapper header{
+        margin-bottom: 30px;
+        font-size: 50px;
+        font-weight: 700;
+        letter-spacing: 15px;
+        text-align: center;
+        font-family: 'Koulen', cursive;
+    }
+
+    /*.wrapper안에 있는 것을 부를때(태그 설정 방법은 무궁무진)*/
+    .wrapper .inputField{
+        display: flex;  
+        margin: 5px auto 20px ; 
+        height: 45px;
+        width: 700px;
+        font-family:'Hi Melody', cursive;
+    }
+    .xi-plus{ /* +버튼 굵기지정  */
+        font-weight: bold;
+        color: wheat;
+    }
+    .inputField input{
+        color: black;
+        padding-left: 15px;
+        width: 600px;
+        height: 100%;
+        border: none;
+        font-size: 15px;
+        border-radius: 5px;
+        outline: none;  /*inputbox 클릭시 테두리 안보이게*/
+    }
+    .inputField button{
+        width: 50px;
+        height: 100%;
+        border: none;
+        border-radius: 3px;
+        background: rgb(6, 6, 6);
+        /* background: rgb(249, 233, 143); */
+        cursor: pointer;
+    }
+    .wrapper .Todolist{
+        display: flex;
+    }
+    .Todolist li{
+        width: 650px;
+        list-style: none;
+        line-height: 40px; /*수직 가운데 정렬 : 보통 height랑 같은 숫자를 쓴다*/
+        position: relative;
+        margin-bottom: 9px;
+        text-indent: 15px; /*들여쓰기*/
+        background: rgb(241, 242, 241);
+        border-radius: 3px;
+        font-weight: 400;
+        cursor: pointer;
+    }
+    .wrapper .footer{
+        font-weight: 600;
+        text-indent: 15px;
+        display: flex;
+        width: 100%;
+        margin-top: 30px;
+        justify-content: right;/*flex때문에 써준다*/
+    }
+    .footer button{
+        color: wheat;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 900;
+        padding: 6px 10px;
+        width: 100px;
+        height: 40px;
+        border: none;
+        border-radius: 9px;
+        background: rgb(6, 6, 6);
+    }
+    .footer button:hover{
+        color : rgb(6, 6, 6);
+        background-color: white;
+    }
+    </style>   
+</head>
+<body>
+    <div class="wrapper">
+        <header>TodoList</header>        
+        <div class="inputField">
+            <input type="text" id="addValue" placeholder="할 일 추가하기" autofocus/><!--자동포커스-->
+            <button type="button" id = "btn" onclick="addTodo()"><i class="xi-plus xi-2x"></i></button>
+        </div>
+        <div>
+            <ul id="addTodo" class="Todolist"> 
+                <li><div id='result'></div></li>
+            </ul>
+        </div>
+        <div class="footer">
+            <button type="button" id = "allClear" onclick="allClearList()">모두 삭제</button>
+        </div>
+    </div>
+    <script>
+        function addTodo(){
+            if(addValue.value==false){ /*''가능 */
+                alert('내용을 입력하세요!');
+            }else{
+            let list = document.createElement("li");
+            let del = document.createElement('button');
+            list.innerHTML = addValue.value;
+            result.appendChild(list); //추가된 할일에 할일 리스트 추가하기
+            list.appendChild(del);    //할일 리스트 추가시 삭제버튼도 추가    
+            del.innerText = "x";      //삭제버튼에 들어갈 'x'자 문자
+            del.style.fontSize = "20px";
+            del.style.border = "none";
+            del.style.float = "right";
+            del.style.right = "17px";
+            del.style.marginTop = "10px";
+            del.style.cursor = "pointer";
+            del.addEventListener("click", deleteList); //삭제버튼 클릭시 리스트지우기 이벤트 실행
+            del.style.position='relative';
+            
+            /*할일 추가할 때마다 삭제버튼도 같이 추가돼기-이 방법도 가능 */
+            //list.innerHTML+="<button type='button' id ='remove' onclick='removeList()'><i class='xi-trash xi-2x'></span></i></button>";
+            
+            addValue.value = "";                            //할일 입력창 초기화
+            addValue.focus();                               //강제 커서 깜빡임
+            list.addEventListener("click", function(){      //할일 완료 후 클릭시 밑줄로 표시
+                list.style.textDecoration = "line-through";
+                list.style.color = "gray";                  //클릭시 색변환
+            })
+        }
+        }
+        //할일 목록 삭제시
+        function deleteList(e){ //삭제 버튼(x) 클릭시 
+            let removeOne = e.target.parentElement;  //선택한 목록 한개만 지우기(부모 객체를 지운다)
+            removeOne.remove();
+        }
+        // //모두 삭제시
+        function allClearList(e){
+            if(confirm("정말 삭제하시겠습니까?")==true){ //취소메시지가 true(ok)일때
+                if(result.innerText==''){                      //목록칸이 비어있다면
+                    alert("삭제할 목록이 없습니다");            //삭제할 목록이 없다는 경고창뜨기
+                }else{                                         //삭제할 목록이 있다면
+                    result.innerText='';                       //전체 삭제
+                }
+            }else{                                      //취소메시지가 false(no)일때
+                return false;                           //삭제 취소
+            }
+        }
+        //입력값 한개만 나오는 코드
+        // function addTodo(){   //+버튼을 누르면
+            // const addValue = document.getElementById('addValue').value;
+            // document.getElementById("result").innerText = addValue;
+        // }
+
+        //변수지정 방법 : const, let, var
+        //css에는 꾸미는 기능만, js에서 동적으로 처리하는 기능만 넣은 상태
+    </script>
+</body>
+</html>

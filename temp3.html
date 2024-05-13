@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(177, 100, 100);
+        }
+        #wrap {
+            margin: 120px auto;
+            width: 100%;
+            background: wheat;
+            padding: 25px;
+            border: 10px;
+            max-width: 95%;
+            border-radius: 30px;
+        }
+        #wrap > header {
+            text-align: center;
+            font-size: 45px;
+            font-weight: 1000;
+            letter-spacing: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #wrap > #Input {
+            margin-top: 30px;
+            padding-left: 10px;
+            height: 100%;
+            border: none;
+            font-size: 20px;
+            border-radius: 10px;
+            outline: none;
+        }
+        #wrap > #Input > input {
+            padding-left: 15px;
+            width: 80%;
+            height: 50px;
+            border: none;
+            font-size: 15px;
+            border-radius: 5px;
+            outline: none;
+        }
+        #wrap button {
+            height: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: black;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        #wrap button:hover{
+            transition: .5s;
+            background-color: lightslategray;
+            color: black;
+        }
+        #wrap .Todolist {
+            display: flex;
+        }
+        .Todolist li {
+            width: 100%;
+            line-height: 40px;
+            list-style: none;
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        #wrap > #footer {
+            display: flex;
+            width: 100%;
+            margin-top: 40px;
+            justify-content: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>TodoList</header>
+        <div id="Input">
+            <input type="text" id="addT" placeholder="해야 할 일을 입력하세요!" autofocus/>
+            <button type="button" id="btn" onclick="addText()"><span id="plus">추가</span></button>
+        </div>
+        <div>
+            <ul id="addTodo" class="Todolist">
+                <li><div id="result"></div></li>
+            </ul>
+        </div>
+        <div id="footer">
+            <button type="button" id="allClear" onclick="delAll()">전체 삭제</button>
+        </div>
+    </div>
+
+    <script>
+        function addText() {
+            if(addT.value === '') {
+                alert("해야 할 일을 입력하세요!");
+            } else {
+                let list = document.createElement("li");
+                let del = document.createElement('button');
+                list.innerHTML = addT.value;
+                result.appendChild(list);
+                list.appendChild(del);
+                del.innerText = "삭제";
+                del.style.fontSize = "15px";
+                del.style.backgroundColor = "white";
+                del.style.color = "red";
+                del.style.border = "none";
+                del.style.float = "right";
+                del.style.marginTop = "10px";
+                del.style.cursor = "pointer";
+                del.addEventListener("click", delLists);
+                del.style.position = "relative";
+
+                addT.value = "";
+                addT.focus();
+                list.addEventListener("click", function() {
+                    list.style.textDecoration = "line-through";
+                    list.style.color = "red";
+                });
+            }
+        }
+
+        function delLists(e) {
+            let delList = e.target.parentElement;
+            delList.remove();
+        }
+
+        function delAll(e) {
+            if(confirm("전체 삭제하겠습니까?") == true) {
+                if(result.innerText=='') {
+                    alert("삭제할 목록이 없습니다.");
+                } else {
+                    result.innerText = '';
+                }
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
