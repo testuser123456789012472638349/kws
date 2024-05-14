@@ -1,0 +1,7 @@
+li > button {
+    border: 1px solid;
+    min-width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer; 
+}
