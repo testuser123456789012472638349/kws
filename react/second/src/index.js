@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Game from './Game.js';
+import InputSample from './js/InputSample.js';
+import UserList from './js/UserList.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+  <UserList />
+  <InputSample />
     <Game />
     {/* <React.StrictMode>
       <App />
