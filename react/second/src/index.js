@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import Game from './Game.js';
 import InputSample from './js/InputSample.js';
 import UserList from './js/UserList.js';
+import Temptest from './js/Temptest.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+  <Temptest />
   <UserList />
   <InputSample />
     <Game />
