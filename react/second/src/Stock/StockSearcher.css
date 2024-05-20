@@ -1,0 +1,23 @@
+.stock-searcher {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+}
+.stock-searcher > div:first-child {
+    flex: 1;
+    margin-right: 5px;
+}
+.stock-searcher > div:first-child input {
+    width: 100%;
+    line-height: 35px;
+    padding-left: 7px;
+    font-size: 20px;
+}
+.stock-searcher > div:last-child button {
+    width: 99px;
+    height: 41px;
+    cursor: pointer;
+}
+.stock-searcher > div:last-child button img {
+    width: 28px;
+}

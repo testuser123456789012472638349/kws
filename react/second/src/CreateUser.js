@@ -1,5 +1,3 @@
-
-
 function CreateUser({username, email, onChange, onCreate}) {
     return (
         <div>

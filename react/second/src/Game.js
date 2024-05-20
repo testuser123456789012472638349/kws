@@ -1,5 +1,5 @@
 import React from "react";
-import JumpButton from "./JumpButton.js";
+import JumpButton from "./JumpButton";
 import Square from "./Square";
 
 import './css/Game.css';

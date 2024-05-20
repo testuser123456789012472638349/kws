@@ -1,5 +1,6 @@
 {
   "name": "second",
+  "homepage": "http://protos.dothome.co.kr/react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

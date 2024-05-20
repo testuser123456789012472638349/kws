@@ -1,0 +1,19 @@
+.stock-lister {
+    width: 100%;
+    margin-top: 15px;
+}
+.stock-lister, .stock-lister tr, .stock-lister th, .stock-lister td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+.stock-lister th, .stock-lister td {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.stock-lister th {
+    background-color: lightgreen;
+}
+.stock-lister th:nth-child(1) {
+    width: 52%;
+}

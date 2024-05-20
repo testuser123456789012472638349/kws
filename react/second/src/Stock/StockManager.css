@@ -1,0 +1,7 @@
+.stock-manager {
+    width: 960px;
+    margin: 0 auto;
+}
+.stock-manager * {
+    box-sizing: border-box;
+}
