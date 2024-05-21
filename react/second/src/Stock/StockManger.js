@@ -104,7 +104,7 @@ function StockManger() {
 
     return (
         <div className="stock-manager">
-            <h1>상품 제고관리</h1>
+            <h1>상품 재고관리</h1>
             <StockInputer 
                 stock={stock} 
                 modify={modify}

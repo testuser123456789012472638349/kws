@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo1"></div>
+    <div id="demo"></div>
+    <div id="img"></div>
+    <div id="img2"></div>
+    <div id="img3"></div>
+    <div id="img4"></div>
+    <script>
+        // 최적화 - 메모이제이션, 캐쉬 (CDN)
+        // 한번 실행된 구문이나 내용을 저장 후 다시 실행시 값만 리턴
+
+        function someFunc() {
+        //클로저
+        // 조건과 값을 저장할 공간 - 캐쉬
+        let props = []; //조건을 저장
+        let result = []; //조건에 대한 결과값
+
+        return (i) => {
+            //조건을 비교
+            const index = props.indexOf(i); //i와 같은 값이 존재하면 해당 인덱스를 리턴하고 없으면 -1을 리턴
+
+            if(index === -1) {
+            //복잡한 구문
+            console.log('복잡한 처리...');  
+            props.push(i);
+            result.push(i * 10);
+            return console.log(i * 10);
+            } else {
+            return console.log(result[index]);
+            }
+        }
+        }
+
+        let func = someFunc();
+        // func(10);
+        // func(20);
+        // func(10);
+        // func(20);
+        // func(10);
+
+        //클로저 : 클로저는 내부 함수에서 외부 함수의 범위에 대한 접근을 제공합니다.
+        function c() {
+        let inC = 7; //클로저 메서드
+
+        console.log(inC);
+        return function innerC() {
+            console.log(inC);
+        };
+        }
+
+        // c();
+        // let innerC = c();
+        // innerC();
+        // innerC();
+        // innerC();
+
+
+        // function counter() {
+        //   let i = 0;
+        
+        //   return () => {
+        //     i++;
+        //     console.log(i);
+        //   }
+        // }
+
+        // let closer = counter();
+        // closer();
+        // closer();
+        // closer();
+        // closer();
+        // closer();
+        // closer();
+        // let newC = counter();
+        // newC();
+
+
+        // Initiate counter
+        let counter = 0;
+
+        // Function to increment counter
+        const add = (function () {
+        let counter = 0;
+        console.log(counter);
+        return function () {counter += 1; return counter}
+        })();
+
+        // Call add() 3 times
+        console.log(add());
+        console.log(add());
+        console.log(add());
+
+        //비동기
+        //setTimeout(콜백함수, 시간) - 특정 시간이 지난 후 작동
+        //setInterval(콜백함수, 시간) - 특정 시간 간격마다 작동
+
+        // console.log(1);
+        // setTimeout(() => {
+        //   console.log('500');
+        // }, 500);
+        // console.log(2);
+        // console.log(3);
+        // setTimeout(() => {
+        //   console.log('100');
+        // }, 100);
+        // console.log(4);
+        // console.log(5);
+        // console.log(6);
+
+        window.onload = () => {
+        function myDisplayer(some) {
+            document.getElementById("demo").innerHTML = some;
+        }
+        
+        function myFirst() {
+            myDisplayer("Hello");
+        }
+        
+        function mySecond() {
+            myDisplayer("Goodbye");
+        }
+        
+        //동기
+        mySecond();
+        myFirst();
+
+        function myCalculator(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            setTimeout(() => {
+            myCallback(sum);
+            }, 1000);
+        }
+
+        myCalculator(5, 7, myDisplayer);
+
+         // Create an Array
+        const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+
+        for(let i = 0; i < myNumbers.length; i++) {
+           console.log(myNumbers[i]);
+        }
+
+        for(let item of myNumbers) {
+            console.log(item);
+        }
+
+        // function overZero(x) {
+        //     return x >= 0;
+        // }
+
+        // const posNumbers = removeNeg(myNumbers, overZero);
+
+        // Call removeNeg with a callback
+        const posNumbers = removeNeg(myNumbers, (x) => x >= 5);
+
+        // Display Result
+        setTimeout(() => {
+            document.getElementById("demo").innerHTML = posNumbers;
+        }, 2000);
+
+        document.getElementById("demo").innerHTML = posNumbers;
+
+        // Keep only positive numbers
+        function removeNeg(numbers, callback) {
+        const myArray = [];
+        for (const x of numbers) {
+            if (callback(x)) {
+            myArray.push(x);
+            }
+        }
+        return myArray;
+        }
+
+        function setLoading() {
+            let count = 0;
+
+            return function loadingImg(target, src, callback) {
+            const img = document.createElement("img");
+            img.src = src;
+            
+                (img.onload = function() {
+                setTimeout(function() {
+                    document.getElementById(target).innerHTML = "";
+                    document.getElementById(target).append(img);
+                }, 5000 * count);
+                })(count);
+
+            count++;  
+            callback();
+            };
+        }
+        
+
+        function showLoadingText(target) {
+            target.innerHTML = "로딩중...";
+        }
+
+        function showLoadingImg(target) {
+            target.innerHTML = "<img src='https://img.mk.co.kr/mkde/ic_loading_img.gif' alt='loading'>";
+        }
+
+        const loadingImg = setLoading();
+
+        loadingImg("img", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/2560px-Fronalpstock_big.jpg", () => {
+            showLoadingImg(document.getElementById('img'));
+        });
+        loadingImg("img2", "https://images.pexels.com/photos/1388069/pexels-photo-1388069.jpeg?cs=srgb&dl=pexels-wildlittlethingsphoto-1388069.jpg&fm=jpg", () => {
+            showLoadingText(document.getElementById('img2'));
+        });
+        loadingImg("img3", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPGH12dh3YIP9VSfRUj5hIwuI4kvv_Ye3IShGhBYpMQ&s", () => {
+            showLoadingImg(document.getElementById('img3'));
+        });
+        loadingImg("img4", "https://assets.entrepreneur.com/content/3x2/2000/20200429211042-GettyImages-1164615296.jpeg", () => {
+            showLoadingImg(document.getElementById('img4'));
+        });
+    }
+
+
+
+    window.onload = () => {
+        function myDisplayer(some) {
+            document.getElementById("demo1").innerHTML = some;
+        }
+        
+        function mySuccess(users) {
+            const arrUsers = JSON.parse(users);
+            let txt = `
+                <table border='1'>
+                <tr>
+                    <td>ID</td>
+                    <td>name</td>
+                <tr>
+            `;
+            
+            if(Array.isArray(arrUsers)) {
+
+                for(const user of arrUsers) {
+                txt += `<tr>
+                    <td>${user.id}</td>
+                    <td><a href="https://koreanjson.com/posts?userId=${user.id}">${user.name}</a></td>
+                </tr>`;
+                }
+
+                txt += `</table>`;
+                } else {
+                txt = '잘못된 데이터';
+                }
+
+                myDisplayer(txt);
+         }
+        // let myPromise = new Promise(function(myResolve, myReject) {
+        //   let x = 0;
+        
+        // // The producing code (this may take some time)
+        
+        //   if (x != 0) {
+        //     myResolve("OK");
+        //   } else {
+        //     myReject("Error");
+        //   }
+        // });
+        
+        // myPromise.then(
+        //   function(value) {myDisplayer(value);},
+        //   function(error) {myDisplayer(error);}
+        // );
+
+        // setTimeout(function() { myDisplayer("I love You !!!"); }, 3000);
+
+        // let myPromise2 = new Promise(function(myResolve, myReject) {
+        //   setTimeout(function() { myResolve("I love too !!"); }, 3000);
+        // });
+        
+        // myPromise2.then(function(value) {
+        //   document.getElementById("demo").innerHTML = value;
+        // }, function(value) {
+        //   document.getElementById("demo").innerHTML = value;
+        // });
+
+
+        // function getFile(myCallback) { //callback
+        //     //Ajax(비동기적 데이터 전송/수송) - iframe 태그
+        //     let req = new XMLHttpRequest();
+        //     req.open('GET', "https://koreanjson.com/users");
+        //     req.onload = function() {
+        //     if (req.status == 200) {
+        //         // console.log(req.responseText);
+        //         myCallback(req.responseText);
+        //     } else {
+        //         myCallback("Error: " + req.status);
+        //     }
+        //     }
+
+        //     req.send();
+        // }
+        
+        // getFile(myDisplayer);
+        // }
+    
+        let myPromise = new Promise(function(myResolve, myReject) {
+            let req = new XMLHttpRequest();
+            //https://koreanjson.com/posts?userId=10
+            req.open('GET', "https://koreanjson.com/users");
+            req.onload = function() {
+            if (req.status == 200) {
+                myResolve(req.response);
+            } else {
+                myReject("File not Found");
+            }
+            };
+            req.send();
+        });
+        
+        myPromise.then(
+            function(value) {mySuccess(value);},
+            function(error) {myDisplayer(error);}
+        );
+    }
+    </script>
+</body>
+</html>
