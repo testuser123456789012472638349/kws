@@ -323,6 +323,57 @@
             function(error) {myDisplayer(error);}
         );
     }
+    let numbers =[1,2,3,5,6,8,9,12];
+    let evenNums = numbers.filter(function(number) {
+        return number % 2 == 0;
+    });
+    console.log(evenNums);
+
+    function find1(id, cb) {
+        let user = {
+            id: id,
+            name: "User" + id,
+            email: id + "@test.com",
+        };
+        cb(user);
+    }
+    find1(1, function(user) {
+        console.log("user:", user.email);
+    });
+
+    function find2(id) {
+        let user = 1;
+        setTimeout(function() {
+            console.log("waited 0.1 sec.");
+            user = {
+                id: id,
+                name: "User" + id,
+                email: id + "@test"
+            }
+        }, 5000);
+        return user;
+    }
+    // let user = find2(1);
+    // console.log("is user:", user.name);
+    
+    function find3(id, cb) {
+        setTimeout(function() {
+            console.log("aaaaa 0.3 sec");
+            let user = {
+                id: id,
+                name: "User" + id,
+                email: id + "@test.com",
+            };
+            cb(user);
+        }, 3000);
+    }
+    find3(1, function(user) {
+        console.log("user:", user);
+    });
+
+    function find4(id, cb) {
+        setTimeout
+    }
     </script>
 </body>
 </html>
