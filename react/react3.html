@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, tr, td, th {
+            border: 1px solid;
+        }
+        th, td {
+            padding: 10px 17px;
+        }
+        table td:nth-child(2) {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>The XMLHttpRequest Object</h2>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+        <div id="demo"></div>
+    </div>
+    <script>
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // JSON 데이터
+                    // document.getElementById("demo").innerHTML = this.responseText;
+                    // const data = JSON.parse(this.responseText);
+                    // let str = "<table border='1'><tr><th>내용</th><th>만든날짜</th><th>'초'</th></tr>";
+                    // for(const item of data) {
+                    //     const createDate = new Date(item.createdAt);
+                    //     const strDate = createDate.getFullYear() + "년" + createDate.getMonth() + "월 " + createDate.getDate();
+                    //     const aaa = createDate.getSeconds() + "초";
+
+                    //     str += `
+                    //         <tr>
+                    //             <td>${item.content}</td>
+                    //             <td>${strDate}</td>
+                    //             <td>${aaa}</td>
+                    //         </tr>
+                    //     `;
+                    // }
+                    // str += "</table>";
+                    // document.getElementById("demo").innerHTML = str;
+                    console.log(this.responseText);
+                    document.getElementById("demo").innerHTML = this.responseText;
+
+                } else {
+                    document.getElementById("demo").innerHTML = "처리중...";
+                }
+            };
+            xhttp.open("GET", "http://192.168.0.48:7777");
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
