@@ -15,6 +15,7 @@ import url from 'url';
 import * as dt from './myModule.js';
 import MyModule from './myModule.js';
 // var dt = require('./myModule');
+
 console.dir(dt);
 console.dir(MyModule);
 dt.default.totalFunc("조길동");
@@ -47,16 +48,26 @@ http.createServer(function (request, response) {
 console.log('This example is different!');
 console.log('The result is displayed in the Command Line Interface');
 
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'your@gmail.com'
+        pass: 'yourpass'
+    }
+});
 /**
  * 모듈: 각각의 내용을 파일로 분리 시킨 것(라이브러리)
  * Node.js의 기본 모듈은 CommonJs를 사용(require)
  * import : UMD - https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/ - package.json 설정 필요
  */
 
-fs.unlink('t.txt', function (err) {
-    if (err) throw err;
-    console.log('delete');
-    // fs.readFile('t.txt', function(err, data) {
-    //     console.log(data.toString());
-    // });
-});
+// fs.unlink('t.txt', function (err) {
+//     if (err) throw err;
+//     console.log('delete');
+//     // fs.readFile('t.txt', function(err, data) {
+//     //     console.log(data.toString());
+//     // });
+// });

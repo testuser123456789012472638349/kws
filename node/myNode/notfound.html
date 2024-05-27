@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #counter {
+            text-align: center;
+            font-size: 72px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>404! NOT Found!</h1>
+    <div id="counter">0</div>
+    <script>
+        let cnt = 0;
+
+        setInterval(function() {
+            cnt ++;
+            counter.innerText = cnt;
+            if(cnt === 10) {
+                location.href = "http://localhost:7777";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
