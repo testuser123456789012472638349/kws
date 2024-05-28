@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>EJS</h1>
+    <p>ejs 문법은 &lt;% 와 %&gt; 사이에 표시</p>
+    <h3><%= name %></h3>
+    <p><%= age %></p>
+    <hr>
+    <% for(let i = 0; i < users.length; i++) { %>
+        <h2><%= users[i].name %>는 <%= users[i].age %>살</h2>
+    <% } %>
+    <button id="btnShowUser">click</button>
+    <ol id="display"></ol>
+    <script>
+        btnShowUser.onclick = () => {
+            let users = <%- JSON.stringify(users) %>;
+            // console.log(users);
+            
+            // users.forEach(i => {
+            //     console.log(i);
+            // });
+
+            // console.dir(users);
+
+            // for(let i = 0; i < users.length; i++) {
+            //     console.log(users[i]);
+            // }
+            
+            let str = "";
+
+            str += "<table border='1'>";
+            str += `<tr>`
+            str += `<td onclick="sortMembers();">이름</td><td onclick="sortMembers();">나이</td>`;
+            str += `</tr>`
+
+            users.map(item => {
+                // console.log(item);
+                str += `<tr>`
+                str += `<td>${item.name}</td><td>${item.age}</td>`;
+                str += `</tr>`
+            });
+
+            str += "</table>";
+
+            display.innerHTML = str;
+
+            function sortMembers() {
+
+            
+            let flag = {
+                name: 0,
+                age: 0
+            };
+
+            let test = true;
+            
+            const arrMembers = [
+                {name: users.name[0], age: users.age[0]},
+                {name: users.name[1], age: users.age[1]},
+                {name: users.name[2], age: users.age[2]},
+                {name: users.name[3], age: users.age[3]},
+                {name: users.name[4], age: users.age[4]},
+                {name: users.name[5], age: users.age[5]},
+            ]
+            if(test) {
+                if(!flag[key]) {
+                    arrMembers.sort((a, b) => {
+                        if(a[key] < b[key]) return -1;
+                    });
+                    flag[key] = 1;
+                } else {
+                    arrMembers.sort((a, b) => {
+                        if(a[key] > b[key]) return -1;
+                        else return 0;
+                    });
+                    flag[key] = 0;
+                }
+            }
+            }
+        }
+        // console.dir();
+
+    </script>
+</body>
+</html>

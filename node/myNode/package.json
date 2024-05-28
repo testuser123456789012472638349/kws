@@ -8,5 +8,12 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "keywords": ["html", "css", "js"]
+  "keywords": [
+    "html",
+    "css",
+    "js"
+  ],
+  "dependencies": {
+    "ejs": "^3.1.10"
+  }
 }

@@ -9,7 +9,7 @@
 */
 
 const server = require("http").createServer();
-//listen(포트번호, 콜백함수) 서버 오픈
+//listen(포트번호[, 콜백함수]) 서버 오픈
 server.listen(2045, function() {
     console.log("run at 2046");
 });
