@@ -24,60 +24,81 @@ const users = [
     val,
     {
         name: '홍길동',
-        age: 56
+        age: 30
     },
     {
         name: '최길동',
-        age: 16
+        age: 18
     },
     {
         name: '조길동',
-        age: 94
+        age: 63
     },
     {
         name: '임길동',
-        age: 91
+        age: 7
     },
-    {
-        name: '주길동',
-        age: 48
-    },
+
 ];
 
-http.createServer((req,res) => {
-    fs.readFile("useEjs.html", "utf-8", function(err, data) {
-        res.writeHead(200, {"Content-Type" : "text/html"});
-        res.end(ejs.render(data, {name: val.name, age: val.age, users: users}));
+function makeObject(str) {
+    let arrProps = str.split('&');
+    let obj = {};
+    arrProps.forEach(val => {
+        let arrProp = val.split("=");
+        obj[arrProp[0]] = decodeURI(arrProp[1]);
     });
+    return obj;
+}
+
+http.createServer((req, res) => {
+    if(req.method === "GET") {
+        fs.readFile("useEjs.html", "utf-8", function(err, data) {
+            res.writeHead(200, {"Content-Type" : "text/html"});
+            res.end(ejs.render(data, {name: val.name, 
+                                        age: val.age, 
+                                        users: users, 
+                                        show: false}));
+        });
+    } else {
+        req.on("data", function(user) {
+            fs.readFile("useEjs.html", "utf-8", function(err, data) {
+                let objUser = makeObject(user.toString());
+                let valUser = {
+                    name: objUser.name,
+                    age: objUser.age
+                };
+                users.push(valUser);
+                if(objUser.sortOn) {
+                    let flag = objUser.sortOn === "name" 
+                        ? objUser.flagName 
+                        : objUser.flagAge;
+                    sort(objUser.sortOn, flag);
+                }
+
+                res.writeHead(200, {"Content-Type" : "text/html"});
+                res.end(ejs.render(data, {name: val.name, 
+                                            age: val.age, 
+                                            users: users, 
+                                            show: true}));
+            });
+
+        });
+    }
+
+    function sort(type, flag) {
+        users.sort(function(a, b) {
+            if(flag) {
+                if(type === "name")
+                    return a[type] == b[type] ? 0 : a[type] > b[type] ? 1 : -1;
+                else return a[type] - b[type]
+            } else {
+                if(type === "name")
+                    return a[type] == b[type] ? 0 : a[type] > b[type] ? -1 : 1;
+                else return b[type] - a[type]
+            }
+        });
+    }
 }).listen(7777, () => {
     console.log(7777);
 });
-
-// const server = http.createServer((req, res) => {
-//     if(req.method === "GET") {
-//         fs.readFile("useEjs.html", "utf-8", function(err, data) {
-//             res.writeHead(200, {"Content-Type" : "text/html; charset=utf-8"});
-//             res.end(ejs.render(data, {name: val.name, age: val.age, users: users}));
-//         });
-//     } else {
-//         const aaa = additional(data.toString());
-//         req.on('data', function(data) {
-//             res.writeHead(200, {"Content-Type" : "text/html; charset=utf-8"});
-//             res.end(`
-//                     str += <tr>
-//                     str += <td>${decodeURI(aaa.name)}</td><td>${decodeURI(aaa.age)}</td>;
-//                     str += </tr>
-//             `);
-//         });
-//     }
-// });
-
-// function additional(str) {
-//     let arradi = str.split('&');
-//     let addi = {};
-//     arradi.forEach(value => {
-//         let arradi = value.split("=");
-//         addi[arradi[0]] = arradi[1];        
-//     });
-//     return addi;
-// }

@@ -1,0 +1,5 @@
+목록
+
+tempate2.js(2024/05/29) - 템플릿사용하여 배열에 값을 넣고 정렬
+exp.js(2024/05/29) - express관련(1)
+sendPost.html(recPost.js)(2024/05/29) - express관련(2)  body-parser
