@@ -3,3 +3,5 @@
 tempate2.js(2024/05/29) - 템플릿사용하여 배열에 값을 넣고 정렬
 exp.js(2024/05/29) - express관련(1)
 sendPost.html(recPost.js)(2024/05/29) - express관련(2)  body-parser
+fileUplader.html(2024/05/30) - 파일업로드(파일이름지정)
+exp.js, login.html, loginok (2024/05/30) - 쿠키관련, 로그인, 로그아웃, 회원가입

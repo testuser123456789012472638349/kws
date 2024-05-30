@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+
+        쿠키 외부 모듈: cookie-parser
+        npm i cookie-parser
+     -->
+</head>
+<body>
+    <form method="post">
+        <input type="text" name="uid" id="uid"><br>
+        <input type="password" name="upass" id="upass"><br>
+        <input type="submit" value="login">
+    </form>
+    <script>
+        let log = <%= log ? false : true %>;
+        // console.log(typeof log);
+        if(!log) {
+            alert('값이 틀립니다.');
+            uid.value = '';
+            upass.value = '';
+            console.log(uid.style);
+            uid.style.background = 'lightgreen';
+            uid.focus();
+        }
+    </script>
+</body>
+</html>
