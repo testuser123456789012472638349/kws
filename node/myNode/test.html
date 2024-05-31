@@ -6,15 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <input type="text" name="textContent"><br>
+    <form method="post">
+        <!-- enctype="multipart/form-data" -->
+        <!-- <input type="text" name="textContent"><br>
         <input type="file" name="img"><br>
         <input type="text" name="Id"><br>
         <input type="password" name="Pass"><br>
-        <input type="submit" value="전송">
+        <input type="submit" value="전송"> -->
         <input type="text" name="uid"><br>
         <input type="password" name="upass"><br>
         <input type="submit" value="login">
     </form>
+    <script>
+        let log = <%= log ? false : true %>;
+        if(!log) {
+            alert('값이 틀립니다.');
+            uid.value = '';
+            upass.value = '';
+            uid.style.background = 'lightgreen';
+            uid.focus();
+        }
+    </script>
 </body>
 </html>
