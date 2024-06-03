@@ -155,138 +155,300 @@
 //     console.log(7777);
 // });
 
+///////////////////////////////////////////////////////////////////////////////////////////
+// let fs = require("fs");
+// let ejs = require("ejs");
+// let express = require("express");
+// let bodyParser = require("body-parser");
+// let cookieParser = require("cookie-parser");
+// const path = require("path");
+// const { routerA } = require("./routerA");
 
-let fs = require("fs");
-let ejs = require("ejs");
-let express = require("express");
-let bodyParser = require("body-parser");
-let cookieParser = require("cookie-parser");
-const path = require("path");
-const { routerA } = require("./routerA");
+// let app = express();
 
-let app = express();
+// app.use(cookieParser());
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
+// const myPageRouter = express.Router();
+// app.use("/myPageRouter", myPageRouter)
 
-const myPageRouter = express.Router();
-app.use("/myPageRouter", myPageRouter)
+// myPageRouter.get("/myPageRouter", (req, res) => {
+//     res.send("ssndfsnflknskdlf");
+// });
 
-myPageRouter.get("/myPageRouter", (req, res) => {
-    res.send("ssndfsnflknskdlf");
-});
+// const users = [
+//     {
+//         uid: '고길동',
+//         uname: '고길동',
+//         upass: 28
+//     },
+//     {
+//         uid: '홍길동',
+//         uname: '홍길동',
+//         upass: 12
+//     },
+//     {
+//         uid: '마길동',
+//         uname: '마길동',
+//         upass: 28
+//     },
+//     {
+//         uid: '최길동',
+//         uname: '최길동',
+//         upass: 28
+//     },
+// ];
 
-const users = [
-    {
-        uid: '고길동',
-        uname: '고길동',
-        upass: 28
-    },
-    {
-        uid: '홍길동',
-        uname: '홍길동',
-        upass: 12
-    },
-    {
-        uid: '마길동',
-        uname: '마길동',
-        upass: 28
-    },
-    {
-        uid: '최길동',
-        uname: '최길동',
-        upass: 28
-    },
-];
+// function makeObject(str) {
+//     let arrProps = str.split('&');
+//     let obj = {};
+//     arrProps.forEach(val => {
+//         let arrProp = val.split("=");
+//         obj[arrProp[0]] = decodeURI(arrProp[1]);
+//     });
+//     return obj;
+// }
 
-function makeObject(str) {
-    let arrProps = str.split('&');
-    let obj = {};
-    arrProps.forEach(val => {
-        let arrProp = val.split("=");
-        obj[arrProp[0]] = decodeURI(arrProp[1]);
-    });
-    return obj;
-}
+// app.get("/", (req, res) => {
+//     if(req.cookies.auth) {
+//         res.send("환영합니다. " + req.cookies.uname + "님<br><a href='/logout'>로그아웃</a><br><a href='/myPageRouter'>마이페이지1(Using static)</a><br><a href='/myPageRouter'>마이페이지2(Using Router)</a>");
+//     } else {
+//         res.send("<a href='/login'>로그인</a><a href='/join'>회원가입</a>")
+//     }
+// });
+// app.get("/join", (req, res) => {
+//     res.send(`
+//         <form method='post'>
+//             <input type='text' name='uid' placeholder='아이디'><br>
+//             <input type='password' name='upass' placeholder='비밀번호'><br>
+//             <input type='text' name='uname' placeholder='닉네임'><br>
+//             <input type='submit' value='join'><br>
+//         </form>
+//     `);
+// });
+// app.post("/join", (req, res) => {
+//     const {uid, uname, upass} = req.body;
 
-app.get("/", (req, res) => {
-    if(req.cookies.auth) {
-        res.send("환영합니다. " + req.cookies.uname + "님<br><a href='/logout'>로그아웃</a><br><a href='/myPageRouter'>마이페이지1(Using static)</a><br><a href='/myPageRouter'>마이페이지2(Using Router)</a>");
-    } else {
-        res.send("<a href='/login'>로그인</a><a href='/join'>회원가입</a>")
-    }
-});
-app.get("/join", (req, res) => {
-    res.send(`
-        <form method='post'>
-            <input type='text' name='uid' placeholder='아이디'><br>
-            <input type='password' name='upass' placeholder='비밀번호'><br>
-            <input type='text' name='uname' placeholder='닉네임'><br>
-            <input type='submit' value='join'><br>
-        </form>
-    `);
-});
-app.post("/join", (req, res) => {
-    const {uid, uname, upass} = req.body;
+//     let user = {
+//         uid: uid,
+//         uname: uname,
+//         upass: upass
+//     };
 
-    let user = {
-        uid: uid,
-        uname: uname,
-        upass: upass
-    };
+//     users.push(user);
+//     res.send(`
+//         <script>
+//             alert('환영합니다. ${uname}님.\\n로그인 해주세요.');
+//             location.href = '/login';
+//         </script>
+//     `);
+// });
+// app.get("/login", (req, res) => {
+//     fs.readFile("test.html", (err, data) =>{
+//         let log = false;
+//         if(req.query) {
+//             log = req.query.log;
+//         }
+//         res.send(ejs.render(data.toString(), {log: log}));
+//     });
+// });
+// app.post("/login", (req, res) => {
+//     const {uid, upass} = req.body;
+//     if(uname = isUser(uid, upass)) {
+//         res.cookie("auth", true);
+//         res.cookie("uname", uname);
+//         res.redirect("/");
+//     } else {
+//         res.redirect("login?log=true");
+//     }
+// });
 
-    users.push(user);
-    res.send(`
-        <script>
-            alert('환영합니다. ${uname}님.\\n로그인 해주세요.');
-            location.href = '/login';
-        </script>
-    `);
-});
-app.get("/login", (req, res) => {
-    fs.readFile("test.html", (err, data) =>{
-        let log = false;
-        if(req.query) {
-            log = req.query.log;
+// function isUser(uid, upass) {
+//     let user = users.find(user => user.uid === uid && user.upass);
+//     if(user) return user.uname;
+//     return false;
+// }
+// app.get("/logout", (req, res) => {
+//     res.clearCookie("auth");
+//     res.redirect("/");
+// });
+
+// app.get("/mypage", async(req, res) => {
+//     res.sendFile(path.join(__dirname, 'testlogin.html'));
+// });
+
+// myPageRouter.get("/", (req, res) => {
+//     res.send("fkjnksdjfhjksf");
+// });
+
+// app.listen(8888, () => {
+//     console.log(8888);
+// });
+
+
+
+
+// const express = require("express");
+// const bodyParser = require("body-parser");
+
+// const MemoryDB = (function() { //값 추가 삭제 기능
+//     let myObject = {};
+//     let db = [];
+//     let id = 0;
+
+//     myObject.get = function(id) {
+//         if(id) {
+//             id = (typeof id === 'string') ? Number(id) : id // id는 문자로 넘어오기 때문
+//             return db.filter(todo => todo.id === id); //filter() 반복하면서 값을 체크하는 메소드
+//         } else {
+//             return db;
+//         }
+//     } // 리스트 전부를 반환하는 메소드 : get()
+
+//     myObject.insert = function(todo) {
+//         todo.id = ++id; // 1부터~
+//         db = db.concat(todo); //conct() 배열 합침.
+//         return todo;
+//     }
+
+//     return myObject;
+// })(); // 즉시 실행 함수 생성
+
+// const app = express();
+
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.get("/todo", function(req, res) { // 리스트
+//     res.send(MemoryDB.get());
+// });
+// app.post("/todo", function(req, res) { //내용추가
+//     //todo
+//     //dateTodo(일자), doTodo(내용), isTodo(했는지 여부)
+//     let dateTodo = req.body.dateTodo;
+//     let doTodo = req.body.doTodo;
+//     let isTodo = req.body.isTodo;
+
+//     if(dateTodo && doTodo && isTodo) { //생성 여부 확인
+//         MemoryDB.insert({
+//             dateTodo: dateTodo,   // 새로운 객체 속성 이름 : 넘어온 값
+//             doToto: doTodo,
+//             isTodo: isTodo        
+//         }); //새로운 객체 생성
+
+//         res.redirect('http://localhost:8888/todo');
+//     } else {
+//         throw new Error('Insert Error!');
+//     }
+// });
+// app.get("/todo/:id", function(req, res) { // 객체(주소에 id값) 불러오기
+//     res.send(MemoryDB.get(req.params.id));
+// });
+// app.put("/todo/:id", function(req, res) { //값 표시
+    
+// });
+// app.delete("/todo/:id", function(req, res) { //값 삭제
+    
+// });
+
+// app.listen(8888, () => {
+//     console.log("8888");
+// });
+
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+
+const MemoryDB = (function() {
+    let myObject = {};
+    let db = [];
+    let id = 0;
+
+    myObject.get = function(id) {
+        if(id) {
+            id = (typeof id === 'string') ? Number(id) : id;
+            return db.filter(todo => todo.id === id);
+        } else {
+            return db;
         }
-        res.send(ejs.render(data.toString(), {log: log}));
-    });
+    }
+
+    myObject.insert = function(todo) {
+        todo.id = ++id;
+        db = db.concat(todo);
+        return todo;
+    }
+
+    myObject.remove = function(id) {
+        let result = false;
+
+        if(id) {
+            id = (typeof id === 'string') ? Number(id) : id;
+            db = db.filter(todo => todo.id !== id);
+            result = true;
+        } else {
+            db = [];
+            result = true;
+        }
+
+        return result;
+    }
+
+    return myObject;
+})();
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.get("/todo", function(req, res) {
+    res.send(MemoryDB.get());
 });
-app.post("/login", (req, res) => {
-    const {uid, upass} = req.body;
-    if(uname = isUser(uid, upass)) {
-        res.cookie("auth", true);
-        res.cookie("uname", uname);
-        res.redirect("/");
+
+app.post("/todo", function(req, res) {
+    let dateTodo = req.body.dateTodo;
+    let doTodo = req.body.doTodo;
+    let isTodo = req.body.isTodo;
+
+    if(dateTodo && doTodo && isTodo) {
+        MemoryDB.insert({
+            dateTodo: dateTodo,
+            doTodo: doTodo,
+            isTodo: isTodo
+        });
+
+        res.redirect('http://localhost:8888/todo');
     } else {
-        res.redirect("login?log=true");
+        throw new Error('Insert Error');
     }
 });
 
-function isUser(uid, upass) {
-    let user = users.find(user => user.uid === uid && user.upass);
-    if(user) return user.uname;
-    return false;
-}
-app.get("/logout", (req, res) => {
-    res.clearCookie("auth");
-    res.redirect("/");
+app.get("/todo/:id", function(req, res) {
+    res.send(MemoryDB.get(req.params.id));    
 });
 
-app.get("/mypage", async(req, res) => {
-    res.sendFile(path.join(__dirname, 'testlogin.html'));
+app.put("/todo/:id", function(req, res) {
+    let id = req.params.id;
+    let dateTodo = req.body.dateTodo;
+    let doTodo = req.body.doTodo;
+    let isTodo = req.body.isTodo;
+
+    let todo = MemoryDB.get(id)[0];
+
+    todo.dateTodo = dateTodo || todo.dateTodo;
+    todo.doTodo = doTodo || todo.doTodo;
+    todo.isTodo = isTodo || todo.isTodo;
+
+    res.redirect('http://localhost:8888/todo');
 });
 
-myPageRouter.get("/", (req, res) => {
-    res.send("fkjnksdjfhjksf");
+app.delete("/todo/:id", function(req, res) {
+    MemoryDB.remove(req.params.id);
+    res.redirect('http://localhost:8888/todo');
+});
+
+app.delete("/todo", function(req, res) {
+    MemoryDB.remove();
+    res.redirect('http://localhost:8888/todo');
 });
 
 app.listen(8888, () => {
-    console.log(8888);
+    console.log("8888");
 });
-
-
-
-
-
