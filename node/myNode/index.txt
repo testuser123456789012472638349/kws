@@ -6,3 +6,7 @@ sendPost.html(recPost.js)(2024/05/29) - express관련(2)  body-parser
 fileUplader.html(2024/05/30) - 파일업로드(파일이름지정)
 exp.js, login.html, loginok (2024/05/30) - 쿠키관련, 로그인, 로그아웃, 회원가입
 router.js, routerA.js, routerB.js, routerAll.js (2024/05/31) - 로우터관련
+todolist.js(2024/06/03) - node.js postman프로그램(GET, POST, DELETE 등 자동 구현 기능 가능) 관련
+first.sql(2024/06/03) - MySQL관련(MySQL Workbench 프로그램)
+mySQL 파일 내부 testSQL.js(2024/06/04) - sql 직접 구현 및 구동
+neo 파일 내부 query.html, query.js(2024/06/04) visual studio code 프로그램으로 sql 구현 및 구동
