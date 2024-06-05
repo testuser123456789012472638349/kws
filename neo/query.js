@@ -27,12 +27,17 @@ app.get("/", function(req, res) {
 });
 app.post("/", function(req, res) {
     const {query} = req.body;
+
+    //수정
+    // \n 개행문자(new line)
+    // \r 개행문자(캐리지 리턴)
+    const run = query.replace(/\n|\r/g, ' ');
     fs.readFile("query.html", "utf-8", function(err, data) {
         client.query(query, function(sqlError, result) {
             if(sqlError) {
                 res.send(ejs.render(data, {
                     code: 0,
-                    error: sqlError,
+                    error: sqlError.sqlMessage,
                     result: null,
                     query: query
                 }));
