@@ -10,3 +10,4 @@ todolist.js(2024/06/03) - node.js postman프로그램(GET, POST, DELETE 등 자�
 first.sql(2024/06/03) - MySQL관련(MySQL Workbench 프로그램)
 mySQL 파일 내부 testSQL.js(2024/06/04) - sql 직접 구현 및 구동
 neo 파일 내부 query.html, query.js(2024/06/04) visual studio code 프로그램으로 sql 구현 및 구동
+node/board 파일 내부 edit.html, header.html, headmenu.html, index.js, insert.html, list.html, view.html - 웹게시판 구현 및 구동

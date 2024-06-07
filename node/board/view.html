@@ -1,0 +1,62 @@
+<%- include(process.cwd() + '/header.html') %>
+<body>
+    <script>
+        // console.dir(<%-JSON.stringify(result)%>);
+        // (new Date()).getDay
+        function askDel() {
+            let val = confirm('삭제하시겠습니까?');
+            if(val) {
+                location.href = '/delete/<%= result[0].board_id %>';
+            }
+        }
+    </script>
+    <% 
+        const board = result[0];
+        const today = new Date(board.board_date);
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const days = today.getDate();
+        const week = today.getDay();
+        
+        let weeks = "";
+        switch(week) {
+            case 0:
+                weeks = '일요일';
+                break;
+            case 1:
+                weeks = '월요일';
+                break;
+            case 2:
+                weeks = '화요일';
+                break;
+            case 3:
+                weeks = '수요일';
+                break;
+            case 4:
+                weeks = '목요일';
+                break;
+            case 5:
+                weeks = '금요일';
+                break;
+            case 6:
+                weeks = '토요일';
+                break;
+        }
+        const strToday = year + "년 " + month + "월 " + days + "일 " + weeks;
+
+        console.log(process.cwd());
+    %>
+    <!-- 
+        메뉴: 리스트, 등록 
+        다른 페이지를 삽입: include
+    -->
+    <%- include(process.cwd() + '/headmenu.html') %>
+    <span><a href='/edit/<%= board.board_id %>'>수정</a></span>
+    <span><a onclick="askDel();">삭제</a></span>
+    <hr>
+    <div>ID: <span><%= board.board_id %></span></div>
+    <div>content: <span><%= board.board_content %></span></div>
+    <div>date: <span><%= strToday %></span></div>
+    <%- include(process.cwd() + '/headmenu.html') %>
+</body>
+</html>

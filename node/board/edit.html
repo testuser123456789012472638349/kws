@@ -1,0 +1,13 @@
+<%- include(process.cwd() + '/header.html') %>
+<body>
+    <script>
+        console.dir(<%-JSON.stringify(result)%>);
+    </script>
+    <%- include(process.cwd() + '/headmenu.html') %>
+    <form method="post">
+        <textarea name="content"><%= result[0].board_content %></textarea>
+        <hr>
+        <input type="submit" value="등록">
+    </form>
+</body>
+</html>
