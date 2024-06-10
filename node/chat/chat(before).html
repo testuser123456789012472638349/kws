@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 중요 -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = function() {
+            console.dir(io);
+            const socket = io.connect();
+
+            sendBtn.onclick = function() {
+                console.log(ucolor.value);
+                //사용자 이벤트
+                socket.emit('msg', {
+                                uname: uname.value, message: message.value,
+                                ucolor: ucolor.value
+                            });
+            }
+
+            socket.on("showMsg", function(data) {
+                console.log(data);
+                let str = "";
+                str += "<li>";
+                str += data.uname + "/";
+                str += data.message;
+                str += "</li>";
+                display.insertAdjacentHTML('beforeend', str);
+
+                document.body.style.background = data.ucolor;
+            });
+
+            up.onclick = function() {
+                let top = parseInt(window.getComputedStyle(red).getPropertyValue("top"));
+                socket.emit('redUp', {topPos: top});
+            }
+
+            socket.on("redUp", function(data) {
+                // red.style.top = '50px';
+                red.style.top = (data.topPos - 5) + 'px';
+            });
+
+            // down.onclick = function() {
+            //     socket.emit('Down');
+            // }
+            // socket.in("Down", function(data) {
+            //     red.style.bottom = '50px';
+            //     blue.style.bottom = '50px';
+            // });
+        }
+    </script>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+        div.red {
+            background-color: red;
+            top: 100px;
+            left: 200px;
+        }
+        div.blue {
+            background-color: blue;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="red" id="red"></div>
+    <div class="blue" id="blue"></div>
+    <input type="text" id="uname" placeholder="이름">
+    <input type="text" id="message" placeholder="메시지">
+    <input type="color" id="ucolor">
+    <button id="sendBtn">전송</button>
+    <button id="up">위</button>
+    <button id="down">아래</button>
+    <button id="left">왼쪽</button>
+    <button id="right">오른쪽</button>
+    <ul id="display"></ul>
+</body>
+</html>

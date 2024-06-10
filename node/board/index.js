@@ -59,21 +59,54 @@ client.query("SELECT count(*) as recodeCount FROM board", function(err, result) 
 });
 
 const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false})); //POST 데이터 받기위해.
 
 app.listen(9999, function() {console.log(9999)});
-app.get(["/", "/:page"], function(req, res) {
-    const per = 11;
-    const block = 7;
-    let {page} = req.params;
-    if(!page) page = 0;
+// app.get(["/", "/:page"], function(req, res) {
+//     const per = 11;
+//     const block = 7;
+//     let {page} = req.params;
+//     if(!page) page = 0;
 
+//     fs.readFile("list.html", "utf-8", function(err, data) {
+//         const sql1 = `SELECT * FROM board ORDER BY board_id DESC LIMIT ${page}, ${per};`;
+//         const sql2 = "SELECT count(*) as recodeCount FROM board;";
+//         client.query(
+//             sql1 + sql2, function(err, results) {
+//                 console.log(results[1][0].recodeCount);
+//                 res.send(ejs.render(data, {
+//                     results: results,
+//                     per: per,
+//                     page: page,
+//                     block: block //PAGE 나눌때
+//                 }));
+//             }
+//         );
+//     });
+// });
+const per = 13;
+const block = 5;
+app.get("/board/", function(req, res) {   
+    let page = 0;
+    getList(page, res);
+});
+app.get("/board/list/:page", function(req, res) {   
+    let {page} = req.params;
+    if(!page) {
+        page = 0;
+        getList(page, res);
+    } else {
+        getList(page, res);
+    }
+});
+function getList(page, res) {
     fs.readFile("list.html", "utf-8", function(err, data) {
         const sql1 = `SELECT * FROM board ORDER BY board_id DESC LIMIT ${page}, ${per};`;
         const sql2 = "SELECT count(*) as recodeCount FROM board;";
         client.query(
             sql1 + sql2, function(err, results) {
-                console.log(results[1][0].recodeCount);
+                // console.log(results[1][0].recodeCount);
+                console.log(results);
                 res.send(ejs.render(data, {
                     results: results,
                     per: per,
@@ -83,13 +116,13 @@ app.get(["/", "/:page"], function(req, res) {
             }
         );
     });
-});
-app.get("/insert", function(req, res) {
+}
+app.get("/board/insert", function(req, res) {
     fs.readFile("insert.html", "utf-8", function(err, data) {
         res.send(ejs.render(data));
     });
 });
-app.post("/insert", function(req, res) {
+app.post("/board/insert", function(req, res) {
     const {content} = req.body;
     const today = new Date();
     const strDate = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
@@ -99,15 +132,15 @@ app.post("/insert", function(req, res) {
                 console.log(err.sqlMessage);
                 return;
             } else {
-                res.redirect("/");
+                res.redirect("/board/");
             }
         }
     )
 });
-app.get("/view/:id", function(req, res) {
+app.get("/board/view/:id", function(req, res) {
     const {id} = req.params;
     
-    if(!id) {res.redirect("/");}
+    if(!id) {res.redirect("/board/");}
 
     fs.readFile("view.html", function(err, data) {
         client.query(
@@ -118,7 +151,7 @@ app.get("/view/:id", function(req, res) {
         );
     });
 });
-app.get("/edit/:id", function(req, res) {
+app.get("/board/edit/:id", function(req, res) {
     fs.readFile("edit.html", "utf-8", function(err, data) {
         client.query(
             `SELECT * FROM board WHERE board_id = ${req.params.id}`, function(err, result) {
@@ -127,7 +160,7 @@ app.get("/edit/:id", function(req, res) {
         );
     });
 });
-app.post("/edit/:id", function(req, res) {
+app.post("/board/edit/:id", function(req, res) {
     const {content} = req.body;
     const {id} = req.params;
     console.log(id, content);
@@ -138,12 +171,12 @@ app.post("/edit/:id", function(req, res) {
                 console.log(err.sqlMessage);
                 return;
             } else {
-                res.redirect(`/view/${id}`);
+                res.redirect(`/board/view/${id}`);
             }
         }
     );
 });
-app.get("/delete/:id", function(req, res) {
+app.get("/board/delete/:id", function(req, res) {
     client.query(
         `DELETE FROM board WHERE board_id = ${req.params.id}`,
         function(err) {
@@ -151,11 +184,11 @@ app.get("/delete/:id", function(req, res) {
                 console.log(err);
                 return;
             }
-            res.redirect("/");
+            res.redirect("/board/");
         }
     )
 });
 
 app.all("*", function(req, res) {
-    res.send("<b>404!</b><hr><a href='/'>메인으로</a>");
+    res.send("<b>404!</b><hr><a href='/board/'>메인으로</a>");
 });

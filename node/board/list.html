@@ -19,7 +19,7 @@
         <% results[0].forEach(function(item, index) { %>
             <tr>
                 <td><%= item.board_id %></td>
-                <td><a href="/view/<%= item.board_id %>"><%= item.board_content %></a></td>
+                <td><a href="/board/view/<%= item.board_id %>"><%= item.board_content %></a></td>
                 <td><%= item.board_date %></td>
             </tr>
         <% }); %>
@@ -43,13 +43,13 @@
         function paging(target, start, totalCount, rowPerPage, blockSet, first, pre, next, last) {
             let output = "";
             let page = pre_start = 0;
-            output += `<a href='/0'>${first}</a> &nbsp;`;
+            output += `<a href='/board/list/0'>${first}</a> &nbsp;`;
 
             page = Math.floor(start / (rowPerPage * blockSet));
             if (totalCount > rowPerPage) {
                 if (start + 1 > rowPerPage * blockSet) {
                 pre_start = page * rowPerPage * blockSet - rowPerPage;
-                output += `<a href='/${pre_start}'>${pre}</a>`;
+                output += `<a href='/board/list/${pre_start}'>${pre}</a>`;
                 } else output += pre;
             }
 
@@ -59,19 +59,19 @@
                 let ln = (page * blockSet + i) * rowPerPage;
                 page_num = page * blockSet + i + 1;
                 if (ln < totalCount) {
-                if (ln != start) output += `<a href='/${ln}'>${page_num}</a> | `;
+                if (ln != start) output += `<a href='/board/list/${ln}'>${page_num}</a> | `;
                 else output += `[<b>${page_num}</b>] | `;
                 }
             }
 
             if (totalCount > ((page + 1) * rowPerPage * blockSet)) {
                 let n_start = (page + 1) * rowPerPage * blockSet;
-                output += `<a href='/${n_start}'>${next}</a>`;
+                output += `<a href='/board/list/${n_start}'>${next}</a>`;
             } else output += next;
 
             let end_start = Math.floor(totalCount / rowPerPage) * rowPerPage;
             console.log(end_start);
-            output += `&nbsp; <a href='/${end_start}'>${last}</a>`;
+            output += `&nbsp; <a href='/board/list/${end_start}'>${last}</a>`;
 
             target.innerHTML = output;
         }

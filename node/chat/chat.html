@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 중요 -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = function() {
+            const body = document.body;
+            const socket = io.connect();
+
+            sendBtn.onclick = function() {
+                console.log(ucolor.value);
+                //사용자 이벤트
+                socket.emit('msg', {
+                                    uname: uname.value, message: message.value,
+                                    ucolor: ucolor.value
+                                });
+            }
+
+            let onRedUp = false;
+            let onRedDown = false;
+            let onRedLeft = false;
+            let onRedRight = false;
+            let onBlueUp = false;
+            let onBlueDown = false;
+            let onBlueLeft = false;
+            let onBlueRight = false;
+
+            body.addEventListener("keydown", function(e) {
+                switch(e.key) {
+                    case 'ArrowUp':
+                        onRedUp = true;
+                        break;
+                    case 'ArrowDown':
+                        onRedDown = true;
+                        break;
+                    case 'ArrowLeft':
+                        onRedLeft = true;
+                        break;
+                    case 'ArrowRight':
+                        onRedRight = true;
+                        break;
+                    case 'w':
+                        onBlueUp = true;
+                        break;
+                    case 's':
+                        onBlueDown = true;
+                        break;
+                    case 'a':
+                        onBlueLeft = true;
+                        break;
+                    case 'd':
+                        onBlueRight = true;
+                        break;
+                }
+            });
+            body.addEventListener("keyup", function(e) {
+                switch(e.key) {
+                    case 'ArrowUp':
+                        onRedUp = false;
+                        break;
+                    case 'ArrowDown':
+                        onRedDown = false;
+                        break;
+                    case 'ArrowLeft':
+                        onRedLeft = false;
+                        break;
+                    case 'ArrowRight':
+                        onRedRight = false;
+                        break;
+                    case 'w':
+                        onBlueUp = false;
+                        break;
+                    case 's':
+                        onBlueDown = false;
+                        break;
+                    case 'a':
+                        onBlueLeft = false;
+                        break;
+                    case 'd':
+                        onBlueRight = false;
+                        break;
+                }
+            });
+            
+
+            const timer = setInterval(() => {
+                if(onRedUp) {
+                    let top = parseInt(window.getComputedStyle(red).getPropertyValue("top"));
+                    socket.emit('redUp', {topPos: top});
+                }
+                if(onRedDown) {
+                    let top = parseInt(window.getComputedStyle(red).getPropertyValue("top"));
+                    socket.emit('redDown', {topPos: top});
+                }
+                if(onRedLeft) {
+                    let left = parseInt(window.getComputedStyle(red).getPropertyValue("left"));
+                    socket.emit('redLeft', {leftPos: left});
+                }
+                if(onRedRight) {
+                    let left = parseInt(window.getComputedStyle(red).getPropertyValue("left"));
+                    socket.emit('redRight', {leftPos: left});
+                }
+
+                if(onBlueUp) {
+                    let top = parseInt(window.getComputedStyle(blue).getPropertyValue("top"));
+                    socket.emit('blueUp', {topPos: top});
+                }
+                if(onBlueDown) {
+                    let top = parseInt(window.getComputedStyle(blue).getPropertyValue("top"));
+                    socket.emit('blueDown', {topPos: top});
+                }
+                if(onBlueLeft) {
+                    let left = parseInt(window.getComputedStyle(blue).getPropertyValue("left"));
+                    socket.emit('blueLeft', {leftPos: left});
+                }
+                if(onBlueRight) {
+                    let left = parseInt(window.getComputedStyle(blue).getPropertyValue("left"));
+                    socket.emit('blueRight', {leftPos: left});
+                }
+
+                if(isCollision()) {
+                    // alert('Red win');
+                    console.log("충돌");
+                    // clearInterval(timer);
+                }
+            }, 10);
+
+            function isCollision() {
+                let collision = false;
+                let redTop = parseInt(window.getComputedStyle(red).getPropertyValue("top"));
+                let redBottom = redTop + 50;
+                let redLeft = parseInt(window.getComputedStyle(red).getPropertyValue("left"));
+                let redWidth = redLeft + 50;
+
+                let blueTop = parseInt(window.getComputedStyle(blue).getPropertyValue("top"));
+                let blueBottom = blueTop + 50;
+                let blueLeft = parseInt(window.getComputedStyle(blue).getPropertyValue("left"));
+                let blueWidth = blueLeft + 50;
+
+                // console.clear();
+                // console.log("redTop: " + redTop + " - blueBottom: " + blueBottom);
+                // console.log("redBottom: " + redBottom + " - blueTop: " + blueTop);
+                // console.log("redLeft: " + redLeft + " - blueWidth: " + blueWidth);
+                // console.log("redWidth: " + redWidth + " - blueLeft: " + blueLeft);
+                // console.log(redTop < blueBottom && redBottom > blueTop && redLeft < blueWidth && redWidth > blueLeft);
+
+                if(redTop < blueBottom && redBottom > blueTop && redLeft < blueWidth && redWidth > blueLeft) {
+                    collision = true;
+                }
+                return collision;
+            }
+
+            socket.on("redUp", function(data) {
+                red.style.top = (data.topPos - 7) + 'px';
+            });
+            socket.on("redDown", function(data) {
+                red.style.top = (data.topPos + 7) + 'px';
+            });
+            socket.on("redLeft", function(data) {
+                red.style.left = (data.leftPos - 7) + 'px';
+            });
+            socket.on("redRight", function(data) {
+                red.style.left = (data.leftPos + 7) + 'px';
+            });
+
+            socket.on("blueUp", function(data) {
+                blue.style.top = (data.topPos - 5) + 'px';
+            });
+            socket.on("blueDown", function(data) {
+                blue.style.top = (data.topPos + 5) + 'px';
+            });
+            socket.on("blueLeft", function(data) {
+                blue.style.left = (data.leftPos - 5) + 'px';
+            });
+            socket.on("blueRight", function(data) {
+                blue.style.left = (data.leftPos + 5) + 'px';
+            });
+
+            socket.on("showMsg", function(data) {
+                console.log(data);
+                let str = "";
+                str += "<li>";
+                str += data.uname + "/";
+                str += data.message;
+                str += "</li>";
+                display.insertAdjacentHTML('beforeend', str);
+
+                document.body.style.background = data.ucolor;
+            });
+        }
+    </script>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+        div.red {
+            background-color: red;
+            top: 100px;
+            left: 200px;
+        }
+        div.blue {
+            background-color: blue;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="red" id="red"></div>
+    <div class="blue" id="blue"></div>
+    <input type="text" id="uname" placeholder="이름">
+    <input type="text" id="message" placeholder="메시지">
+    <input type="color" id="ucolor">
+    <button id="sendBtn">전송</button>
+    <button id="up">위</button>
+    <button id="down">아래</button>
+    <button id="left">왼쪽</button>
+    <button id="right">오른쪽</button>
+    <ul id="display"></ul>
+</body>
+</html>

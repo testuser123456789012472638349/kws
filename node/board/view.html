@@ -6,7 +6,7 @@
         function askDel() {
             let val = confirm('삭제하시겠습니까?');
             if(val) {
-                location.href = '/delete/<%= result[0].board_id %>';
+                location.href = '/board/delete/<%= result[0].board_id %>';
             }
         }
     </script>
@@ -51,7 +51,7 @@
         다른 페이지를 삽입: include
     -->
     <%- include(process.cwd() + '/headmenu.html') %>
-    <span><a href='/edit/<%= board.board_id %>'>수정</a></span>
+    <span><a href='/board/edit/<%= board.board_id %>'>수정</a></span>
     <span><a onclick="askDel();">삭제</a></span>
     <hr>
     <div>ID: <span><%= board.board_id %></span></div>
