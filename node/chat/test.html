@@ -4,82 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 중요 -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = function() {
+            console.dir(io);
+            const socket = io.connect();
+
+            sendBtn.onclick = function() {
+                // console.log(ucolor.value);
+                //사용자 이벤트
+                socket.emit('msg', {
+                                uname: uname.value
+                                // ucolor: ucolor.value,  message: message.value,
+                            });
+            }
+
+            sendBtnn.onclick = function() {
+                socket.emit('primsg', {
+                                message: message.value
+                            });
+            }
+            
+            socket.on("showMsg", function(data) {
+                console.log(data);
+                let str = "";
+                str += "<li>";
+                str += data.uname;
+                str += "</li>";
+
+                display.insertAdjacentHTML('beforeend', str);
+                // document.body.style.background = data.ucolor;
+            });
+
+            socket.on("showPrimsg", function(data) {
+                console.log(data);
+                let str = "";
+                str += "<li>";
+                str += data.message;
+                str += "</li>";
+
+                display.insertAdjacentHTML('beforeend', str);
+                // document.body.style.background = data.ucolor;
+            });
+        }
+
+        function Enter(e) {
+            if(e.keyCode == 13) {
+                sendBtn.onclick();
+            }
+        }
+
+        function Enterr(e) {
+            if(e.keyCode == 13) {
+                sendBtnn.onclick();
+            }
+        }
+    </script>
     <style>
-        * {
-            box-sizing: border-box;
+        #wrap {
+            width: 80%;
         }
-        .msgLine {
-            margin: 15px;
-        }
-        .msgBox {
-            border: 1px solid black;
-            background: black;
-            padding: 2px 5px;
+        main {
+            width: 100%;
+            height: 40vh;
+            background-color: rgb(181, 236, 236);
+            border: 5px solid black;
             border-radius: 10px;
         }
-        #chatContent {
-            border: 1px solid #000;
-            width: 100%;
-            height: 200px;
-            margin-bottom: 10px;
-            overflow-y: auto;
-        }
-        #myChat {
-            width: 100%;
-        }
-        #msg, #myChat {
-            width: 80%;
-            height: 32px;
-            border-radius: 8px;
-        }
-        #send {
-            width: 16%;
-            height: 34px;
-            border-radius: 50px;
-            background: black;
-            color: white;
+        input {
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <script src="/socket.io/socket.io.js"></script>
-    <h1>Message</h1>
-
-    <div id="chatContent">
-
+    <h1> Chat Message</h1>
+    <div id="wrap">
+        <main>
+            <ul id="display"></ul>
+        </main>
+        <div>
+            <input type="text" size="50px" id="uname"  onkeypress="Enter(event)" placeholder="전달할 메세지를 입력하세요.">
+            <button id="sendBtn">전송</button><br>
+            <input type="text" size="50px" id="message" placeholder="메시지" onkeypress="Enterr(event)">
+            <button id="sendBtnn">전송</button>
+            <!-- <button id="sendBtn">전송</button> -->
+            <!-- <input type="color" id="ucolor"> -->
+        </div>
     </div>
-    <input id="myChat" type="text">
-    <input id="send" type="submit" value="Send">
-
-    <script>
-        window.onload = function() {
-            const socket = io.connect();
-
-            socket.on('msg', function(data) {
-            var msgLine = ${'<div class="msgLine">'};
-            var msgBox = ${'<div class="msgBox">'};
-            msgBox.append(data);
-            msgBox.css('display', 'inline-block');
-            msgLine.append(msgBox);
-            $('#chatContent').append(msgLine);
-            chatContent.scrollTop = chatContent.scrollHeight;
-        });
-
-        $("#myChat").on("keyup", function () {
-            if(window.event.keyCode == 13 && (this).val() != "") {
-                var msgLine = $('<div class="msgLine">');
-                var msgBox = $('<div class="msgBox">');
-                msgBox.append($(this).val());
-                msgBox.css('display', 'inline-block');
-                msgLine.css('text-align', 'right');
-                msgLine.append(msgBox);
-                $('#chatContent').append(msgLine);
-                socket.emit('msg', $(this).val());
-                $(this).val("");
-                chatContent.scrollTop = chatContent.scrollHeight;
-            }
-        });
-        }
-    </script>
 </body>
 </html>

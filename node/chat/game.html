@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+        }
+        #board {
+            width: 920px;
+            height: 750px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io.connect();
+
+        let userName = prompt("Name?");
+        let myObject = null;
+        let gameWidth = 920;
+        let gameHeight = 750;
+
+        let onUp = false;
+        let onDown = false;
+        let onLeft = false;
+        let onRight = false;
+
+        window.addEventListener("keydown", function(e) {
+            switch(e.key) {
+                case 'ArrowUp':
+                    onUp = true;
+                    break;
+                case 'ArrowDown':
+                    onDown = true;
+                    break;
+                case 'ArrowLeft':
+                    onLeft = true;
+                    break;
+                case 'ArrowRight':
+                    onRight = true;
+                    break;
+            }
+        });
+
+        window.addEventListener("keyup", function(e) {
+            switch(e.key) {
+                case 'ArrowUp':
+                    onUp = false;
+                    break;
+                case 'ArrowDown':
+                    onDown = false;
+                    break;
+                case 'ArrowLeft':
+                    onLeft = false;
+                    break;
+                case 'ArrowRight':
+                    onRight = false;
+                    break;
+            }
+        });
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+
+        function setRndColor() {
+            let r = getRndInteger(0, 255);
+            let g = getRndInteger(0, 255);
+            let b = getRndInteger(0, 255);
+            return `rgb(${r} ${g} ${b})`;
+        }
+
+        function setRndX() {
+            return getRndInteger(0, gameWidth - 50);
+        }
+
+        function setRndY() {
+            return getRndInteger(0, gameHeight - 50);
+        }
+
+        function startGame() {
+            gameArea.start();
+        }
+
+        let gameArea = {
+            canvas: document.createElement("canvas"),
+            start: function() {
+                this.canvas.width = gameWidth;
+                this.canvas.height = gameHeight;
+                this.canvas.style.border = "1px solid";
+                this.context = this.canvas.getContext("2d");
+                document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                setInterval(() => {
+                    this.handleKeyPress();
+                }, 32);
+            },
+            clear: function() {
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            },
+            show: function(players) {
+                players.map(player => {
+                    this.context.fillStyle = player.color;
+                    this.context.fillRect(player.x, player.y, player.width, player.height);
+                    this.context.font = "30px Consolas";
+                    this.context.fillStyle = "black";
+                    this.context.fillText(player.name, player.x + player.width / 2 - 8, player.y + player.height / 2 + 7);
+                });
+            },
+            handleKeyPress: function() {
+                if(onUp) {
+                    myObject = {
+                        ...myObject,
+                        y: myObject.y - 10 > 0 ? myObject.y - 10 : 0
+                    };
+                    socket.emit("move", myObject);
+                }
+                if(onDown) {
+                    console.log();
+                    myObject = {
+                        ...myObject,
+                        y: myObject.y + myObject.height + 8 < gameHeight ? myObject.y + 10 : myObject.y
+                    };
+                    socket.emit("move", myObject);
+                }
+                if(onLeft) {
+                    myObject = {
+                        ...myObject,
+                        x: myObject.x - 10 > 0 ? myObject.x - 10 : 0
+                    };
+                    socket.emit("move", myObject);
+                }
+                if(onRight) {
+                    myObject = {
+                        ...myObject,
+                        x: myObject.x + myObject.width + 8 < gameWidth ? myObject.x + 10 : myObject.x
+                    };
+                    socket.emit("move", myObject);
+                }
+            }
+        };
+
+        function Player(width, height, color, x, y, id, name) {
+            this.name = userName;
+            this.width = width;
+            this.height = height;
+            this.color = color;
+            this.id = id;
+            this.x = x;
+            this.y = y;
+            this.id = id;
+        }
+        
+
+        socket.on("connect", function(data) {
+            myObject = new Player(50, 50, setRndColor(), setRndX(), setRndY(), socket.id);
+            socket.emit("new_join", myObject);
+        });
+
+        startGame();
+
+        socket.on("gameUpdate", function(players) {
+            gameArea.clear();
+            gameArea.show(players);
+        });
+
+        socket.on("collision", function(data) {
+            const {aname, bname} = data;
+            console.log(aname + "과 " + bname + " 출동");
+        });
+    </script>
+</body>
+</html>

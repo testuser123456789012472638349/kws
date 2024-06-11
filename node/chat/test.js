@@ -1,30 +1,38 @@
-const express = require("express");
+const fs = require("fs");
 const http = require("http");
 const socket = require("socket.io");
-const fs = require("fs");
-
 
 const server = http.createServer(function(req, res) {
     fs.readFile("test.html", function(err, data) {
         res.writeHead(200, {"Content-Type" : "text/html"});
         res.end(data);
     });
-}).listen(9999, function() {
-    console.log(9999);
+}).listen(8888, function() {
+    console.log(8888);
 });
 
 const io = socket.listen(server);
+//connection이벤트 , disconnection 이벤트가 발생
+io.sockets.on("connection", function(so) {
+    // console.log(so);
+    so.on("msg", function(data) {
+        console.log(data);
 
-io.sockets.on('connection', function(socket) {
-    console.log(socket.id, 'connected!!!!!!!!!!!');
+        //public 모든 클라이언트들에게 전송
+        io.sockets.emit("showMsg", data);
 
-    io.sockets.emit('msg', `${socket.id}`);
+        //broadcast 자신을 제외한 클라이언트들에게 전송
+        //so.broadcast.emit()
 
-    socket.on('msg', function (data) {
-        socket.broadcast.emit('msg', `${socket.id}: ${data}`);
+        //private 특정 클라이언트에게만 전송
+        //io.sockets.to(id).emit()
     });
 
-    socket.on('disconnect', function(data) {
-        io.sockets.emit('msg', `${socket.id}`);
+    so.on("primsg", function(data) {
+        io.sockets.emit("showPrimsg", data);
+    });
+
+    so.on("disconnect", function(reason) {
+        
     });
 });

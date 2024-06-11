@@ -22,21 +22,15 @@ io.sockets.on("connection", function(so) {
         io.sockets.emit("showMsg", data);
 
         //broadcast 자신을 제외한 클라이언트들에게 전송
-        //so.broadcast.emit();
+        //so.broadcast.emit()
 
         //private 특정 클라이언트에게만 전송
-        //io.sockets.to(id).emit();
+        //io.sockets.to(id).emit()
     });
 
     so.on("redUp", function(data) {
-        console.log(data);
-        // io.sockets.emit("redUP");
         io.sockets.emit("redUp", data);
     });
-
-    // so.on("Down", function(data) {
-    //     io.sockets.emit("Down", data);
-    // });
     so.on("redDown", function(data) {
         io.sockets.emit("redDown", data);
     });

@@ -11,3 +11,4 @@ first.sql(2024/06/03) - MySQL관련(MySQL Workbench 프로그램)
 mySQL 파일 내부 testSQL.js(2024/06/04) - sql 직접 구현 및 구동
 neo 파일 내부 query.html, query.js(2024/06/04) visual studio code 프로그램으로 sql 구현 및 구동
 node/board 파일 내부 edit.html, header.html, headmenu.html, index.js, insert.html, list.html, view.html - 웹게시판 구현 및 구동
+node/chat 파일 내부 (game.js, game.html), (game(temp).html, game(temp).js - 접속자 움직임(충돌 포함) 미포함), (test.js, test.html - 웹 채팅(제출 예정) 미완성)
