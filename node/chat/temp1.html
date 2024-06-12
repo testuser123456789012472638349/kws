@@ -1,0 +1,238 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Socket Tester</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+    #messages { list-style-type: none; margin: 0; padding: 0; }
+    #messages li { padding: 5px 10px; }
+    #messages li:nth-child(odd) { background: #eee; }
+
+    </style>
+  </head>
+  <body>
+    <div class="row"> -->
+
+      <!-- 대기실 -->
+      <!-- <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            대기실
+          </div>
+          <div class="card-body">
+            <form action="">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="m" autocomplete="off" />
+                <div class="input-group-append">
+                  <button id="msg-send" class="btn btn-primary" placeholder="message">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <ul id="messages"></ul>
+          </div>
+        </div>
+      </div> -->
+
+
+      <!-- 방선택 -->
+      <!-- <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            방선택
+          </div>
+          <div class="card-body">
+            <div class="input-group mb-1">
+              <select id="select-room" class="form-control">
+                <option value="none" selected="selected">방을 선택해주세요</option> -->
+                <!-- 수동으로 만들어진 채팅 방 -->
+                <!-- <option value="test-room">테스트 방</option>
+              </select>
+              <div class="input-group-append">
+                <button id="select-room-button" class="btn btn-success" placeholder="message">Select</button>
+              </div>
+            </div>
+            <form action="">
+              <div class="input-group mb-1">
+                <input type="text" class="form-control" id="room-message" autocomplete="off" />
+                <div class="input-group-append">
+                  <button id="room-msg-send" class="btn btn-primary" placeholder="message">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <ul id="room-messages"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(() => { -->
+        <!-- /** Socket Starts **/ -->
+        <!-- const socket = io();
+        
+        // 클라이언트에서 reuqest_message 프로토콜로 id='m' 의 input 값을 보낸다.
+        $('#msg-send').click(() => {
+          socket.emit('request_message', $('#m').val());
+          $('#m').val('');
+          return false; 
+        });
+
+        $('#select-room-button').click(() => {
+          let roomName = $('#select-room').val();
+          if(roomName === "none") 
+            return alert("방을 선택해주세요.");
+          socket.emit('req_join_room', roomName)
+        });
+
+        $('#room-msg-send').click(() => {
+          socket.emit('req_room_message', $('#room-message').val());
+          $('#room-message').val('');
+          return false;
+        });
+
+        socket.on('response_message', (res) => {
+          $('#messages').prepend($('<li>').text(res));
+        });
+
+        socket.on('noti_join_room', (res) => {
+          $('#room-messages').prepend($('<li>').text(res));
+        });
+
+        socket.on('noti_room_message', (res) => {
+          $('#room-messages').prepend($('<li>').text(res));
+        });
+
+      }); -->
+    <!-- </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실시간 채팅</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="enter">
+      <h3>닉네임을 입력하세요.</h3>
+      <input id="nickname" /><button id="joinBtn">JOIN</button>
+    </div>
+
+    <div id="chattingRoom">
+      <div class="clientList">
+        <h3>현재 접속자 입니다.</h3>
+        <ul id="client"></ul>
+      </div>
+
+      <br />
+      <div class="messageList">
+        <ul id="message" />
+      </div>
+      <form>
+        <input id="content" autocomplete="off" /><button>전송</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var nickname;
+      var socket = io();
+
+      // join 버튼을 누르거나 닉네임 입력 후 Enter 버튼을 누르면 서버에 join을 요청합니다.
+
+      // join Event 발생
+      $("#joinBtn").click(function (e) {
+        enterNickname(e);
+      });
+
+      $("#nickname").keypress(function (e) {
+        if (e.which == 13) {
+          // Enter 키가 눌러진다면
+          enterNicknmae(e);
+        }
+      });
+
+      // 송신: 닉네임
+      function enterNickname(e) {
+        if ($("#nickname").val().trim() == "") {
+          // 닉네임이 제대로 입력되지 않았다면
+          alert("닉네임을 입력하세요!");
+          return false;
+        }
+
+        // 닉네임이 입력되었다면, 서버에 join을 요청합니다.
+        nickname = $("#nickname").val().trim();
+        socket.emit("join", nickname);
+      }
+
+      // 수신: 환영인사 - 서버에 환영인사 부분은 구현하지 않았습니다.
+      socket.on("welcome", function (data) {
+        updateClientList(data.clientList);
+
+        $("#message").append(
+          $('<li class = "notification">').text(nickname + "님 환영합니다.")
+        );
+      });
+
+      function updateClientList(clientList) {
+        $("#client").text();
+        for (var i = 0; i < clientList.length; i++) {
+          $("#client").append($("<li>").text(clientList[i]));
+        }
+      }
+
+      // 수신: 신규 클라이언트 접속
+      socket.on("join", function (data) {
+        $("#message").append(
+          $('<li class = "notification">').text(
+            data.nickname + "님이 입장하셨습니다."
+          )
+        );
+
+        updateClientList(data.clientList);
+      });
+
+      // 수신: 퇴장
+      socket.on("left", function (data) {
+        // 종료 알림
+        $("#message").append(
+          $("<li>").text(data.nickname + "님이 퇴장하셨습니다.")
+        );
+
+        updateClientList(data.clientList);
+      });
+
+      // 송신: 메시지 전송
+      $("form").submit(function () {
+        socket.emit("msg", $("#content").val());
+        $("#content").val("");
+        return false;
+      });
+
+      // 수신: 메시지
+      socket.on("msg", function (data) {
+        $("#message").text("");
+        $("#message").append($("<li>").text(data.nickname + ":" + data.msg));
+
+        // var span = $('<span>').text(data.nickname);
+        // var li = $('<li>').append(data.nickname).append(data.msg);
+        // $("#message").append(li);
+      });
+    </script>
+  </body>
+</html>
+ 

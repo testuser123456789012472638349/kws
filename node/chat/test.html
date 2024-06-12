@@ -8,10 +8,29 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         window.onload = function() {
-            console.dir(io);
+            //console.dir(io);
             const socket = io.connect();
 
+            let userData = {
+                show: function(players) {
+                    players.map(player => {
+                        return player;
+                    });
+                }
+            };
+
+            socket.on("connect", function(data) {
+                let id = socket.id;
+                socket.emit("userId", id);
+            });
+
+            socket.on("userUpdate", function(players) {
+                userData.show(player);
+            });
+
             sendBtn.onclick = function() {
+                
+                console.log(userData);
                 // console.log(ucolor.value);
                 //사용자 이벤트
                 socket.emit('msg', {
@@ -27,7 +46,7 @@
             }
             
             socket.on("showMsg", function(data) {
-                console.log(data);
+                // console.log(data);
                 let str = "";
                 str += "<li>";
                 str += data.uname;
@@ -38,7 +57,7 @@
             });
 
             socket.on("showPrimsg", function(data) {
-                console.log(data);
+                // console.log(data);
                 let str = "";
                 str += "<li>";
                 str += data.message;

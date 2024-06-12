@@ -13,10 +13,21 @@ const server = http.createServer(function(req, res) {
 
 const io = socket.listen(server);
 //connection이벤트 , disconnection 이벤트가 발생
+
+
 io.sockets.on("connection", function(so) {
-    // console.log(so);
+    //console.log(so.id);
+
+    let players = [];
+
+    so.on("userId", function(data) {
+        players.push(data);
+        console.log(players);
+        io.sockets.emit("userUpdata", players);
+    });
+
     so.on("msg", function(data) {
-        console.log(data);
+        //console.log(data);
 
         //public 모든 클라이언트들에게 전송
         io.sockets.emit("showMsg", data);
@@ -33,6 +44,8 @@ io.sockets.on("connection", function(so) {
     });
 
     so.on("disconnect", function(reason) {
-        
+        players = players.filter(player => {
+            return player.id !== so.id;
+        });
     });
 });
