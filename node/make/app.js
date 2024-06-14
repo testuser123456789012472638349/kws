@@ -1,3 +1,10 @@
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
+
+// const _filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(_filename);
+
 const express = require("express");
 const http = require("http");
 const app = express();
