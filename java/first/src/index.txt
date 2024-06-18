@@ -1,0 +1,14 @@
+sec00
+    First.java - 첫 날(설정, 변수)
+    Exam04.java - p80 4번 문제
+
+sec01
+    VarianleExchangeExample - 변수값 교환
+    VariableIntializationExample - 변수 초기화
+sec02
+    _info
+    IntegerLiteralExample - 정수 리터럴
+    ByteExample - byte 타입 변수
+    LongExample - long, float, char(형변환) 타입 변수
+    CharExample - char 타입
+    PromotionExample - 타입 변환
