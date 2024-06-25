@@ -1,7 +1,12 @@
 package sec06;
 
+import com.pol27.chat.SnowTire;
+import com.pol27.study.BigWidthTire;
+
 import java.util.Arrays;
 import java.util.Calendar;
+import static java.util.Calendar.getInstance;
+import static java.lang.Math.random;
 
 /**
  * 생성자 - 클래스 이름과 같고, 반환 타입이 없음, 자동으로 실행됨, 생성자가 없으면 JVM이 자동으로 추가(사용자가 하나라도 만들면 자동추가 하지 않음)
@@ -14,6 +19,8 @@ import java.util.Calendar;
  *
  * 객체마다 각각 가지는 값은 인스턴스(instance)
  * 모든 객체가 같이 가지는 값은 스테틱(static)
+ *
+ * 다른 패키지의 내용은 import
  */
 
 public class _info {
@@ -33,6 +40,7 @@ public class _info {
         // }
 
         // System.out.println(Arrays.toString(arrCars));
+        System.out.println(random()); // After Enrolling package(import static java.lang.Math.random;), posible
 
         //기본타입
         Car car = new Car();
@@ -75,12 +83,38 @@ public class _info {
         Tire t4 = Tire.getInstance();
         System.out.println(t1 == t2);
         System.out.println(t1.equals(t2));
+
+        SnowTire st = new SnowTire();
+        BigWidthTire bwt = new BigWidthTire();
+
+
     }
 
     static void change(int[] x) {
         x[0] = 7;
         System.out.println(x[0]);
         System.out.println(Car.MY_CONST);
+    }
+}
+
+class Air {
+    int weight;
+
+    Air(int weight) {
+        this.weight = weight;
+    }
+
+    public void setWeight(int weight) {
+        if(weight < 0) {
+            this.weight = 0;
+            return;
+        } else {
+            this.weight = weight;
+        }
+    }
+
+    public int getWeight(double weight) {
+        return (int)weight;
     }
 }
 
@@ -94,6 +128,9 @@ class Car extends Object {
 
     Calendar c = Calendar.getInstance();
     Calendar b = Calendar.getInstance();
+
+    Calendar d = getInstance(); //After Enrolling package(import static java.util.Calendar.getInstance;), posible
+    Calendar e =  getInstance(); // same reason
 
     static int tire = 4;
 

@@ -136,14 +136,38 @@ package sec06;
  *
  */
 public class exam {
-    public void main(String[] args) {
-        SutudaCard card1 = new SutudaCard(3, false); //3
-        SutudaCard card2 = new SutudaCard(); //1K
+    public static void main(String[] args) {
+        SutudaCard card1 = new SutudaCard(3, false);
+        SutudaCard card2 = new SutudaCard();
+        System.out.println(card1.info()); //3
+        System.out.println(card1); //3 (override)
+        System.out.println(card2.info()); //1k
 
-        Student AA = new Student("홍길동",1,1,100,60 , 76);
+        Student s = new Student();
+        s. name = "홍길동";
+        s. ban = 1;
+        s. no = 1;
+        s. kor = 100;
+        s. eng = 60;
+        s. math = 76;
+        System. out. println("이름 :"+s. name);
+        System. out. println("총점 :"+s. getTotal());
+        System. out. println("평균 :"+s. getAverage());
 
+        MyTv t = new MyTv();
+        t.channel = 100;
+        t.volume = 0;
+
+        System. out. println("CH:"+t. channel+", VOL:"+ t. volume); //CH:100, VOL:0
+        t.channelDown();
+        t.volumeDown();
+        System. out. println("CH:"+t. channel+", VOL:"+ t. volume); //CH:99, VOL:0
+        t.volume = 100;
+        t.channelUp();
+        t.volumeUp();
+        System. out. println("CH:"+t. channel+", VOL:"+ t. volume); //CH:100, VOL:100
     }
-
+}
 
     class SutudaCard {
         int num;
@@ -158,16 +182,22 @@ public class exam {
         String info() {
             return num + ( isKwang ? "K" : "");
         }
+
+        @Override
+        public String toString() {
+            return this.info();
+        }
     }
 
     class Student {
-        String name;
-        int ban;
-        int no;
-        int kor;
-        int eng;
-        int math;
+        String       name;    //학생이름
+        int          ban;    //     반
+        int          no;    //      번호
+        int          kor;    //     국어점수
+        int          eng;    //     영어점수
+        int          math;    //    수학점수
 
+        Student() {}
         Student(String name, int ban, int no, int kor, int eng, int math) {
             this.name = name;
             this.ban = ban;
@@ -176,7 +206,6 @@ public class exam {
             this.eng = eng;
             this.math = math;
         }
-
         int getTotal() {
             return  kor + eng + math;
         }
@@ -190,8 +219,8 @@ public class exam {
     }
 
     class MyTv {
-        boolean isPowerOn;
-        int Channel;
+        boolean isPowerOn; //멤버 변수는 false
+        int channel;
         int volume;
         final int MAX_VOLUME = 100;
         final int MIN_VOLUME = 0;
@@ -199,31 +228,38 @@ public class exam {
         final int MIN_CHANNEL = 1;
 
         void turnOnOff() {
-            isPowerOn = !isPowerOn
+            // (1) isPowerOn의 값이 true면 false로, false면 true로 바꾼다.
+            isPowerOn = !isPowerOn;
+            System.out.println("power: " + isPowerOn);
         }
         void volumeUp() {
+            // (2) volume의 값이 MAX_VOLUME보다 작을 때만 값을 1 증가시킨다.
             if(volume < MAX_VOLUME) {
                 volume++;
             }
         }
         void volumeDown() {
+            // (3) volume의 값이 MIN_VOLUME보다 클 때만 값을 1 감소시킨다.
             if(volume > MIN_VOLUME) {
                 volume--;
             }
         }
-        void channelUP() {
-            if(Channel == MAX_CHANNEL) {
-                Channel = MIN_CHANNEL;
+        void channelUp() {
+            // (4) channel의 값을 1증가시킨다.
+            // 만일 channel이  MAX_CHANNEL이면, channel의 값을 MIN_CHANNEL로 바꾼다.
+            if(channel == MAX_CHANNEL) {
+                channel = MIN_CHANNEL;
             } else  {
-                Channel++;
+                channel++;
             }
         }
         void channelDown() {
-            if(Channel == MIN_CHANNEL) {
-                Channel = MAX_CHANNEL;
+            // (5) channel의 값을 1감소시킨다.
+            // 만일 channel이 MIN_CHANNEL이면, channel의 값을 MAX_CHANNEL로 바꾼다.
+            if(channel == MIN_CHANNEL) {
+                channel = MAX_CHANNEL;
             } else {
-                Channel--;
+                channel--;
             }
         }
     }
-}
