@@ -228,3 +228,48 @@ class Animal {}
 
 class Dog extends Animal {}
 class Cat extends Animal {}
+
+class Vehicle {
+    void run() {
+        System.out.println("차량이 달립니다.");
+    }
+}
+
+class Bus extends Vehicle {
+    @Override
+    void run() {
+        System.out.println("버스가 달립니다.");
+    }
+    void getGeust() {
+        System.out.println("손님을 태웁니다.");
+    }
+}
+
+class Taxi extends Vehicle {
+    @Override
+    void run() {
+        System.out.println("택시가 달립니다.");
+    }
+}
+
+class Driver {
+    void drive(Vehicle vehicle) {
+        vehicle.run();
+    }
+
+    public static void main(String[] args) {
+        Driver hong = new Driver();
+        Vehicle bus = new Bus();
+        Vehicle texi = new Taxi();
+
+        hong.drive(bus);
+        if(bus instanceof Bus) {
+            ((Bus)bus).getGeust();
+        }
+        hong.drive(new Taxi());
+        if(texi instanceof Bus) {
+            ((Bus)texi).getGeust();
+        }
+        hong.drive(new Vehicle());
+    }
+}
