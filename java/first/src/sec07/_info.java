@@ -16,6 +16,17 @@ import java.io.IOException;
  * 상속의 이유
  * 코드의 재사용
  * 다형성
+ *
+ * 제어자 (접근제어자, 형태제어자)
+ * 클래스: public, (default), final, abstract
+ * 메서드: 모든 접근제어자(public, protected, default, private), final, abstract, static
+ * 필드(멤버변수): 모든 접근제어자, final, static
+ * 지역변수: final
+ *
+ * - abstract, static 같이 사용 못 함.
+ * - abstract, final 같이 사용 못 함.
+ * - abstract, private 같이 사용 못 함.
+ * - private, final 사용 못 함.
  */
 
 public class _info {
