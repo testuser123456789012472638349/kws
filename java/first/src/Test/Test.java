@@ -1,8 +1,3 @@
-package Test;
-
-import org.w3c.dom.ls.LSOutput;
-
-import java.sql.SQLOutput;
 import java.util.Random;
 
 public class Test {
@@ -246,6 +241,11 @@ public class Test {
 
         int[] result4 = shuffle(orginal);
         System.out.println(java.util.Arrays.toString(orginal));
+
+//        Robot[] arr5 = { new DanceRobot(), new SingRobot(), new DrawRobot() };
+//        for(int q = 0; q < arr5.length; q++) {
+//            action(arr[i]);
+//        }
     }
 
     static double getDistance(int x, int y, int x1, int y1) {
@@ -256,7 +256,8 @@ public class Test {
         return Math.sqrt(d + f);
     }
 
-    static int[] shuffle(int[] arr5) {
+
+     static int[] shuffle(int[] arr5) {
         for(int i = 0; i < arr5.length; i++) {
             int n = new Random().nextInt(9);
             int tmp6 = arr5[i];
@@ -321,6 +322,54 @@ class MyPoint {
         return Math.sqrt(a + b);
     }
 }
+
+abstract class Unit {
+    int x, y;
+    abstract void move(int x, int y);
+    void stop() {}
+}
+
+class Marine extends Unit {
+    void move(int x, int y) {}
+    void stimPack() {}
+}
+
+class Tank extends Unit {
+    void move(int x, int y) {}
+    void changeMode() {}
+}
+
+class Dropship extends Unit {
+    void move(int x, int y) {}
+    void load() {}
+    void unload() {}
+}
+
+//public static void action(Robot r) {
+//    if(r instanceof DanceRobot) {
+//        ((DanceRobot) r).dance();
+//    } else if(r instanceof SingRobot) {
+//        ((SingRobot) r).sing();
+//    } else if(r instanceof DrawRobot) {
+//        ((DrawRobot) r).draw();
+//    }
+//}
+//class Robot {}
+//class DanceRobot extends Robot {
+//    void dance() {
+//        System.out.println("Dancing");
+//    }
+//}
+//class SingRobot extends Robot {
+//    void sing() {
+//        System.out.println("singing");
+//    }
+//}
+//class DrawRobot extends Robot {
+//    void draw() {
+//        System.out.println("Drawing");
+//    }
+//}
 
 
 
