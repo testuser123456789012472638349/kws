@@ -1,9 +1,6 @@
 package sec13;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * 자료 구조
@@ -44,6 +41,85 @@ public class _info {
         Box<String> mybox = new Box<>();
         mybox.setObj("홍길동");
         System.out.println(mybox.getObj());
+
+        System.out.println("====================");
+
+        Set<String> set = new HashSet<>();
+        set.add("홍길동");
+        set.add("고길동");
+        set.add("홍길동");
+        System.out.println(set);
+        // set.remove("고길동");
+        // System.out.println(set);
+        for(String name : set) {
+            System.out.println(name);
+        }
+        Iterator<String> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        list = new ArrayList<>(set);
+        System.out.println(list);
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("홍길동", 30);
+        map.put("고길동", 10);
+        map.put("마길동", 50);
+        System.out.println(map.get("홍길동"));
+        System.out.println(map);
+        // for(Map.Entry<String, Integer> e : map) {
+
+        // }
+        Set<String> keySet = map.keySet();
+        iterator = keySet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+        Iterator<Map.Entry<String, Integer>> iterator2 = entrySet.iterator();
+        while (iterator2.hasNext()) {
+            // System.out.println(iterator2.next());
+            Map.Entry<String, Integer> me = iterator2.next();
+            System.out.println(me.getKey() + " : " + me.getValue());
+        }
+
+
+        System.out.println("==============================");
+
+        Stack<String> stack = new Stack<>();
+
+        // System.out.println(stack.isEmpty());
+        stack.push("1");
+        stack.push("2");
+        stack.push("3");
+        stack.push("4");
+        stack.push("5");
+
+        for(int i = 0; i < stack.size(); i++) {
+            System.out.print("peek: " + stack.peek());
+            System.out.println(", get: " + stack.get(i));
+        }
+
+        // System.out.println(stack.isEmpty());
+        // while (!stack.isEmpty()) {
+        //     System.out.println(stack.pop());
+        //     System.out.println(stack.isEmpty());
+        // }
+
+        System.out.println("out");
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer("1");
+        queue.offer("2");
+        queue.offer("3");
+        queue.offer("4");
+        queue.offer("5");
+
+        while (!queue.isEmpty()) {
+            System.out.println(queue.poll());
+        }
     }
 }
 
